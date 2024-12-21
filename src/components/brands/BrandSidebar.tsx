@@ -32,10 +32,10 @@ const menuItems = [
 
 export function BrandSidebar() {
   return (
-    <Sidebar className="border-r border-border">
+    <Sidebar className="min-h-screen border-r border-border">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-foreground/70 font-semibold px-2">
+          <SidebarGroupLabel className="text-xl font-bold px-4 py-4">
             Brand Management
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -45,10 +45,10 @@ export function BrandSidebar() {
                   <SidebarMenuButton asChild>
                     <a 
                       href={item.url} 
-                      className="flex items-center gap-3 px-2 py-2 rounded-md text-foreground/80 hover:text-foreground hover:bg-accent transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/80 hover:text-foreground hover:bg-accent transition-colors"
                     >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
+                      <item.icon className="h-5 w-5" />
+                      <span className="font-medium">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
