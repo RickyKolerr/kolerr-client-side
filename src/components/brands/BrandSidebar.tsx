@@ -1,12 +1,12 @@
 import {
-  LayoutDashboard,
-  Plus,
-  Calendar,
   BarChart3,
-  Users,
+  Calendar,
   CreditCard,
-  Star,
+  Layout,
+  Plus,
   Settings,
+  Star,
+  Users,
 } from "lucide-react";
 import {
   Sidebar,
@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
-  { title: "Dashboard Overview", icon: LayoutDashboard, url: "#dashboard" },
+  { title: "Dashboard Overview", icon: Layout, url: "#dashboard" },
   { title: "Create Campaign", icon: Plus, url: "#create" },
   { title: "Manage Slots", icon: Calendar, url: "#slots" },
   { title: "Track Progress", icon: BarChart3, url: "#progress" },
@@ -32,23 +32,18 @@ const menuItems = [
 
 export function BrandSidebar() {
   return (
-    <Sidebar className="min-h-screen border-r border-border">
+    <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xl font-bold px-4 py-4">
-            Brand Management
-          </SidebarGroupLabel>
+          <SidebarGroupLabel>Brand Management</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a 
-                      href={item.url} 
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/80 hover:text-foreground hover:bg-accent transition-colors"
-                    >
-                      <item.icon className="h-5 w-5" />
-                      <span className="font-medium">{item.title}</span>
+                    <a href={item.url} className="flex items-center gap-3">
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
