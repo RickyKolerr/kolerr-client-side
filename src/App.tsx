@@ -13,6 +13,10 @@ import Slots from "./pages/Slots";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import AboutUs from "./pages/AboutUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import Careers from "./pages/Careers";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +37,10 @@ const App = () => (
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/careers" element={<Careers />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
