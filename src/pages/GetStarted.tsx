@@ -24,24 +24,24 @@ const GetStarted = () => {
           </h1>
           
           <div className="space-y-6 text-lg">
-            <p className="text-foreground">
+            <p className="text-foreground/90">
               Welcome to Kolerr! Follow these simple steps to begin your journey:
             </p>
             
             <div className="grid gap-6">
-              <div className="p-6 rounded-lg bg-card text-card-foreground hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">1. Create Your Account</h3>
-                <p>Sign up and complete your profile with relevant information about your brand or influence.</p>
+              <div className="p-6 rounded-lg bg-card/90 dark:bg-card/10 border border-border hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">1. Create Your Account</h3>
+                <p className="text-foreground/80 dark:text-foreground/70">Sign up and complete your profile with relevant information about your brand or influence.</p>
               </div>
               
-              <div className="p-6 rounded-lg bg-card text-card-foreground hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">2. Browse KOLs</h3>
-                <p>Explore our diverse network of Key Opinion Leaders across various industries and platforms.</p>
+              <div className="p-6 rounded-lg bg-card/90 dark:bg-card/10 border border-border hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">2. Browse KOLs</h3>
+                <p className="text-foreground/80 dark:text-foreground/70">Explore our diverse network of Key Opinion Leaders across various industries and platforms.</p>
               </div>
               
-              <div className="p-6 rounded-lg bg-card text-card-foreground hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">3. Start Collaborating</h3>
-                <p>Connect with KOLs, discuss campaign details, and launch your first collaboration.</p>
+              <div className="p-6 rounded-lg bg-card/90 dark:bg-card/10 border border-border hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">3. Start Collaborating</h3>
+                <p className="text-foreground/80 dark:text-foreground/70">Connect with KOLs, discuss campaign details, and launch your first collaboration.</p>
               </div>
             </div>
             

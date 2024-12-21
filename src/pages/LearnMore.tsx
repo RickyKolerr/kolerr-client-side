@@ -23,25 +23,25 @@ const LearnMore = () => {
             About Kolerr Platform
           </h1>
           
-          <div className="space-y-6 text-lg text-foreground/80">
-            <p className="text-xl">
+          <div className="space-y-6 text-lg">
+            <p className="text-foreground/90 text-xl">
               Discover how Kolerr is revolutionizing brand-KOL collaborations in Vietnam
             </p>
             
             <div className="grid gap-6">
-              <div className="p-6 rounded-lg bg-card hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">AI-Powered Matching</h3>
-                <p>Our advanced algorithms ensure perfect matches between brands and KOLs based on audience demographics, engagement rates, and campaign objectives.</p>
+              <div className="p-6 rounded-lg bg-card/90 dark:bg-card/10 border border-border hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">AI-Powered Matching</h3>
+                <p className="text-foreground/80 dark:text-foreground/70">Our advanced algorithms ensure perfect matches between brands and KOLs based on audience demographics, engagement rates, and campaign objectives.</p>
               </div>
               
-              <div className="p-6 rounded-lg bg-card hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">Real-Time Analytics</h3>
-                <p>Track campaign performance with comprehensive analytics and insights, helping you optimize your marketing strategy.</p>
+              <div className="p-6 rounded-lg bg-card/90 dark:bg-card/10 border border-border hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">Real-Time Analytics</h3>
+                <p className="text-foreground/80 dark:text-foreground/70">Track campaign performance with comprehensive analytics and insights, helping you optimize your marketing strategy.</p>
               </div>
               
-              <div className="p-6 rounded-lg bg-card hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">Secure Collaboration</h3>
-                <p>Our platform provides a secure environment for communication, contract management, and payment processing.</p>
+              <div className="p-6 rounded-lg bg-card/90 dark:bg-card/10 border border-border hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">Secure Collaboration</h3>
+                <p className="text-foreground/80 dark:text-foreground/70">Our platform provides a secure environment for communication, contract management, and payment processing.</p>
               </div>
             </div>
             
