@@ -3,6 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import KOLShowcase from "@/components/home/KOLShowcase";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { t } = useLanguage();
@@ -21,19 +22,26 @@ const Index = () => {
             {t('hero.subtitle') || 'Find and collaborate with the most influential Key Opinion Leaders for your brand campaigns'}
           </p>
           <div className="flex gap-4 animate-fade-in delay-200">
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90 transition-all duration-300 hover:scale-105"
-            >
-              {t('hero.getStarted') || 'Get Started'} <ArrowRight className="ml-2" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="hover:scale-105 transition-all duration-300"
-            >
-              {t('hero.learnMore') || 'Learn More'}
-            </Button>
+            <Link to="/get-started">
+              <Button 
+                size="lg"
+                className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white 
+                         hover:opacity-90 hover:scale-105 transition-all duration-300 
+                         hover:shadow-[0_0_20px_rgba(0,245,255,0.5)] dark:hover:shadow-[0_0_20px_rgba(156,39,176,0.5)]"
+              >
+                {t('hero.getStarted') || 'Get Started'} <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
+            <Link to="/learn-more">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="hover:scale-105 transition-all duration-300
+                         hover:shadow-[0_0_20px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_20px_rgba(156,39,176,0.3)]"
+              >
+                {t('hero.learnMore') || 'Learn More'}
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -72,7 +80,8 @@ const Index = () => {
           </p>
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90 transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white 
+                     hover:opacity-90 transition-all duration-300 hover:scale-105"
           >
             {t('cta.button') || 'Start Now'} <ArrowRight className="ml-2" />
           </Button>

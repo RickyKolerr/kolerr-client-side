@@ -10,6 +10,8 @@ import Register from "@/pages/auth/Register";
 import ForgotPassword from "@/pages/auth/ForgotPassword";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import GetStarted from "@/pages/GetStarted";
+import LearnMore from "@/pages/LearnMore";
 
 export const mainRoutes = [
   {
@@ -59,5 +61,13 @@ export const mainRoutes = [
   {
     path: "/terms",
     element: TermsOfService,
+  },
+  {
+    path: "/get-started",
+    element: GetStarted,
+  },
+  {
+    path: "/learn-more",
+    element: LearnMore,
   },
 ];
