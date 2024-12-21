@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, Users, Calendar, Bell } from "lucide-react";
+import { Activity, Users, Calendar, Bell, TrendingUp, Clock, Target } from "lucide-react";
 
 const SlotDashboard = () => {
   const stats = [
@@ -7,25 +7,29 @@ const SlotDashboard = () => {
       title: "Available Slots",
       value: "12",
       icon: Calendar,
-      description: "Open for applications"
+      description: "Open for applications",
+      color: "cyan"
     },
     {
       title: "Active Slots",
       value: "3",
       icon: Activity,
-      description: "Currently participating"
+      description: "Currently participating",
+      color: "purple"
     },
     {
       title: "Total Applications",
       value: "28",
       icon: Users,
-      description: "Across all campaigns"
+      description: "Across all campaigns",
+      color: "orange"
     },
     {
       title: "Pending Invites",
       value: "5",
       icon: Bell,
-      description: "Awaiting response"
+      description: "Awaiting response",
+      color: "yellow"
     }
   ];
 
@@ -33,19 +37,17 @@ const SlotDashboard = () => {
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat, index) => (
-          <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {stat.title}
-              </CardTitle>
-              <stat.icon className="h-4 w-4 text-muted-foreground" />
+          <Card key={index} className="hover:shadow-lg transition-shadow">
+            <CardHeader className="flex flex-row items-center space-y-0">
+              <div className={`w-14 h-14 rounded-full bg-kolerr-${stat.color}/10 flex items-center justify-center mr-4`}>
+                <stat.icon className={`h-6 w-6 text-kolerr-${stat.color}`} />
+              </div>
+              <div>
+                <CardTitle className="text-lg">{stat.title}</CardTitle>
+                <p className="text-3xl font-bold mt-2">{stat.value}</p>
+                <p className="text-sm text-muted-foreground">{stat.description}</p>
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                {stat.description}
-              </p>
-            </CardContent>
           </Card>
         ))}
       </div>

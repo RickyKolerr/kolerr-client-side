@@ -9,22 +9,26 @@ const Slots = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-white mb-4">Slot System</h1>
-        <p className="text-gray-400 mb-8">Manage your campaign slots and collaborations</p>
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent mb-2">
+          Slot System
+        </h1>
+        <p className="text-muted-foreground mb-8">
+          Manage your campaign slots and collaborations efficiently
+        </p>
         
-        <Tabs defaultValue="dashboard" className="space-y-4">
-          <TabsList>
+        <Tabs defaultValue="dashboard" className="space-y-8">
+          <TabsList className="bg-background border border-input">
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
             <TabsTrigger value="available">Available Slots</TabsTrigger>
             <TabsTrigger value="my-slots">My Slots</TabsTrigger>
           </TabsList>
-          <TabsContent value="dashboard">
+          <TabsContent value="dashboard" className="space-y-4">
             <SlotDashboard />
           </TabsContent>
-          <TabsContent value="available">
+          <TabsContent value="available" className="space-y-4">
             <AvailableSlots />
           </TabsContent>
-          <TabsContent value="my-slots">
+          <TabsContent value="my-slots" className="space-y-4">
             <MySlots />
           </TabsContent>
         </Tabs>
