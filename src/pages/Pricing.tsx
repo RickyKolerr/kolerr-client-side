@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { PricingHeader } from "@/components/pricing/PricingHeader";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { AddOnCard } from "@/components/pricing/AddOnCard";
+import { Button } from "@/components/ui/button"; // Added missing import
 
 const plans = [
   {
