@@ -8,21 +8,21 @@ const TestimonialsSection = () => {
       author: "Sarah Johnson",
       role: "Marketing Director",
       company: "TechVision Inc.",
-      avatar: "/placeholder.svg"
+      avatar: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=150&h=150"
     },
     {
       quote: "As an influencer, Kolerr helped me find the right partnerships with major brands quickly and efficiently.",
       author: "David Chen",
       role: "Content Creator",
       followers: "500K+ Followers",
-      avatar: "/placeholder.svg"
+      avatar: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=150&h=150"
     },
     {
       quote: "The platform's analytics helped us optimize our campaigns and achieve better results than ever before.",
       author: "Maria Garcia",
       role: "Brand Manager",
       company: "StyleHub",
-      avatar: "/placeholder.svg"
+      avatar: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=150&h=150"
     }
   ];
 
@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
               <CardContent className="p-6">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <Avatar className="w-16 h-16">
-                    <AvatarImage src={testimonial.avatar} />
+                    <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
                     <AvatarFallback>{testimonial.author[0]}</AvatarFallback>
                   </Avatar>
                   <p className="text-foreground/80 italic">"{testimonial.quote}"</p>
