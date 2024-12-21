@@ -9,6 +9,7 @@ import KOLs from "./pages/KOLs";
 import Brands from "./pages/Brands";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
+import Slots from "./pages/Slots";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/brands" element={<Brands />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/slots" element={<Slots />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
