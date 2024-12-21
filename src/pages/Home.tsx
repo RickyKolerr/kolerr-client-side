@@ -12,13 +12,6 @@ const Home = () => {
       
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
-        <div className="flex justify-center mb-8">
-          <img 
-            src="/lovable-uploads/8fa1fb98-f606-4338-b651-0f6ad91f5537.png" 
-            alt="Kolerr Logo" 
-            className="h-24 w-24"
-          />
-        </div>
         <h1 className="mb-6 text-4xl md:text-6xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
           Connect with Top Influencers for Your Brand Campaigns
         </h1>
