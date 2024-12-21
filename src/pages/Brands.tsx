@@ -8,9 +8,9 @@ const Brands = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <SidebarProvider>
-        <div className="flex h-[calc(100vh-4rem)] w-full">
+        <div className="flex w-full">
           <BrandSidebar />
-          <main className="flex-1 overflow-auto p-8 bg-background">
+          <main className="flex-1 p-8 bg-background">
             <BrandDashboard />
           </main>
         </div>

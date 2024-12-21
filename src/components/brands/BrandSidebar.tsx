@@ -32,7 +32,7 @@ const menuItems = [
 
 export function BrandSidebar() {
   return (
-    <Sidebar className="h-full border-r border-border">
+    <Sidebar className="border-r border-border">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-foreground/70 font-semibold px-2">
