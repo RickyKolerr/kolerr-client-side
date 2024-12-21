@@ -29,7 +29,7 @@ const KOLShowcase = () => {
     <section className="py-16 bg-black/50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-4 md:mb-0">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent mb-4 md:mb-0">
             Key Opinion Leaders
           </h2>
           <div className="flex w-full md:w-auto gap-4">
@@ -51,8 +51,8 @@ const KOLShowcase = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {kols.map((kol) => (
-            <Card key={kol.name} className="bg-white p-6">
-              <div className="text-center">
+            <Card key={kol.name} className="overflow-hidden bg-white shadow-lg transition-transform hover:scale-105">
+              <div className="p-6 text-center">
                 <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full">
                   <img
                     src={kol.image}
@@ -67,7 +67,7 @@ const KOLShowcase = () => {
                   <p>Followers: {kol.followers}</p>
                   <p>Engagement: {kol.engagement}</p>
                 </div>
-                <Button className="w-full bg-kolerr-yellow hover:bg-kolerr-yellow/90 text-gray-900">
+                <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:opacity-90">
                   Partnership Details
                 </Button>
               </div>
