@@ -10,7 +10,7 @@ const Brands = () => {
       <SidebarProvider>
         <div className="min-h-screen flex w-full">
           <BrandSidebar />
-          <main className="flex-1 p-8">
+          <main className="flex-1 p-8 bg-background">
             <BrandDashboard />
           </main>
         </div>
