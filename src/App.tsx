@@ -10,6 +10,9 @@ import Brands from "./pages/Brands";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import Slots from "./pages/Slots";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +30,9 @@ const App = () => (
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/slots" element={<Slots />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
+          <Route path="/auth/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
