@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CreditCard, Globe, Facebook, Twitter, Instagram, LinkedIn } from "lucide-react";
+import { CreditCard, Globe, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -66,7 +66,7 @@ const Footer = () => {
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                  <LinkedIn className="h-5 w-5" />
+                  <Linkedin className="h-5 w-5" />
                 </a>
               </div>
             </div>

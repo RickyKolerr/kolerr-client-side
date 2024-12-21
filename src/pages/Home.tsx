@@ -1,5 +1,28 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SearchBar from "@/components/SearchBar";
+import KOLCard from "@/components/KOLCard";
+
+const kols = [
+  {
+    name: "John Doe",
+    image: "/placeholder.svg",
+    followers: "100K",
+    engagement: "5.2%"
+  },
+  {
+    name: "Jane Smith",
+    image: "/placeholder.svg",
+    followers: "250K",
+    engagement: "4.8%"
+  },
+  {
+    name: "Mike Johnson",
+    image: "/placeholder.svg",
+    followers: "500K",
+    engagement: "6.1%"
+  }
+];
 
 const Home = () => {
   return (
