@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Search, Brain, Timer, Shield, Users, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import KOLShowcase from "@/components/home/KOLShowcase";
 
 const Home = () => {
   return (
@@ -74,28 +74,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured KOLs Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-            Top Influencers in Vietnam Ready for Your Campaign
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((kol) => (
-              <Card key={kol} className="bg-white/5 border-gray-800">
-                <CardHeader>
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-kolerr-cyan to-kolerr-purple" />
-                  <CardTitle className="text-center text-white">KOL Name {kol}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center text-gray-400">
-                  <p className="mb-2">Fashion & Lifestyle</p>
-                  <p>500K Followers</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* KOL Showcase Section */}
+      <KOLShowcase />
 
       {/* Why Choose Kolerr Section */}
       <section className="bg-black/50 py-20">
