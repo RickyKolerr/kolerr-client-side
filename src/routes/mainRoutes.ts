@@ -1,4 +1,4 @@
-import Home from "@/pages/Home";
+import Index from "@/pages/Index";
 import Campaigns from "@/pages/Campaigns";
 import KOLs from "@/pages/KOLs";
 import Brands from "@/pages/Brands";
@@ -14,7 +14,7 @@ import TermsOfService from "@/pages/TermsOfService";
 export const mainRoutes = [
   {
     path: "/",
-    element: Home,
+    element: Index,
   },
   {
     path: "/campaigns",
