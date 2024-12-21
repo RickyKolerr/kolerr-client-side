@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { Search, Brain, Stopwatch, Shield, Users, ArrowRight } from "lucide-react";
+import { Search, Brain, Timer, Shield, Users, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -56,7 +56,7 @@ const Home = () => {
               {
                 title: "Real-Time Collaboration",
                 description: "Manage campaigns in real-time and track KOL performance for better results.",
-                icon: Stopwatch
+                icon: Timer
               }
             ].map((step, index) => (
               <div key={index} className="bg-white/5 p-6 rounded-lg text-center">
@@ -110,7 +110,7 @@ const Home = () => {
               {
                 title: "Real-Time Campaign Tracking",
                 description: "Track your campaign's success in real-time with detailed insights.",
-                icon: Stopwatch
+                icon: Timer
               },
               {
                 title: "Transparency & Trust",
