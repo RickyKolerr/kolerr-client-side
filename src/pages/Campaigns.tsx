@@ -1,24 +1,24 @@
-import { BrandDashboard } from "@/components/brands/BrandDashboard";
 import Navbar from "@/components/Navbar";
-import { CampaignOverview } from "@/components/campaigns/CampaignOverview";
-import { CampaignHeader } from "@/components/campaigns/CampaignHeader";
-import { CampaignAnalytics } from "@/components/campaigns/CampaignAnalytics";
-import { KOLManagement } from "@/components/campaigns/KOLManagement";
+import { CampaignMetrics } from "@/components/campaigns/CampaignMetrics";
+import { CampaignDetails } from "@/components/campaigns/CampaignDetails";
 
 const Campaigns = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto px-4 py-8 space-y-8">
-        <CampaignHeader />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-8">
-            <CampaignOverview />
-            <CampaignAnalytics />
-          </div>
-          <div className="space-y-8">
-            <KOLManagement />
-          </div>
+        <div className="space-y-4">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+            Campaign Dashboard
+          </h1>
+          <p className="text-muted-foreground">
+            Monitor and manage your active campaigns
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8">
+          <CampaignMetrics />
+          <CampaignDetails />
         </div>
       </div>
     </div>
