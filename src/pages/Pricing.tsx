@@ -3,8 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
+interface PlanPrice {
+  vnd: string | number;
+  usd: string | number;
+}
+
+interface Plan {
+  name: string;
+  description: string;
+  price: PlanPrice;
+  features: string[];
+}
+
 const Pricing = () => {
-  const plans = [
+  const plans: Plan[] = [
     {
       name: "Starter",
       description: "Perfect for new KOLs and small brands",
@@ -23,7 +35,7 @@ const Pricing = () => {
       name: "Professional",
       description: "For growing influencers and established brands",
       price: {
-        vnd: "2,000,000",
+        vnd: 2000000,
         usd: "80"
       },
       features: [
