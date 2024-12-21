@@ -142,9 +142,11 @@ const Home = () => {
           <p className="text-xl text-gray-400 mb-8">
             Join thousands of successful brands and KOLs on Kolerr
           </p>
-          <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white px-8 py-6 text-lg h-auto">
-            Get Started Today <ArrowRight className="ml-2" />
-          </Button>
+          <Link to="/auth/register">
+            <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white px-8 py-6 text-lg h-auto">
+              Start Your Campaign Today <ArrowRight className="ml-2" />
+            </Button>
+          </Link>
         </div>
       </section>
 
