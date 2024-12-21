@@ -13,17 +13,6 @@ import Slots from "./pages/Slots";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
-import About from "./pages/About";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import Careers from "./pages/Careers";
-import Features from "./pages/Features";
-import ForKOLs from "./pages/ForKOLs";
-import ForBrands from "./pages/ForBrands";
-import Blog from "./pages/Blog";
-import Support from "./pages/Support";
-import Sales from "./pages/Sales";
-import Press from "./pages/Press";
 
 const queryClient = new QueryClient();
 
@@ -44,17 +33,6 @@ const App = () => (
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/forgot-password" element={<ForgotPassword />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/for-kols" element={<ForKOLs />} />
-          <Route path="/for-brands" element={<ForBrands />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/sales" element={<Sales />} />
-          <Route path="/press" element={<Press />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
