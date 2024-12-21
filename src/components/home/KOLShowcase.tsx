@@ -1,7 +1,6 @@
-import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const KOLShowcase = () => {
   const kols = [
@@ -29,23 +28,27 @@ const KOLShowcase = () => {
     <section className="py-16 bg-black/50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent mb-4 md:mb-0">
-            Key Opinion Leaders
-          </h2>
+          <div className="flex items-center gap-4 mb-4 md:mb-0">
+            <img 
+              src="/lovable-uploads/8fa1fb98-f606-4338-b651-0f6ad91f5537.png" 
+              alt="Kolerr Logo" 
+              className="h-12 w-12"
+            />
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+              Key Opinion Leaders
+            </h2>
+          </div>
           <div className="flex w-full md:w-auto gap-4">
-            <div className="relative flex-1 md:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-              <Input
-                type="text"
-                placeholder="Search KOLs..."
-                className="pl-10 bg-white/10 text-white border-gray-700"
-              />
-            </div>
-            <select className="bg-white/10 text-white border-gray-700 rounded-md px-4 py-2">
-              <option value="popularity">Sort by Popularity</option>
-              <option value="followers">Sort by Followers</option>
-              <option value="engagement">Sort by Engagement</option>
-            </select>
+            <Select>
+              <SelectTrigger className="w-[180px] bg-white">
+                <SelectValue placeholder="Sort by" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="followers">Followers</SelectItem>
+                <SelectItem value="engagement">Engagement</SelectItem>
+                <SelectItem value="recent">Most Recent</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
@@ -60,10 +63,8 @@ const KOLShowcase = () => {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {kol.name}
-                </h3>
-                <div className="space-y-2 text-sm text-gray-600 mb-4">
+                <h3 className="mb-2 text-xl font-semibold">{kol.name}</h3>
+                <div className="mb-4 space-y-1 text-gray-600">
                   <p>Followers: {kol.followers}</p>
                   <p>Engagement: {kol.engagement}</p>
                 </div>
