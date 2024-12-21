@@ -4,8 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Search, Filter } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AvailableSlots = () => {
+  const { t } = useLanguage();
+
   const slots = [
     {
       id: 1,
@@ -38,12 +41,12 @@ const AvailableSlots = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
-          <Input placeholder="Search slots..." className="pl-10" />
+          <Input placeholder={t('slots.available.search')} className="pl-10" />
         </div>
         <div className="flex gap-2 w-full md:w-auto">
           <Select>
             <SelectTrigger className="w-[150px]">
-              <SelectValue placeholder="Category" />
+              <SelectValue placeholder={t('slots.available.category')} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="beauty">Beauty</SelectItem>
@@ -54,7 +57,7 @@ const AvailableSlots = () => {
           </Select>
           <Select>
             <SelectTrigger className="w-[150px]">
-              <SelectValue placeholder="Platform" />
+              <SelectValue placeholder={t('slots.available.platform')} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="instagram">Instagram</SelectItem>
@@ -64,7 +67,7 @@ const AvailableSlots = () => {
           </Select>
           <Button variant="outline">
             <Filter className="h-4 w-4 mr-2" />
-            Filter
+            {t('slots.available.filter')}
           </Button>
         </div>
       </div>
@@ -86,19 +89,19 @@ const AvailableSlots = () => {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-muted-foreground">Brand</p>
+                  <p className="text-sm text-muted-foreground">{t('slots.available.brand')}</p>
                   <p className="font-medium">{slot.brand}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Budget</p>
+                  <p className="text-sm text-muted-foreground">{t('slots.available.budget')}</p>
                   <p className="font-medium">{slot.budget}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Campaign Dates</p>
+                  <p className="text-sm text-muted-foreground">{t('slots.available.dates')}</p>
                   <p className="font-medium">{slot.dates}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Required Followers</p>
+                  <p className="text-sm text-muted-foreground">{t('slots.available.followers')}</p>
                   <p className="font-medium">{slot.followers}</p>
                 </div>
               </div>
@@ -106,7 +109,7 @@ const AvailableSlots = () => {
             </CardContent>
             <CardFooter>
               <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange">
-                Apply Now
+                {t('slots.available.applyNow')}
               </Button>
             </CardFooter>
           </Card>

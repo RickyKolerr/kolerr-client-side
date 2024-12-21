@@ -3,8 +3,11 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Calendar, DollarSign, CheckCircle2, Clock } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const MySlots = () => {
+  const { t } = useLanguage();
+  
   const mySlots = [
     {
       id: 1,
@@ -48,28 +51,28 @@ const MySlots = () => {
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Brand</p>
+                    <p className="text-sm text-muted-foreground">{t('slots.mySlots.brand')}</p>
                     <p className="font-medium">{slot.brand}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Budget</p>
+                    <p className="text-sm text-muted-foreground">{t('slots.mySlots.budget')}</p>
                     <p className="font-medium">{slot.budget}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Deadline</p>
+                    <p className="text-sm text-muted-foreground">{t('slots.mySlots.deadline')}</p>
                     <p className="font-medium">{slot.deadline}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Requirements</p>
+                    <p className="text-sm text-muted-foreground">{t('slots.mySlots.requirements')}</p>
                     <p className="font-medium">{slot.requirements}</p>
                   </div>
                 </div>
@@ -77,7 +80,7 @@ const MySlots = () => {
               {slot.progress && (
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Progress</span>
+                    <span className="text-muted-foreground">{t('slots.mySlots.progress')}</span>
                     <span className="font-medium">{slot.progress}%</span>
                   </div>
                   <Progress value={slot.progress} className="h-2" />
@@ -93,7 +96,7 @@ const MySlots = () => {
                 }`}
                 variant={slot.status === "Active" ? "default" : "secondary"}
               >
-                {slot.status === "Active" ? "View Details" : "Accept Invitation"}
+                {slot.status === "Active" ? t('slots.mySlots.viewDetails') : t('slots.mySlots.acceptInvitation')}
               </Button>
             </CardFooter>
           </Card>

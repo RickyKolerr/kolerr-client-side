@@ -32,7 +32,37 @@ const translations = {
     "showcase.partnership": "Partnership Details",
     "cta.title": "Ready to Grow Your Brand?",
     "cta.subtitle": "Join thousands of successful brands leveraging the power of KOL marketing",
-    "cta.button": "Start Now"
+    "cta.button": "Start Now",
+    
+    // Slots Page
+    "slots.title": "Slot System",
+    "slots.subtitle": "Manage your campaign slots and collaborations efficiently",
+    "slots.tabs.dashboard": "Dashboard",
+    "slots.tabs.available": "Available Slots",
+    "slots.tabs.mySlots": "My Slots",
+    
+    // Available Slots
+    "slots.available.search": "Search slots...",
+    "slots.available.category": "Category",
+    "slots.available.platform": "Platform",
+    "slots.available.filter": "Filter",
+    "slots.available.brand": "Brand",
+    "slots.available.budget": "Budget",
+    "slots.available.dates": "Campaign Dates",
+    "slots.available.followers": "Required Followers",
+    "slots.available.description": "Description",
+    "slots.available.applyNow": "Apply Now",
+    
+    // My Slots
+    "slots.mySlots.title": "Title",
+    "slots.mySlots.brand": "Brand",
+    "slots.mySlots.status": "Status",
+    "slots.mySlots.budget": "Budget",
+    "slots.mySlots.deadline": "Deadline",
+    "slots.mySlots.requirements": "Requirements",
+    "slots.mySlots.progress": "Progress",
+    "slots.mySlots.viewDetails": "View Details",
+    "slots.mySlots.acceptInvitation": "Accept Invitation"
   },
   vi: {
     "nav.home": "Trang chủ",
@@ -57,7 +87,37 @@ const translations = {
     "showcase.partnership": "Chi tiết Hợp tác",
     "cta.title": "Sẵn sàng Phát triển Thương hiệu?",
     "cta.subtitle": "Tham gia cùng hàng nghìn thương hiệu thành công tận dụng sức mạnh của tiếp thị KOL",
-    "cta.button": "Bắt đầu ngay"
+    "cta.button": "Bắt đầu ngay",
+    
+    // Slots Page
+    "slots.title": "Hệ thống Slot",
+    "slots.subtitle": "Quản lý slot chiến dịch và hợp tác hiệu quả",
+    "slots.tabs.dashboard": "Bảng điều khiển",
+    "slots.tabs.available": "Slot khả dụng",
+    "slots.tabs.mySlots": "Slot của tôi",
+    
+    // Available Slots
+    "slots.available.search": "Tìm kiếm slot...",
+    "slots.available.category": "Danh mục",
+    "slots.available.platform": "Nền tảng",
+    "slots.available.filter": "Lọc",
+    "slots.available.brand": "Thương hiệu",
+    "slots.available.budget": "Ngân sách",
+    "slots.available.dates": "Ngày chiến dịch",
+    "slots.available.followers": "Yêu cầu người theo dõi",
+    "slots.available.description": "Mô tả",
+    "slots.available.applyNow": "Ứng tuyển ngay",
+    
+    // My Slots
+    "slots.mySlots.title": "Tiêu đề",
+    "slots.mySlots.brand": "Thương hiệu",
+    "slots.mySlots.status": "Trạng thái",
+    "slots.mySlots.budget": "Ngân sách",
+    "slots.mySlots.deadline": "Hạn chót",
+    "slots.mySlots.requirements": "Yêu cầu",
+    "slots.mySlots.progress": "Tiến độ",
+    "slots.mySlots.viewDetails": "Xem chi tiết",
+    "slots.mySlots.acceptInvitation": "Chấp nhận lời mời"
   },
 };
 
