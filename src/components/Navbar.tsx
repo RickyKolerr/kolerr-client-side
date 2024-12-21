@@ -20,9 +20,18 @@ const Navbar = () => {
             <Link to="/brands" className="text-gray-300 hover:text-white px-3 py-2">Brands</Link>
             <Link to="/pricing" className="text-gray-300 hover:text-white px-3 py-2">Pricing</Link>
             <Link to="/contact" className="text-gray-300 hover:text-white px-3 py-2">Contact</Link>
-            <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white">
-              Sign Up
-            </Button>
+            <div className="flex items-center space-x-2">
+              <Link to="/auth/login">
+                <Button variant="ghost" className="text-white">
+                  Sign In
+                </Button>
+              </Link>
+              <Link to="/auth/register">
+                <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

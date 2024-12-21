@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Brain, Timer, Shield, Users, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -30,9 +31,11 @@ const Home = () => {
           </div>
         </div>
         
-        <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white px-8 py-6 text-lg h-auto">
-          Start Your Campaign Today
-        </Button>
+        <Link to="/auth/register">
+          <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white px-8 py-6 text-lg h-auto">
+            Get Started Today
+          </Button>
+        </Link>
       </section>
 
       {/* How It Works Section */}
