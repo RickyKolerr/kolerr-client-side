@@ -1,13 +1,20 @@
 import Navbar from "@/components/Navbar";
+import { BrandDashboard } from "@/components/brands/BrandDashboard";
+import { BrandSidebar } from "@/components/brands/BrandSidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const Brands = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-white mb-4">Brands</h1>
-        <p className="text-gray-400">Connect with leading brands and create impactful campaigns.</p>
-      </div>
+      <SidebarProvider>
+        <div className="min-h-screen flex w-full">
+          <BrandSidebar />
+          <main className="flex-1 p-8">
+            <BrandDashboard />
+          </main>
+        </div>
+      </SidebarProvider>
     </div>
   );
 };
