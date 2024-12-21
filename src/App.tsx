@@ -17,6 +17,9 @@ import AboutUs from "./pages/AboutUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Careers from "./pages/Careers";
+import Support from "./pages/Support";
+import Sales from "./pages/Sales";
+import Press from "./pages/Press";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +44,9 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/press" element={<Press />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
