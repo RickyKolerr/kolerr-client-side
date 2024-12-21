@@ -2,95 +2,106 @@ import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { MapPin, Mail, Phone } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { useState } from "react";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the email and message to your backend
     toast({
       title: "Message sent!",
       description: "We'll get back to you as soon as possible.",
     });
-    setEmail("");
-    setMessage("");
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <h1 className="text-4xl font-bold text-white mb-6">Contact Us</h1>
-        <p className="text-gray-400 mb-12">
-          We'd love to hear from you! Whether you have questions, feedback, or need assistance, our team is here to help.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-semibold text-white mb-4">Our Office</h2>
-              <address className="text-gray-400 not-italic">
-                Nexus Tower<br />
-                5B Ton Duc Thang Street<br />
-                Ben Nghe Ward, District 1<br />
-                Ho Chi Minh City, Vietnam
-              </address>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-semibold text-white mb-4">Get in Touch</h2>
-              <div className="space-y-2 text-gray-400">
-                <p>Email: <a href="mailto:support@kolerr.com" className="text-kolerr-cyan hover:underline">support@kolerr.com</a></p>
-                <p>Phone: <a href="tel:+84938737714" className="text-kolerr-cyan hover:underline">+84 938 737 714</a></p>
-                <p>Business Hours: Monday – Friday, 9:00 AM – 6:00 PM (GMT+7)</p>
-              </div>
-            </div>
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-5xl mx-auto space-y-8">
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+              Get in Touch
+            </h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Have questions about our services? We're here to help. Reach out to us
+              through any of the channels below.
+            </p>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-card rounded-lg p-6 shadow-lg">
-            <h2 className="text-2xl font-semibold text-card-foreground mb-6">Send Us an Email</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-card-foreground mb-2">
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-card-foreground mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Write your message here"
-                  required
-                  className="w-full min-h-[150px]"
-                />
-              </div>
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white"
-              >
-                Send Message
-              </Button>
-            </form>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-card hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 space-y-6">
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="h-10 w-10 rounded-full bg-kolerr-purple/10 flex items-center justify-center">
+                      <MapPin className="h-5 w-5 text-kolerr-purple" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Visit Us</h3>
+                      <p className="text-muted-foreground">
+                        Nexus Tower - 5B Ton Duc Thang St,
+                        <br />
+                        Ben Nghe Ward, District 1,
+                        <br />
+                        Ho Chi Minh City
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="h-10 w-10 rounded-full bg-kolerr-cyan/10 flex items-center justify-center">
+                      <Mail className="h-5 w-5 text-kolerr-cyan" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Email Us</h3>
+                      <p className="text-muted-foreground">contact@kolerr.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="h-10 w-10 rounded-full bg-kolerr-orange/10 flex items-center justify-center">
+                      <Phone className="h-5 w-5 text-kolerr-orange" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Call Us</h3>
+                      <p className="text-muted-foreground">+84 (28) 1234 5678</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Name</label>
+                    <Input placeholder="Your name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Email</label>
+                    <Input type="email" placeholder="your@email.com" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Message</label>
+                    <Textarea
+                      placeholder="How can we help?"
+                      className="min-h-[120px]"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
