@@ -56,24 +56,28 @@ const KOLShowcase = () => {
           {kols.map((kol) => (
             <Card 
               key={kol.name} 
-              className="overflow-hidden bg-card text-card-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(0,245,255,0.3)]"
+              className="overflow-hidden bg-card text-card-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)]"
             >
               <div className="p-6 text-center">
-                <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full">
+                <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-kolerr-cyan/30 hover:ring-kolerr-purple/50 transition-all duration-300">
                   <img
                     src={kol.image}
                     alt={kol.name}
                     className="h-full w-full object-cover transition-transform hover:scale-110"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">
+                <h3 className="text-xl font-semibold mb-2 hover:text-kolerr-cyan transition-colors">
                   {kol.name}
                 </h3>
                 <div className="space-y-2 text-sm text-foreground/80 mb-4">
                   <p>Followers: {kol.followers}</p>
                   <p>Engagement: {kol.engagement}</p>
                 </div>
-                <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:opacity-90 hover:scale-105 transition-all duration-300">
+                <Button 
+                  className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white 
+                           hover:opacity-90 hover:scale-105 transition-all duration-300 
+                           hover:shadow-[0_0_20px_rgba(0,245,255,0.5)] dark:hover:shadow-[0_0_20px_rgba(156,39,176,0.5)]"
+                >
                   {t('showcase.partnership')}
                 </Button>
               </div>
