@@ -23,23 +23,23 @@ const GetStarted = () => {
             Getting Started with Kolerr
           </h1>
           
-          <div className="space-y-6 text-lg text-foreground/80">
-            <p>
+          <div className="space-y-6 text-lg">
+            <p className="text-foreground">
               Welcome to Kolerr! Follow these simple steps to begin your journey:
             </p>
             
             <div className="grid gap-6">
-              <div className="p-6 rounded-lg bg-card hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card text-card-foreground hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
                 <h3 className="text-xl font-semibold mb-2">1. Create Your Account</h3>
                 <p>Sign up and complete your profile with relevant information about your brand or influence.</p>
               </div>
               
-              <div className="p-6 rounded-lg bg-card hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card text-card-foreground hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
                 <h3 className="text-xl font-semibold mb-2">2. Browse KOLs</h3>
                 <p>Explore our diverse network of Key Opinion Leaders across various industries and platforms.</p>
               </div>
               
-              <div className="p-6 rounded-lg bg-card hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card text-card-foreground hover:shadow-[0_0_30px_rgba(0,245,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(156,39,176,0.3)] transition-all duration-300">
                 <h3 className="text-xl font-semibold mb-2">3. Start Collaborating</h3>
                 <p>Connect with KOLs, discuss campaign details, and launch your first collaboration.</p>
               </div>
