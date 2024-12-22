@@ -77,7 +77,7 @@ export function BrandDashboard() {
     {
       title: "Campaign Performance",
       value: "+24.5%",
-      trend: "up",
+      trend: "up" as const,
       icon: TrendingUp,
       description: "vs. last month",
       color: "green-500"
@@ -85,7 +85,7 @@ export function BrandDashboard() {
     {
       title: "Average ROI",
       value: "182%",
-      trend: "up",
+      trend: "up" as const,
       icon: DollarSign,
       description: "across campaigns",
       color: "blue-500"
@@ -93,7 +93,7 @@ export function BrandDashboard() {
     {
       title: "KOL Retention",
       value: "92%",
-      trend: "down",
+      trend: "down" as const,
       icon: Users,
       description: "-3% this month",
       color: "yellow-500"
@@ -101,7 +101,7 @@ export function BrandDashboard() {
     {
       title: "Brand Rating",
       value: "4.8",
-      trend: "up",
+      trend: "up" as const,
       icon: Star,
       description: "from KOLs",
       color: "purple-500"
@@ -179,3 +179,6 @@ export function BrandDashboard() {
     </div>
   );
 }
+```
+
+The key change here is adding `as const` to each `trend` property in the metrics array. This tells TypeScript that these values are literal types ("up" or "down") rather than just strings, which matches the `MetricCardProps` interface's requirements.
