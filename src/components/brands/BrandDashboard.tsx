@@ -1,11 +1,10 @@
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, TrendingUp, Users, Star, DollarSign, SlidersHorizontal } from "lucide-react";
+import { Search, TrendingUp, Users, Star, DollarSign } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { MetricsCard } from "./MetricsCard";
 import { CampaignCard } from "./CampaignCard";
+import { CampaignFilters } from "./CampaignFilters";
 import { useState } from "react";
 
 export function BrandDashboard() {
@@ -169,38 +168,12 @@ export function BrandDashboard() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <h2 className="text-2xl font-semibold">Active Campaigns</h2>
-          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
-            <Select 
-              defaultValue="all" 
-              onValueChange={setStatusFilter}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Filter by Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Campaigns</SelectItem>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="pending">Pending</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select 
-              defaultValue="all"
-              onValueChange={setSortBy}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Default</SelectItem>
-                <SelectItem value="progress">Progress</SelectItem>
-                <SelectItem value="budget">Budget</SelectItem>
-                <SelectItem value="roi">ROI</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button variant="outline" size="icon">
-              <SlidersHorizontal className="h-4 w-4" />
-            </Button>
-          </div>
+          <CampaignFilters
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
