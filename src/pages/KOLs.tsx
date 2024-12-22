@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Search, Users } from "lucide-react";
+import { KOLFilters } from "@/components/kol-filters/KOLFilters";
+import KOLCard from "@/components/KOLCard";
 
 const KOLs = () => {
   const kols = [
@@ -41,60 +39,17 @@ const KOLs = () => {
             Connect with top influencers for your brand campaigns
           </p>
 
-          <div className="flex items-center gap-4 mb-8">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search KOLs..."
-                className="pl-10 bg-background border-input"
-              />
-            </div>
-            <select className="bg-background border border-input rounded-md px-4 py-2">
-              <option value="">Filter by Category</option>
-              <option value="tech">Tech & Gaming</option>
-              <option value="lifestyle">Lifestyle & Fashion</option>
-              <option value="food">Food & Travel</option>
-            </select>
-          </div>
+          <KOLFilters />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {kols.map((kol) => (
-              <Card
+              <KOLCard
                 key={kol.name}
-                className="overflow-hidden bg-card hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="h-16 w-16 rounded-full overflow-hidden ring-2 ring-kolerr-purple/30">
-                      <img
-                        src={kol.image}
-                        alt={kol.name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">{kol.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {kol.expertise}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Followers</span>
-                      <span className="font-medium">{kol.followers}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Engagement</span>
-                      <span className="font-medium">{kol.engagement}</span>
-                    </div>
-                  </div>
-                  <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90">
-                    <Users className="mr-2 h-4 w-4" />
-                    View Profile
-                  </Button>
-                </div>
-              </Card>
+                name={kol.name}
+                image={kol.image}
+                followers={kol.followers}
+                engagement={kol.engagement}
+              />
             ))}
           </div>
         </div>
