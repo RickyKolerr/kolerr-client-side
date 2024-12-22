@@ -1,17 +1,14 @@
 import { Input } from "@/components/ui/input";
-import { Search, TrendingUp, Users, Star, DollarSign } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search, TrendingUp, Users, Star, DollarSign, SlidersHorizontal } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { MetricsCard } from "./MetricsCard";
 import { CampaignCard } from "./CampaignCard";
-import { CampaignFilters } from "./CampaignFilters";
-import { useState } from "react";
 
 export function BrandDashboard() {
   const { t } = useLanguage();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
-  const [sortBy, setSortBy] = useState("all");
   
   const activeCampaigns = [
     {
@@ -80,7 +77,7 @@ export function BrandDashboard() {
     {
       title: "Campaign Performance",
       value: "+24.5%",
-      trend: "up" as const,
+      trend: "up",
       icon: TrendingUp,
       description: "vs. last month",
       color: "green-500"
@@ -88,7 +85,7 @@ export function BrandDashboard() {
     {
       title: "Average ROI",
       value: "182%",
-      trend: "up" as const,
+      trend: "up",
       icon: DollarSign,
       description: "across campaigns",
       color: "blue-500"
@@ -96,7 +93,7 @@ export function BrandDashboard() {
     {
       title: "KOL Retention",
       value: "92%",
-      trend: "down" as const,
+      trend: "down",
       icon: Users,
       description: "-3% this month",
       color: "yellow-500"
@@ -104,33 +101,12 @@ export function BrandDashboard() {
     {
       title: "Brand Rating",
       value: "4.8",
-      trend: "up" as const,
+      trend: "up",
       icon: Star,
       description: "from KOLs",
       color: "purple-500"
     }
   ];
-
-  // Filter and sort campaigns
-  const filteredCampaigns = activeCampaigns
-    .filter(campaign => {
-      const matchesSearch = campaign.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          campaign.category.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesStatus = statusFilter === "all" ? true : campaign.status.toLowerCase() === statusFilter.toLowerCase();
-      return matchesSearch && matchesStatus;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "progress":
-          return b.progress - a.progress;
-        case "budget":
-          return parseInt(b.budget.replace(/\D/g, '')) - parseInt(a.budget.replace(/\D/g, ''));
-        case "roi":
-          return parseFloat(b.roi) - parseFloat(a.roi);
-        default:
-          return 0;
-      }
-    });
 
   return (
     <div className="space-y-8 max-w-[1400px] mx-auto">
@@ -149,8 +125,6 @@ export function BrandDashboard() {
             <Input
               placeholder="Search campaigns..."
               className="pl-10 w-full sm:w-[300px]"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="flex gap-2">
@@ -168,16 +142,36 @@ export function BrandDashboard() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <h2 className="text-2xl font-semibold">Active Campaigns</h2>
-          <CampaignFilters
-            statusFilter={statusFilter}
-            setStatusFilter={setStatusFilter}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-          />
+          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
+            <Select defaultValue="all">
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Filter by Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Campaigns</SelectItem>
+                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="pending">Pending</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select defaultValue="all">
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Sort by" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Default</SelectItem>
+                <SelectItem value="progress">Progress</SelectItem>
+                <SelectItem value="budget">Budget</SelectItem>
+                <SelectItem value="roi">ROI</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="icon">
+              <SlidersHorizontal className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredCampaigns.map((campaign) => (
+          {activeCampaigns.map((campaign) => (
             <CampaignCard key={campaign.id} campaign={campaign} />
           ))}
         </div>
