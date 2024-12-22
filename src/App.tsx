@@ -25,8 +25,8 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
-              {routes.map(({ path, element: Element }) => (
-                <Route key={path} path={path} element={<Element />} />
+              {routes.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
               ))}
             </Routes>
           </BrowserRouter>

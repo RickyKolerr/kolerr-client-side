@@ -158,4 +158,19 @@ export const en = {
   // Checkout
   "checkout.title": "Choose Payment Method",
   "checkout.selectedPlan": "Selected Plan",
+
+  // Auth Social
+  "auth.google": "Continue with Google",
+  "auth.facebook": "Continue with Facebook",
+  "auth.instagram": "Continue with Instagram",
+  "auth.tiktok": "Continue with TikTok",
+  "auth.social.title": "Social Sign In",
+  "auth.social.subtitle": "Choose your preferred sign in method",
+  "auth.or": "or continue with",
+  "auth.password": "Password",
+  "auth.accountType": "Account Type",
+  "auth.selectAccountType": "Select account type",
+  "auth.accountType.kol": "KOL/Influencer",
+  "auth.accountType.brand": "Brand/Business",
+  "auth.haveAccount": "Already have an account?",
 };
