@@ -11,7 +11,7 @@ interface DescriptionGeneratorProps {
 }
 
 export const DescriptionGenerator = ({ accountType, description, setDescription }: DescriptionGeneratorProps) => {
-  const { generate, isGenerating } = useAiGenerate();
+  const { generate, isLoading } = useAiGenerate();
   const { toast } = useToast();
 
   const handleGenerateDescription = async () => {
@@ -55,11 +55,11 @@ export const DescriptionGenerator = ({ accountType, description, setDescription 
           variant="ghost"
           size="sm"
           onClick={handleGenerateDescription}
-          disabled={isGenerating}
+          disabled={isLoading}
           className="flex items-center gap-1"
         >
           <Wand2 className="w-4 h-4" />
-          {isGenerating ? "Generating..." : "Generate"}
+          {isLoading ? "Generating..." : "Generate"}
         </Button>
       </div>
       <Textarea
