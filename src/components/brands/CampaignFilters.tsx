@@ -6,6 +6,7 @@ import { FilterHeader } from "./filters/FilterHeader";
 import { CategoryFilters } from "./filters/CategoryFilters";
 import { BudgetFilter } from "./filters/BudgetFilter";
 import { ActiveFilters } from "./filters/ActiveFilters";
+import { FilterSection } from "@/components/kol-filters/FilterSection";
 
 interface CampaignFiltersProps {
   statusFilter: string;
