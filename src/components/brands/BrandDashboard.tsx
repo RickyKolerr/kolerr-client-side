@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Filter, TrendingUp, Users, Clock, Target, BarChart3, Calendar, Star, DollarSign, TrendingDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { CreateCampaignDialog } from "./CreateCampaignDialog";
 
 export function BrandDashboard() {
   const { t } = useLanguage();
@@ -93,9 +94,7 @@ export function BrandDashboard() {
               <Filter className="h-4 w-4 mr-2" />
               Filter
             </Button>
-            <Button className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange flex-1 sm:flex-none">
-              Create Campaign
-            </Button>
+            <CreateCampaignDialog />
           </div>
         </div>
       </div>
