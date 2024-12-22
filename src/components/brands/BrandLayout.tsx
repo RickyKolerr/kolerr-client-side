@@ -10,8 +10,10 @@ export function BrandLayout({ children }: BrandLayoutProps) {
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <BrandSidebar />
-        <main className="flex-1 p-8 bg-background">
-          {children}
+        <main className="flex-1 p-8 bg-background overflow-auto">
+          <div className="max-w-[1400px] mx-auto">
+            {children}
+          </div>
         </main>
       </div>
     </SidebarProvider>

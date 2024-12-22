@@ -18,7 +18,8 @@ import {
 import { Link } from "react-router-dom";
 
 const menuItems = [
-  { title: "Create Campaign", icon: Plus, url: "/brands" },
+  { title: "Dashboard", icon: BarChart3, url: "/brands" },
+  { title: "Create Campaign", icon: Plus, url: "/brands/create" },
   { title: "Manage Slots", icon: Calendar, url: "/brands/slots" },
   { title: "Track Progress", icon: BarChart3, url: "/brands/progress" },
   { title: "Review KOLs", icon: Users, url: "/brands/kols" },
