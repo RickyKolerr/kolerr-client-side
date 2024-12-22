@@ -91,8 +91,6 @@ export const vi = {
   "slots.mySlots.acceptInvitation": "Chấp Nhận Lời Mời",
 
   // Pricing Section
-
-  // Pricing
   "pricing.title": "Chọn Gói Phù Hợp",
   "pricing.subtitle": "Giá cả phải chăng với nhiều tính năng hấp dẫn cho doanh nghiệp Việt Nam",
   "pricing.monthly": "Thanh Toán Hàng Tháng",
