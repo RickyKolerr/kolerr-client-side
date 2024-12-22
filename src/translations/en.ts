@@ -144,10 +144,15 @@ export const en = {
   "pricing.payPerSearch.bulk100": "100 searches: 380,000 VND",
 
   // Payment Methods
+  "payment.methods.title": "Choose Payment Method",
   "payment.stripe.desc": "Pay securely with credit or debit card",
-  "payment.local.title": "Local Payment",
-  "payment.local.desc": "Pay using Vietnamese local payment methods",
   "payment.paypal.desc": "Pay securely with PayPal",
+  "payment.momo.desc": "Pay with MoMo e-wallet",
+  "payment.vnpay.desc": "Pay with VNPay QR code",
+  "payment.banking.title": "Bank Transfer",
+  "payment.banking.desc": "Pay via bank transfer",
+  "payment.cod.title": "Cash on Delivery",
+  "payment.cod.desc": "Pay when you receive",
   "payment.select": "Select Payment Method",
 
   // Authentication

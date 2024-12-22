@@ -144,10 +144,15 @@ export const vi = {
   "pricing.payPerSearch.bulk100": "100 lượt: 380,000 VND",
 
   // Payment Methods
+  "payment.methods.title": "Chọn Phương Thức Thanh Toán",
   "payment.stripe.desc": "Thanh toán an toàn bằng thẻ tín dụng hoặc ghi nợ",
-  "payment.local.title": "Thanh Toán Nội Địa",
-  "payment.local.desc": "Thanh toán bằng phương thức thanh toán nội địa Việt Nam",
   "payment.paypal.desc": "Thanh toán an toàn với PayPal",
+  "payment.momo.desc": "Thanh toán bằng ví điện tử MoMo",
+  "payment.vnpay.desc": "Thanh toán bằng mã QR VNPay",
+  "payment.banking.title": "Chuyển khoản ngân hàng",
+  "payment.banking.desc": "Thanh toán qua chuyển khoản ngân hàng",
+  "payment.cod.title": "Thanh toán khi nhận hàng",
+  "payment.cod.desc": "Thanh toán khi nhận được hàng",
   "payment.select": "Chọn Phương Thức Thanh Toán",
 
   // Authentication
