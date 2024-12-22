@@ -6,9 +6,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { MetricsCard } from "./MetricsCard";
 import { CampaignCard } from "./CampaignCard";
+import { useState } from "react";
 
 export function BrandDashboard() {
   const { t } = useLanguage();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("all");
   
   const activeCampaigns = [
     {
@@ -108,6 +112,27 @@ export function BrandDashboard() {
     }
   ];
 
+  // Filter and sort campaigns
+  const filteredCampaigns = activeCampaigns
+    .filter(campaign => {
+      const matchesSearch = campaign.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          campaign.category.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesStatus = statusFilter === "all" ? true : campaign.status.toLowerCase() === statusFilter.toLowerCase();
+      return matchesSearch && matchesStatus;
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "progress":
+          return b.progress - a.progress;
+        case "budget":
+          return parseInt(b.budget.replace(/\D/g, '')) - parseInt(a.budget.replace(/\D/g, ''));
+        case "roi":
+          return parseFloat(b.roi) - parseFloat(a.roi);
+        default:
+          return 0;
+      }
+    });
+
   return (
     <div className="space-y-8 max-w-[1400px] mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -125,6 +150,8 @@ export function BrandDashboard() {
             <Input
               placeholder="Search campaigns..."
               className="pl-10 w-full sm:w-[300px]"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="flex gap-2">
@@ -143,7 +170,10 @@ export function BrandDashboard() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <h2 className="text-2xl font-semibold">Active Campaigns</h2>
           <div className="flex flex-wrap gap-3 w-full sm:w-auto">
-            <Select defaultValue="all">
+            <Select 
+              defaultValue="all" 
+              onValueChange={setStatusFilter}
+            >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by Status" />
               </SelectTrigger>
@@ -153,7 +183,10 @@ export function BrandDashboard() {
                 <SelectItem value="pending">Pending</SelectItem>
               </SelectContent>
             </Select>
-            <Select defaultValue="all">
+            <Select 
+              defaultValue="all"
+              onValueChange={setSortBy}
+            >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
@@ -171,7 +204,7 @@ export function BrandDashboard() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {activeCampaigns.map((campaign) => (
+          {filteredCampaigns.map((campaign) => (
             <CampaignCard key={campaign.id} campaign={campaign} />
           ))}
         </div>
