@@ -92,39 +92,54 @@ export const en = {
 
   // Pricing Section
   "pricing.title": "Choose Your Perfect Plan",
-  "pricing.subtitle": "Flexible pricing options designed to match your influencer marketing needs",
+  "pricing.subtitle": "Flexible solutions for all your marketing needs",
   "pricing.monthly": "Monthly Billing",
   "pricing.annual": "Annual Billing",
   "pricing.getStarted": "Get Started",
-  "pricing.recommended": "Recommended",
+  "pricing.recommended": "Most Popular",
   "pricing.custom": "Custom",
   "pricing.contactUs": "Contact us",
   "pricing.perMonth": "per month",
   "pricing.perYear": "per year",
-  "pricing.duration": "/{duration}",
-
-  // Plan Names and Features
-  "pricing.plans.free.name": "Free Trial",
-  "pricing.plans.free.duration": "14 days",
+  "pricing.savePercent": "Save {percent}%",
+  "pricing.searchCredits": "searches",
+  
+  // Plan Names
+  "pricing.plans.free.name": "Free",
+  "pricing.plans.free.duration": "14-day trial",
+  "pricing.plans.basic.name": "Basic",
   "pricing.plans.pro.name": "Pro",
   "pricing.plans.enterprise.name": "Enterprise",
-  "pricing.plans.enterprise.duration": "tailored solution",
-
+  
   // Features
-  "pricing.features.basicAI": "Basic AI matchmaking",
-  "pricing.features.limitedSlots": "Limited slots",
-  "pricing.features.basicAnalytics": "Basic analytics",
-  "pricing.features.emailSupport": "Email support",
-  "pricing.features.advancedAI": "Advanced AI matchmaking",
-  "pricing.features.unlimitedSlots": "Unlimited slots",
-  "pricing.features.realtimeAnalytics": "Real-time analytics",
+  "pricing.features.basicAI": "Basic matchmaking features",
+  "pricing.features.limitedSearches": "10 monthly AI-powered searches",
+  "pricing.features.basicAnalytics": "Basic data analytics",
+  "pricing.features.communityAccess": "Community access",
+  "pricing.features.freeTrial": "14-day premium trial",
+  
+  "pricing.features.searches50": "50 AI-powered searches per month",
+  "pricing.features.slots2": "2 active slots per month",
+  "pricing.features.advancedFiltering": "Advanced data filtering",
+  "pricing.features.communityTools": "Community engagement tools",
+  "pricing.features.payPerSearch": "Additional searches: 5,000 VND each",
+  
+  "pricing.features.unlimitedSearches": "Unlimited AI-powered searches",
+  "pricing.features.slots10": "10 active slots per month",
+  "pricing.features.enhancedAnalytics": "Enhanced analytics",
+  "pricing.features.realtimeTracking": "Real-time project tracking",
   "pricing.features.prioritySupport": "Priority support",
-  "pricing.features.campaignManagement": "Campaign management",
-  "pricing.features.performanceInsights": "Performance insights",
-  "pricing.features.fullAccess": "Full platform access",
+  
+  "pricing.features.unlimitedSlots": "Unlimited slots",
+  "pricing.features.trendAnalysis": "Trend analysis tools",
   "pricing.features.dedicatedManager": "Dedicated account manager",
   "pricing.features.customIntegrations": "Custom integrations",
-  "pricing.features.advancedReporting": "Advanced reporting",
-  "pricing.features.apiAccess": "API access",
-  "pricing.features.premiumSupport": "24/7 premium support"
+  "pricing.features.teamTools": "Team collaboration tools",
+
+  // Pay per search
+  "pricing.payPerSearch.title": "Pay Per Search",
+  "pricing.payPerSearch.single": "5,000 VND per search",
+  "pricing.payPerSearch.bulk10": "10 searches: 45,000 VND",
+  "pricing.payPerSearch.bulk50": "50 searches: 200,000 VND",
+  "pricing.payPerSearch.bulk100": "100 searches: 380,000 VND"
 };

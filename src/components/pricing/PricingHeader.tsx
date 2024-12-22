@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-export const PricingHeader = () => {
+interface PricingHeaderProps {
+  isAnnual: boolean;
+  onToggle: () => void;
+}
+
+export const PricingHeader = ({ isAnnual, onToggle }: PricingHeaderProps) => {
   const { t } = useLanguage();
 
   return (
@@ -13,8 +18,20 @@ export const PricingHeader = () => {
         {t("pricing.subtitle")}
       </p>
       <div className="flex justify-center gap-4">
-        <Button variant="outline">{t("pricing.monthly")}</Button>
-        <Button variant="outline">{t("pricing.annual")}</Button>
+        <Button 
+          variant={!isAnnual ? "default" : "outline"}
+          onClick={() => !isAnnual || onToggle()}
+          className={!isAnnual ? "bg-gradient-to-r from-kolerr-cyan to-kolerr-purple" : ""}
+        >
+          {t("pricing.monthly")}
+        </Button>
+        <Button 
+          variant={isAnnual ? "default" : "outline"}
+          onClick={() => isAnnual || onToggle()}
+          className={isAnnual ? "bg-gradient-to-r from-kolerr-cyan to-kolerr-purple" : ""}
+        >
+          {t("pricing.annual")}
+        </Button>
       </div>
     </div>
   );

@@ -92,39 +92,54 @@ export const vi = {
 
   // Pricing Section
   "pricing.title": "Chọn Gói Phù Hợp",
-  "pricing.subtitle": "Các lựa chọn giá linh hoạt được thiết kế phù hợp với nhu cầu tiếp thị của bạn",
+  "pricing.subtitle": "Giải pháp linh hoạt cho mọi nhu cầu marketing của bạn",
   "pricing.monthly": "Thanh Toán Hàng Tháng",
   "pricing.annual": "Thanh Toán Hàng Năm",
   "pricing.getStarted": "Bắt Đầu Ngay",
-  "pricing.recommended": "Đề xuất",
+  "pricing.recommended": "Phổ biến nhất",
   "pricing.custom": "Tùy chỉnh",
   "pricing.contactUs": "Liên hệ",
   "pricing.perMonth": "mỗi tháng",
   "pricing.perYear": "mỗi năm",
-  "pricing.duration": "/{duration}",
-
-  // Plan Names and Features
-  "pricing.plans.free.name": "Dùng Thử",
-  "pricing.plans.free.duration": "14 ngày",
-  "pricing.plans.pro.name": "Pro",
+  "pricing.savePercent": "Tiết kiệm {percent}%",
+  "pricing.searchCredits": "lượt tìm kiếm",
+  
+  // Plan Names
+  "pricing.plans.free.name": "Miễn Phí",
+  "pricing.plans.free.duration": "14 ngày dùng thử",
+  "pricing.plans.basic.name": "Cơ Bản",
+  "pricing.plans.pro.name": "Chuyên Nghiệp",
   "pricing.plans.enterprise.name": "Doanh Nghiệp",
-  "pricing.plans.enterprise.duration": "giải pháp tùy chỉnh",
-
+  
   // Features
-  "pricing.features.basicAI": "Kết nối AI cơ bản",
-  "pricing.features.limitedSlots": "Số lượng slot giới hạn",
-  "pricing.features.basicAnalytics": "Phân tích cơ bản",
-  "pricing.features.emailSupport": "Hỗ trợ qua email",
-  "pricing.features.advancedAI": "Kết nối AI nâng cao",
-  "pricing.features.unlimitedSlots": "Không giới hạn slot",
-  "pricing.features.realtimeAnalytics": "Phân tích thời gian thực",
+  "pricing.features.basicAI": "Tính năng kết nối cơ bản",
+  "pricing.features.limitedSearches": "10 lượt tìm kiếm AI mỗi tháng",
+  "pricing.features.basicAnalytics": "Phân tích dữ liệu cơ bản",
+  "pricing.features.communityAccess": "Truy cập cộng đồng",
+  "pricing.features.freeTrial": "Dùng thử premium 14 ngày",
+  
+  "pricing.features.searches50": "50 lượt tìm kiếm AI mỗi tháng",
+  "pricing.features.slots2": "2 slot hoạt động mỗi tháng",
+  "pricing.features.advancedFiltering": "Lọc dữ liệu nâng cao",
+  "pricing.features.communityTools": "Công cụ tương tác cộng đồng",
+  "pricing.features.payPerSearch": "Mua thêm lượt tìm: 5,000 VND/lượt",
+  
+  "pricing.features.unlimitedSearches": "Không giới hạn lượt tìm kiếm",
+  "pricing.features.slots10": "10 slot hoạt động mỗi tháng",
+  "pricing.features.enhancedAnalytics": "Phân tích nâng cao",
+  "pricing.features.realtimeTracking": "Theo dõi dự án thời gian thực",
   "pricing.features.prioritySupport": "Hỗ trợ ưu tiên",
-  "pricing.features.campaignManagement": "Quản lý chiến dịch",
-  "pricing.features.performanceInsights": "Thông tin hiệu suất",
-  "pricing.features.fullAccess": "Truy cập đầy đủ nền tảng",
-  "pricing.features.dedicatedManager": "Người quản lý tài khoản riêng",
+  
+  "pricing.features.unlimitedSlots": "Không giới hạn slot",
+  "pricing.features.trendAnalysis": "Phân tích xu hướng",
+  "pricing.features.dedicatedManager": "Quản lý tài khoản riêng",
   "pricing.features.customIntegrations": "Tích hợp tùy chỉnh",
-  "pricing.features.advancedReporting": "Báo cáo nâng cao",
-  "pricing.features.apiAccess": "Truy cập API",
-  "pricing.features.premiumSupport": "Hỗ trợ cao cấp 24/7"
+  "pricing.features.teamTools": "Công cụ làm việc nhóm",
+
+  // Pay per search
+  "pricing.payPerSearch.title": "Gói Trả Theo Lượt",
+  "pricing.payPerSearch.single": "5,000 VND/lượt",
+  "pricing.payPerSearch.bulk10": "10 lượt: 45,000 VND",
+  "pricing.payPerSearch.bulk50": "50 lượt: 200,000 VND",
+  "pricing.payPerSearch.bulk100": "100 lượt: 380,000 VND"
 };
