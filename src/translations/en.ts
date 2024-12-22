@@ -161,4 +161,16 @@ export const en = {
   "pricing.payPerSearch.desc.bulk10": "10 AI-powered searches with 10% discount",
   "pricing.payPerSearch.desc.bulk50": "50 AI-powered searches with 20% discount",
   "pricing.payPerSearch.desc.bulk100": "100 AI-powered searches with 24% discount",
+
+  // Payment Methods
+  "payment.stripe.desc": "Secure payment with credit or debit card",
+  "payment.local.title": "Local Payment",
+  "payment.local.desc": "Pay using local Vietnamese payment methods",
+  "payment.paypal.desc": "Secure payment with PayPal",
+  "payment.select": "Select Payment Method",
+
+  // Checkout
+  "checkout.selectedPlan": "Selected Plan",
+  "pricing.perYear": "per year",
+  "pricing.perMonth": "per month"
 };

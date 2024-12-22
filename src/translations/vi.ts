@@ -170,5 +170,6 @@ export const vi = {
 
   // Checkout
   "checkout.selectedPlan": "Gói đã chọn",
-  "checkout.paymentMethods": "Phương thức thanh toán",
+  "pricing.perYear": "mỗi năm",
+  "pricing.perMonth": "mỗi tháng"
 };
