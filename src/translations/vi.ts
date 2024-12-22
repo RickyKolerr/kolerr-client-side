@@ -10,6 +10,21 @@ export const vi = {
   "auth.signin": "Đăng nhập",
   "auth.signup": "Đăng ký",
 
+  // Authentication
+  "auth.password": "Mật khẩu",
+  "auth.accountType": "Loại tài khoản",
+  "auth.selectAccountType": "Chọn loại tài khoản",
+  "auth.accountType.kol": "KOL/Người ảnh hưởng",
+  "auth.accountType.brand": "Thương hiệu/Doanh nghiệp",
+  "auth.haveAccount": "Đã có tài khoản?",
+  "auth.google": "Tiếp tục với Google",
+  "auth.facebook": "Tiếp tục với Facebook",
+  "auth.instagram": "Tiếp tục với Instagram",
+  "auth.tiktok": "Tiếp tục với TikTok",
+  "auth.or": "hoặc tiếp tục với",
+  "auth.social.title": "Đăng nhập qua mạng xã hội",
+  "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích",
+
   // Hero Section
   "hero.title": "Khai Phá Tiềm Năng Thương Hiệu Với Kolerr",
   "hero.subtitle": "Kết nối, hợp tác và mở rộng chiến dịch của bạn với nền tảng tiếp thị KOL hàng đầu Việt Nam",
@@ -150,6 +165,6 @@ export const vi = {
   "payment.select": "Chọn Phương Thức Thanh Toán",
 
   // Checkout
-  "checkout.selectedPlan": "Gói Đã Chọn",
-  "checkout.paymentMethods": "Phương Thức Thanh Toán",
+  "checkout.selectedPlan": "Gói đã chọn",
+  "checkout.paymentMethods": "Phương thức thanh toán",
 };

@@ -10,6 +10,21 @@ export const en = {
   "auth.signin": "Sign In",
   "auth.signup": "Sign Up",
 
+  // Authentication
+  "auth.password": "Password",
+  "auth.accountType": "Account Type",
+  "auth.selectAccountType": "Select Account Type",
+  "auth.accountType.kol": "KOL/Influencer",
+  "auth.accountType.brand": "Brand/Business",
+  "auth.haveAccount": "Already have an account?",
+  "auth.google": "Continue with Google",
+  "auth.facebook": "Continue with Facebook",
+  "auth.instagram": "Continue with Instagram",
+  "auth.tiktok": "Continue with TikTok",
+  "auth.or": "or continue with",
+  "auth.social.title": "Social Login",
+  "auth.social.subtitle": "Choose your preferred login method",
+
   // Hero Section
   "hero.title": "Unlock Your Brand's Potential with Kolerr",
   "hero.subtitle": "Effortlessly connect, collaborate, and scale your campaigns with Vietnam's leading AI-powered influencer marketing platform",
