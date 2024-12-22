@@ -141,5 +141,21 @@ export const vi = {
   "pricing.payPerSearch.single": "5,000 VND/lượt",
   "pricing.payPerSearch.bulk10": "10 lượt: 45,000 VND",
   "pricing.payPerSearch.bulk50": "50 lượt: 200,000 VND",
-  "pricing.payPerSearch.bulk100": "100 lượt: 380,000 VND"
+  "pricing.payPerSearch.bulk100": "100 lượt: 380,000 VND",
+
+  // Payment Methods
+  "payment.stripe.desc": "Thanh toán an toàn bằng thẻ tín dụng hoặc ghi nợ",
+  "payment.local.title": "Thanh Toán Nội Địa",
+  "payment.local.desc": "Thanh toán bằng phương thức thanh toán nội địa Việt Nam",
+  "payment.paypal.desc": "Thanh toán an toàn với PayPal",
+  "payment.select": "Chọn Phương Thức Thanh Toán",
+
+  // Authentication
+  "auth.google": "Tiếp tục với Google",
+  "auth.facebook": "Tiếp tục với Facebook",
+  "auth.instagram": "Tiếp tục với Instagram",
+  "auth.tiktok": "Tiếp tục với TikTok",
+  "auth.or": "hoặc tiếp tục với",
+  "auth.social.title": "Đăng Nhập Mạng Xã Hội",
+  "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích của bạn",
 };

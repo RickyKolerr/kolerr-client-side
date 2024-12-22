@@ -141,5 +141,21 @@ export const en = {
   "pricing.payPerSearch.single": "5,000 VND per search",
   "pricing.payPerSearch.bulk10": "10 searches: 45,000 VND",
   "pricing.payPerSearch.bulk50": "50 searches: 200,000 VND",
-  "pricing.payPerSearch.bulk100": "100 searches: 380,000 VND"
+  "pricing.payPerSearch.bulk100": "100 searches: 380,000 VND",
+
+  // Payment Methods
+  "payment.stripe.desc": "Pay securely with credit or debit card",
+  "payment.local.title": "Local Payment",
+  "payment.local.desc": "Pay using Vietnamese local payment methods",
+  "payment.paypal.desc": "Pay securely with PayPal",
+  "payment.select": "Select Payment Method",
+
+  // Authentication
+  "auth.google": "Continue with Google",
+  "auth.facebook": "Continue with Facebook",
+  "auth.instagram": "Continue with Instagram",
+  "auth.tiktok": "Continue with TikTok",
+  "auth.or": "or continue with",
+  "auth.social.title": "Social Login",
+  "auth.social.subtitle": "Choose your preferred login method",
 };
