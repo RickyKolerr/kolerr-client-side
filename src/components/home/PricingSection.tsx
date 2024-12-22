@@ -6,8 +6,7 @@ const PricingSection = () => {
   const plans = [
     {
       name: "Free Trial",
-      price: 0,
-      priceUSD: "0",
+      priceUSD: 0,
       priceVND: "0",
       duration: "14 days",
       features: [
@@ -19,8 +18,7 @@ const PricingSection = () => {
     },
     {
       name: "Pro",
-      price: 49,
-      priceUSD: "49",
+      priceUSD: 49,
       priceVND: "1,225,000",
       duration: "per month",
       features: [
@@ -34,9 +32,8 @@ const PricingSection = () => {
     },
     {
       name: "Enterprise",
-      price: "Custom",
-      priceUSD: "Custom",
-      priceVND: "Contact us",
+      priceUSD: null,
+      priceVND: null,
       duration: "tailored solution",
       features: [
         "Full platform access",
@@ -62,10 +59,10 @@ const PricingSection = () => {
                 <CardTitle className="text-2xl text-center">{plan.name}</CardTitle>
                 <div className="text-center mt-4">
                   <div className="text-4xl font-bold">
-                    ${plan.priceUSD}
+                    {plan.priceUSD === null ? 'Custom' : `$${plan.priceUSD}`}
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    {plan.priceVND} VND
+                    {plan.priceVND === null ? 'Contact us' : `${plan.priceVND} VND`}
                   </div>
                   <div className="text-foreground/60">/{plan.duration}</div>
                 </div>

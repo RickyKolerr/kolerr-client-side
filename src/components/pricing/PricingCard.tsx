@@ -4,7 +4,8 @@ import { Check } from "lucide-react";
 
 interface PricingCardProps {
   name: string;
-  price: string | number;
+  priceUSD: number | null;
+  priceVND: string | null;
   duration: string;
   features: string[];
   recommended?: boolean;
@@ -12,7 +13,8 @@ interface PricingCardProps {
 
 export const PricingCard = ({
   name,
-  price,
+  priceUSD,
+  priceVND,
   duration,
   features,
   recommended,
@@ -31,10 +33,13 @@ export const PricingCard = ({
       <CardHeader>
         <CardTitle className="text-2xl text-center">{name}</CardTitle>
         <div className="text-center mt-4">
-          <span className="text-4xl font-bold">
-            {typeof price === 'number' ? `$${price}` : price}
-          </span>
-          <span className="text-muted-foreground">/{duration}</span>
+          <div className="text-4xl font-bold">
+            {priceUSD === null ? 'Custom' : `$${priceUSD}`}
+          </div>
+          <div className="text-sm text-muted-foreground">
+            {priceVND === null ? 'Contact us' : `${priceVND} VND`}
+          </div>
+          <div className="text-foreground/60">/{duration}</div>
         </div>
       </CardHeader>
       <CardContent>
