@@ -3,13 +3,32 @@ import { Activity, Users, Calendar, Bell, TrendingUp, Clock, Target, Briefcase, 
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
 
 const SlotDashboard = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   
+  // Simulated user type - in real app, this would come from auth context
+  const userType = "kol"; // or "brand" or "agency"
+
+  const getWelcomeMessage = () => {
+    const name = "John Doe"; // This would come from auth context
+    switch (userType) {
+      case "kol":
+        return `Welcome, ${name}! Let's connect you to the perfect campaigns and grow your influence.`;
+      case "brand":
+        return `Welcome, ${name}! Ready to launch impactful campaigns?`;
+      case "agency":
+        return `Welcome, ${name}! Let's streamline your influencer marketing campaigns.`;
+      default:
+        return `Welcome, ${name}!`;
+    }
+  };
+
   const stats = [
     {
-      title: "Available Slots",
+      title: userType === "kol" ? "Available Slots" : "Open Slots",
       value: "12",
       icon: Calendar,
       description: "Open for applications",
@@ -17,7 +36,7 @@ const SlotDashboard = () => {
       trend: "+3 this week"
     },
     {
-      title: "Active Slots",
+      title: userType === "kol" ? "Active Campaigns" : "Active Slots",
       value: "3",
       icon: Activity,
       description: "Currently participating",
@@ -25,7 +44,7 @@ const SlotDashboard = () => {
       trend: "On track"
     },
     {
-      title: "Total Applications",
+      title: userType === "kol" ? "Total Applications" : "Total Applicants",
       value: "28",
       icon: Users,
       description: "Across all campaigns",
@@ -33,7 +52,7 @@ const SlotDashboard = () => {
       trend: "+15% vs last month"
     },
     {
-      title: "Pending Invites",
+      title: "Pending Actions",
       value: "5",
       icon: Bell,
       description: "Awaiting response",
@@ -63,8 +82,37 @@ const SlotDashboard = () => {
     }
   ];
 
+  const handleAIAssistance = () => {
+    toast({
+      title: "AI Assistant",
+      description: "How can I help you with your slots today?",
+      duration: 5000,
+    });
+  };
+
   return (
     <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-2xl font-bold text-gradient bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+            {getWelcomeMessage()}
+          </h1>
+          <p className="text-muted-foreground mt-2">
+            {userType === "kol" 
+              ? "View and manage your campaign slots" 
+              : "Manage and track your campaign slots"}
+          </p>
+        </div>
+        <Button
+          onClick={handleAIAssistance}
+          variant="outline"
+          className="gap-2"
+        >
+          <Star className="h-4 w-4" />
+          AI Assistant
+        </Button>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat, index) => (
           <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -85,7 +133,9 @@ const SlotDashboard = () => {
 
       <div className="mt-8">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-semibold">Upcoming Slots</h2>
+          <h2 className="text-2xl font-semibold">
+            {userType === "kol" ? "Your Active Slots" : "Recent Slot Activity"}
+          </h2>
           <Button variant="outline">View All Slots</Button>
         </div>
         <div className="grid gap-4">
@@ -118,7 +168,7 @@ const SlotDashboard = () => {
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span>Application Progress</span>
+                      <span>Progress</span>
                       <span>{slot.progress}%</span>
                     </div>
                     <Progress value={slot.progress} className="h-2" />
