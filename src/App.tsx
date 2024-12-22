@@ -25,8 +25,12 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
-              {routes.map(({ path, element }) => (
-                <Route key={path} path={path} element={element} />
+              {routes.map(({ path, element: Element }) => (
+                <Route 
+                  key={path} 
+                  path={path} 
+                  element={typeof Element === 'function' ? <Element /> : Element} 
+                />
               ))}
             </Routes>
           </BrowserRouter>
