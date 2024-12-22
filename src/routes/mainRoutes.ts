@@ -1,13 +1,18 @@
-import { lazy } from "react";
-
-const Index = lazy(() => import("@/pages/Index"));
-const Auth = lazy(() => import("@/pages/auth/Auth"));
-const Slots = lazy(() => import("@/pages/Slots"));
-const Brands = lazy(() => import("@/pages/Brands"));
-const Campaigns = lazy(() => import("@/pages/Campaigns"));
-const Login = lazy(() => import("@/pages/auth/Login"));
-const Register = lazy(() => import("@/pages/auth/Register"));
-const ForgotPassword = lazy(() => import("@/pages/auth/ForgotPassword"));
+import Index from "@/pages/Index";
+import Campaigns from "@/pages/Campaigns";
+import KOLs from "@/pages/KOLs";
+import Brands from "@/pages/Brands";
+import Pricing from "@/pages/Pricing";
+import Contact from "@/pages/Contact";
+import Slots from "@/pages/Slots";
+import Login from "@/pages/auth/Login";
+import Register from "@/pages/auth/Register";
+import ForgotPassword from "@/pages/auth/ForgotPassword";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfService from "@/pages/TermsOfService";
+import GetStarted from "@/pages/GetStarted";
+import LearnMore from "@/pages/LearnMore";
+import Checkout from "@/pages/Checkout";
 
 export const mainRoutes = [
   {
@@ -15,20 +20,28 @@ export const mainRoutes = [
     element: Index,
   },
   {
-    path: "/auth",
-    element: Auth,
+    path: "/campaigns/*",
+    element: Campaigns,
   },
   {
-    path: "/slots",
-    element: Slots,
+    path: "/kols/*",
+    element: KOLs,
   },
   {
     path: "/brands/*",
     element: Brands,
   },
   {
-    path: "/campaigns",
-    element: Campaigns,
+    path: "/pricing",
+    element: Pricing,
+  },
+  {
+    path: "/contact",
+    element: Contact,
+  },
+  {
+    path: "/slots/*",
+    element: Slots,
   },
   {
     path: "/auth/login",
@@ -41,5 +54,25 @@ export const mainRoutes = [
   {
     path: "/auth/forgot-password",
     element: ForgotPassword,
+  },
+  {
+    path: "/privacy",
+    element: PrivacyPolicy,
+  },
+  {
+    path: "/terms",
+    element: TermsOfService,
+  },
+  {
+    path: "/get-started",
+    element: GetStarted,
+  },
+  {
+    path: "/learn-more",
+    element: LearnMore,
+  },
+  {
+    path: "/checkout",
+    element: Checkout,
   },
 ];

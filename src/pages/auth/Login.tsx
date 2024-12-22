@@ -12,9 +12,10 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    // TODO: Implement actual login logic
     toast({
-      title: "Demo Mode",
-      description: "This is a UI-only version. Login functionality has been removed.",
+      title: "Login Attempted",
+      description: "This is a placeholder. Actual authentication will be implemented with Supabase.",
     });
   };
 

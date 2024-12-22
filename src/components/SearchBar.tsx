@@ -1,23 +1,8 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useTransition, startTransition } from "react";
+import { Select } from "@/components/ui/select";
 
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-  onSort: (value: string) => void;
-  sortBy: string;
-}
-
-const SearchBar = ({ onSearch, onSort, sortBy }: SearchBarProps) => {
-  const [isPending, startSearchTransition] = useTransition();
-
-  const handleSearch = (value: string) => {
-    startSearchTransition(() => {
-      onSearch(value);
-    });
-  };
-
+const SearchBar = () => {
   return (
     <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
       <div className="relative flex-1">
@@ -26,19 +11,13 @@ const SearchBar = ({ onSearch, onSort, sortBy }: SearchBarProps) => {
           type="text"
           placeholder="Search KOLs..."
           className="pl-10 bg-white/10 text-white border-gray-700"
-          onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
-      <Select value={sortBy} onValueChange={onSort}>
-        <SelectTrigger className="w-[200px] bg-white/10 text-white border-gray-700">
-          <SelectValue placeholder="Sort by" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="popularity">Sort by Popularity</SelectItem>
-          <SelectItem value="followers">Sort by Followers</SelectItem>
-          <SelectItem value="engagement">Sort by Engagement</SelectItem>
-        </SelectContent>
-      </Select>
+      <select className="bg-white/10 text-white border-gray-700 rounded-md px-4 py-2">
+        <option value="popularity">Sort by Popularity</option>
+        <option value="followers">Sort by Followers</option>
+        <option value="engagement">Sort by Engagement</option>
+      </select>
     </div>
   );
 };
