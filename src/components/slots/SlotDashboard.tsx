@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 
+// Define the user type
+type UserType = "kol" | "brand" | "agency";
+
 const SlotDashboard = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   
   // Simulated user type - in real app, this would come from auth context
-  const userType = "kol"; // or "brand" or "agency"
+  const userType: UserType = "kol"; // or "brand" or "agency"
 
   const getWelcomeMessage = () => {
     const name = "John Doe"; // This would come from auth context
