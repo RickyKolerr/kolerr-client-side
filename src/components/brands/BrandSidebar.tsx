@@ -1,12 +1,9 @@
 import {
   BarChart3,
   Calendar,
-  CreditCard,
-  Layout,
   Plus,
-  Settings,
-  Star,
   Users,
+  Wallet,
 } from "lucide-react";
 import {
   Sidebar,
@@ -20,14 +17,11 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
-  { title: "Dashboard Overview", icon: Layout, url: "#dashboard" },
   { title: "Create Campaign", icon: Plus, url: "#create" },
   { title: "Manage Slots", icon: Calendar, url: "#slots" },
   { title: "Track Progress", icon: BarChart3, url: "#progress" },
   { title: "Review KOLs", icon: Users, url: "#kols" },
-  { title: "Payments", icon: CreditCard, url: "#payments" },
-  { title: "Ratings", icon: Star, url: "#ratings" },
-  { title: "Settings", icon: Settings, url: "#settings" },
+  { title: "Billing & Performance", icon: Wallet, url: "#billing" },
 ];
 
 export function BrandSidebar() {
