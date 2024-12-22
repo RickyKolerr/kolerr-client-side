@@ -8,7 +8,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-background to-background/80 py-20">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange animate-glow" />
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center space-y-8 relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent animate-fade-in max-w-4xl">
