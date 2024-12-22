@@ -6,7 +6,9 @@ const PricingSection = () => {
   const plans = [
     {
       name: "Free Trial",
-      price: "0",
+      price: 0,
+      priceUSD: "0",
+      priceVND: "0",
       duration: "14 days",
       features: [
         "Basic AI matchmaking",
@@ -17,7 +19,9 @@ const PricingSection = () => {
     },
     {
       name: "Pro",
-      price: "49",
+      price: 49,
+      priceUSD: "49",
+      priceVND: "1,225,000",
       duration: "per month",
       features: [
         "Advanced AI matchmaking",
@@ -31,6 +35,8 @@ const PricingSection = () => {
     {
       name: "Enterprise",
       price: "Custom",
+      priceUSD: "Custom",
+      priceVND: "Contact us",
       duration: "tailored solution",
       features: [
         "Full platform access",
@@ -55,10 +61,13 @@ const PricingSection = () => {
               <CardHeader>
                 <CardTitle className="text-2xl text-center">{plan.name}</CardTitle>
                 <div className="text-center mt-4">
-                  <span className="text-4xl font-bold">
-                    {typeof plan.price === "number" ? `$${plan.price}` : plan.price}
-                  </span>
-                  <span className="text-foreground/60">/{plan.duration}</span>
+                  <div className="text-4xl font-bold">
+                    ${plan.priceUSD}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {plan.priceVND} VND
+                  </div>
+                  <div className="text-foreground/60">/{plan.duration}</div>
                 </div>
               </CardHeader>
               <CardContent>
@@ -71,7 +80,7 @@ const PricingSection = () => {
                   ))}
                 </ul>
                 <Button 
-                  className="w-full mt-6 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange"
+                  className="w-full mt-6 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90"
                 >
                   Get Started
                 </Button>

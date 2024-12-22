@@ -13,9 +13,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center hover:scale-105 transition-transform">
-              <img src="/lovable-uploads/8fa1fb98-f606-4338-b651-0f6ad91f5537.png" alt="Kolerr Logo" className="h-8 w-8" />
-              <span className="ml-2 text-foreground text-xl font-bold">Kolerr</span>
+            <Link to="/" className="flex items-center group">
+              <img 
+                src="/lovable-uploads/8fa1fb98-f606-4338-b651-0f6ad91f5537.png" 
+                alt="Kolerr Logo" 
+                className="h-10 w-10 transform transition-transform duration-300 group-hover:scale-110" 
+              />
+              <span className="ml-2 text-foreground text-xl font-bold group-hover:text-kolerr-cyan transition-colors duration-300">
+                Kolerr
+              </span>
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
