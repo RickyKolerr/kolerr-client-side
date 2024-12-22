@@ -8,38 +8,20 @@ interface PricingCardProps {
   name: TranslationKey;
   priceUSD: number | null;
   priceVND: string | null;
-  searchCredits: number;
   duration: TranslationKey;
   features: TranslationKey[];
   recommended?: boolean;
-  isAnnual?: boolean;
 }
 
 export const PricingCard = ({
   name,
   priceUSD,
   priceVND,
-  searchCredits,
   duration,
   features,
   recommended,
-  isAnnual = false,
 }: PricingCardProps) => {
   const { t } = useLanguage();
-
-  const getAdjustedPrice = () => {
-    if (priceUSD === null) return null;
-    const monthlyPrice = priceUSD;
-    return isAnnual ? monthlyPrice * 0.8 : monthlyPrice; // 20% discount for annual
-  };
-
-  const getAdjustedVNDPrice = () => {
-    if (priceVND === null) return null;
-    const monthlyPrice = parseInt(priceVND.replace(/,/g, ""));
-    return isAnnual 
-      ? new Intl.NumberFormat("vi-VN").format(monthlyPrice * 0.8)
-      : priceVND;
-  };
 
   return (
     <Card className={`relative hover:shadow-lg transition-all duration-300 ${
@@ -56,19 +38,12 @@ export const PricingCard = ({
         <CardTitle className="text-2xl text-center">{t(name)}</CardTitle>
         <div className="text-center mt-4">
           <div className="text-4xl font-bold">
-            {priceUSD === null ? t("pricing.custom") : `$${getAdjustedPrice()}`}
+            {priceUSD === null ? t("pricing.custom") : `$${priceUSD}`}
           </div>
           <div className="text-sm text-muted-foreground">
-            {priceVND === null ? t("pricing.contactUs") : `${getAdjustedVNDPrice()} VND`}
+            {priceVND === null ? t("pricing.contactUs") : `${priceVND} VND`}
           </div>
-          <div className="text-foreground/60">
-            {isAnnual ? t("pricing.perYear") : t(duration)}
-          </div>
-          {searchCredits > 0 && (
-            <div className="mt-2 text-sm text-kolerr-purple">
-              {searchCredits} {t("pricing.searchCredits")}
-            </div>
-          )}
+          <div className="text-foreground/60">{t(duration)}</div>
         </div>
       </CardHeader>
       <CardContent>
