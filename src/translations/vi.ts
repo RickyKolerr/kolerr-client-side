@@ -169,7 +169,5 @@ export const vi = {
   "payment.select": "Chọn Phương Thức Thanh Toán",
 
   // Checkout
-  "checkout.selectedPlan": "Gói đã chọn",
-  "pricing.perYear": "mỗi năm",
-  "pricing.perMonth": "mỗi tháng"
+  "checkout.selectedPlan": "Gói đã chọn"
 };

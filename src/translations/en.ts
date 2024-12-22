@@ -170,7 +170,5 @@ export const en = {
   "payment.select": "Select Payment Method",
 
   // Checkout
-  "checkout.selectedPlan": "Selected Plan",
-  "pricing.perYear": "per year",
-  "pricing.perMonth": "per month"
+  "checkout.selectedPlan": "Selected Plan"
 };
