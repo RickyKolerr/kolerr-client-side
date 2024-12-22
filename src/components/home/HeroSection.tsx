@@ -2,9 +2,20 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import type { TranslationKey } from "@/translations";
 
 const HeroSection = () => {
   const { t } = useLanguage();
+
+  const stats: Array<{
+    number: string;
+    label: TranslationKey;
+  }> = [
+    { number: "10K+", label: "landing.hero.stats.kols" },
+    { number: "50M+", label: "landing.hero.stats.reach" },
+    { number: "1000+", label: "landing.hero.stats.campaigns" },
+    { number: "95%", label: "landing.hero.stats.success" }
+  ];
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-background to-background/80 py-20">
@@ -44,12 +55,7 @@ const HeroSection = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 text-center">
-            {[
-              { number: "10K+", label: "landing.hero.stats.kols" },
-              { number: "50M+", label: "landing.hero.stats.reach" },
-              { number: "1000+", label: "landing.hero.stats.campaigns" },
-              { number: "95%", label: "landing.hero.stats.success" }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <div key={index} className="space-y-2">
                 <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-kolerr-cyan to-kolerr-purple bg-clip-text text-transparent">
                   {stat.number}

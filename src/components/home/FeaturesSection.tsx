@@ -1,10 +1,15 @@
 import { Brain, BarChart3, Calendar, Zap } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import type { TranslationKey } from "@/translations";
 
 const FeaturesSection = () => {
   const { t } = useLanguage();
 
-  const features = [
+  const features: Array<{
+    icon: typeof Brain;
+    title: TranslationKey;
+    description: TranslationKey;
+  }> = [
     {
       icon: Brain,
       title: "landing.features.ai.title",
