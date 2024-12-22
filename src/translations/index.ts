@@ -85,6 +85,7 @@ export type TranslationKey =
   | "pricing.plans.starter.name"
   | "pricing.plans.growth.name"
   | "pricing.plans.enterprise.name"
+  | "pricing.plans.enterprise.duration"
   | "pricing.features.searchCredits"
   | "pricing.features.unlimitedSearches"
   | "pricing.features.basicAI"
