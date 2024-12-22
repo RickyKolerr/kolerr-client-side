@@ -20,15 +20,15 @@ export const mainRoutes = [
     element: Index,
   },
   {
-    path: "/campaigns",
+    path: "/campaigns/*",
     element: Campaigns,
   },
   {
-    path: "/kols",
+    path: "/kols/*",
     element: KOLs,
   },
   {
-    path: "/brands",
+    path: "/brands/*",
     element: Brands,
   },
   {
@@ -40,7 +40,7 @@ export const mainRoutes = [
     element: Contact,
   },
   {
-    path: "/slots",
+    path: "/slots/*",
     element: Slots,
   },
   {
