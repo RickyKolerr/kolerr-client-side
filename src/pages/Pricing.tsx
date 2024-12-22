@@ -1,9 +1,17 @@
 import Navbar from "@/components/Navbar";
 import { PricingHeader } from "@/components/pricing/PricingHeader";
 import { PricingCard } from "@/components/pricing/PricingCard";
+import { TranslationKey } from "@/translations";
 
 const Pricing = () => {
-  const plans = [
+  const plans: {
+    name: TranslationKey;
+    priceUSD: number | null;
+    priceVND: string | null;
+    duration: TranslationKey;
+    features: TranslationKey[];
+    recommended?: boolean;
+  }[] = [
     {
       name: "pricing.plans.free.name",
       priceUSD: 0,
