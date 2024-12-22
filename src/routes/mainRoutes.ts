@@ -12,6 +12,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import GetStarted from "@/pages/GetStarted";
 import LearnMore from "@/pages/LearnMore";
+import Checkout from "@/pages/Checkout";
 
 export const mainRoutes = [
   {
@@ -69,5 +70,9 @@ export const mainRoutes = [
   {
     path: "/learn-more",
     element: LearnMore,
+  },
+  {
+    path: "/checkout",
+    element: Checkout,
   },
 ];

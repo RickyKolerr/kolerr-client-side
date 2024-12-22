@@ -150,18 +150,7 @@ export const vi = {
   "payment.paypal.desc": "Thanh toán an toàn với PayPal",
   "payment.select": "Chọn Phương Thức Thanh Toán",
 
-  // Authentication
-  "auth.password": "Mật khẩu",
-  "auth.accountType": "Loại tài khoản",
-  "auth.selectAccountType": "Chọn loại tài khoản",
-  "auth.accountType.kol": "KOL/Người ảnh hưởng",
-  "auth.accountType.brand": "Thương hiệu/Doanh nghiệp",
-  "auth.haveAccount": "Đã có tài khoản?",
-  "auth.google": "Tiếp tục với Google",
-  "auth.facebook": "Tiếp tục với Facebook",
-  "auth.instagram": "Tiếp tục với Instagram", 
-  "auth.tiktok": "Tiếp tục với TikTok",
-  "auth.or": "hoặc tiếp tục với",
-  "auth.social.title": "Đăng nhập mạng xã hội",
-  "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích của bạn",
+  // Checkout
+  "checkout.selectedPlan": "Gói Đã Chọn",
+  "checkout.paymentMethods": "Phương Thức Thanh Toán",
 };

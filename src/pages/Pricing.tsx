@@ -14,12 +14,14 @@ const Pricing = () => {
     duration: TranslationKey;
     features: TranslationKey[];
     recommended?: boolean;
+    planId: string;
   }[] = [
     {
       name: "pricing.plans.free.name",
       priceVND: "0",
       priceUSD: 0,
       duration: "pricing.plans.free.duration",
+      planId: "free",
       features: [
         "pricing.features.basicAI",
         "pricing.features.limitedSearches",
@@ -33,6 +35,7 @@ const Pricing = () => {
       priceVND: isAnnual ? "1,500,000" : "150,000",
       priceUSD: isAnnual ? 65 : 6.50,
       duration: isAnnual ? "pricing.perYear" : "pricing.perMonth",
+      planId: "basic",
       features: [
         "pricing.features.searches50",
         "pricing.features.slots2",
@@ -47,6 +50,7 @@ const Pricing = () => {
       priceUSD: isAnnual ? 150 : 15,
       duration: isAnnual ? "pricing.perYear" : "pricing.perMonth",
       recommended: true,
+      planId: "pro",
       features: [
         "pricing.features.unlimitedSearches",
         "pricing.features.slots10",
@@ -60,6 +64,7 @@ const Pricing = () => {
       priceVND: isAnnual ? "8,000,000" : "800,000",
       priceUSD: isAnnual ? 350 : 35,
       duration: isAnnual ? "pricing.perYear" : "pricing.perMonth",
+      planId: "enterprise",
       features: [
         "pricing.features.unlimitedSlots",
         "pricing.features.trendAnalysis",
@@ -85,6 +90,8 @@ const Pricing = () => {
               duration={plan.duration}
               features={plan.features}
               recommended={plan.recommended}
+              planId={plan.planId}
+              isAnnual={isAnnual}
             />
           ))}
         </div>

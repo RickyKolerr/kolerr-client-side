@@ -164,4 +164,8 @@ export const en = {
   "auth.or": "or continue with",
   "auth.social.title": "Social Login",
   "auth.social.subtitle": "Choose your preferred login method",
+
+  // Checkout
+  "checkout.selectedPlan": "Selected Plan",
+  "checkout.paymentMethods": "Payment Methods",
 };

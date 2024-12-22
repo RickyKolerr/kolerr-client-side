@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TranslationKey } from "@/translations";
+import { useNavigate } from "react-router-dom";
 
 interface PricingCardProps {
   name: TranslationKey;
@@ -11,6 +12,8 @@ interface PricingCardProps {
   duration: TranslationKey;
   features: TranslationKey[];
   recommended?: boolean;
+  planId: string;
+  isAnnual: boolean;
 }
 
 export const PricingCard = ({
@@ -20,8 +23,20 @@ export const PricingCard = ({
   duration,
   features,
   recommended,
+  planId,
+  isAnnual,
 }: PricingCardProps) => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    if (planId === "free") {
+      // Handle free plan signup
+      navigate("/auth/register");
+    } else {
+      navigate(`/checkout?plan=${planId}&billing=${isAnnual ? "annual" : "monthly"}`);
+    }
+  };
 
   return (
     <Card className={`relative hover:shadow-lg transition-all duration-300 ${
@@ -57,6 +72,7 @@ export const PricingCard = ({
         </ul>
         <Button 
           className="w-full mt-6 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90"
+          onClick={handleGetStarted}
         >
           {t("pricing.getStarted")}
         </Button>
