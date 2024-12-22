@@ -1,9 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/components/ui/use-toast";
 
 export const SocialLogin = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
+
+  const handleSocialClick = () => {
+    toast({
+      title: "Demo Mode",
+      description: "Social login functionality has been removed in this UI-only version.",
+    });
+  };
 
   const socialButtons = [
     {
@@ -14,24 +23,24 @@ export const SocialLogin = () => {
         <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
       </svg>,
       text: t("auth.google"),
-      onClick: () => console.log("Google login"),
+      onClick: handleSocialClick,
     },
     {
       icon: <Facebook className="w-5 h-5" />,
       text: t("auth.facebook"),
-      onClick: () => console.log("Facebook login"),
+      onClick: handleSocialClick,
     },
     {
       icon: <Instagram className="w-5 h-5" />,
       text: t("auth.instagram"),
-      onClick: () => console.log("Instagram login"),
+      onClick: handleSocialClick,
     },
     {
       icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
       </svg>,
       text: t("auth.tiktok"),
-      onClick: () => console.log("TikTok login"),
+      onClick: handleSocialClick,
     },
   ];
 

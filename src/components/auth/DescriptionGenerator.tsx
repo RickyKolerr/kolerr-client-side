@@ -17,8 +17,8 @@ export const DescriptionGenerator = ({ accountType, description, setDescription 
   const handleGenerateDescription = async () => {
     if (!accountType) {
       toast({
-        title: "Please select an account type",
-        description: "We need to know if you're a KOL or brand to generate a relevant description.",
+        title: "Demo Mode",
+        description: "AI generation has been disabled in this UI-only version.",
         variant: "destructive",
       });
       return;

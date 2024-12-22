@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,7 +8,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Separator } from "@/components/ui/separator";
 import { SocialLogin } from "@/components/auth/SocialLogin";
 import { DescriptionGenerator } from "@/components/auth/DescriptionGenerator";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 
 const Register = () => {
@@ -18,39 +17,13 @@ const Register = () => {
   const [description, setDescription] = useState("");
   const { toast } = useToast();
   const { t } = useLanguage();
-  const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            role: accountType,
-            description: description,
-          },
-        },
-      });
-
-      if (error) throw error;
-
-      if (data) {
-        toast({
-          title: "Registration successful!",
-          description: "Please check your email to verify your account.",
-        });
-        navigate("/auth/login");
-      }
-    } catch (error: any) {
-      toast({
-        title: "Registration failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
+    toast({
+      title: "Demo Mode",
+      description: "This is a UI-only version. Registration functionality has been removed.",
+    });
   };
 
   return (
