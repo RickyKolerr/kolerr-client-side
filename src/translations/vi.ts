@@ -169,4 +169,8 @@ export const vi = {
   "auth.or": "hoặc tiếp tục với",
   "auth.social.title": "Đăng nhập mạng xã hội",
   "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích của bạn",
+
+  // Checkout
+  "checkout.title": "Chọn Phương Thức Thanh Toán",
+  "checkout.selectedPlan": "Gói Đã Chọn",
 };

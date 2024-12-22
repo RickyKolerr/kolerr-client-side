@@ -155,18 +155,7 @@ export const en = {
   "payment.cod.desc": "Pay when you receive",
   "payment.select": "Select Payment Method",
 
-  // Authentication
-  "auth.password": "Password",
-  "auth.accountType": "Account Type",
-  "auth.selectAccountType": "Select Account Type",
-  "auth.accountType.kol": "KOL/Influencer",
-  "auth.accountType.brand": "Brand/Business",
-  "auth.haveAccount": "Already have an account?",
-  "auth.google": "Continue with Google",
-  "auth.facebook": "Continue with Facebook",
-  "auth.instagram": "Continue with Instagram",
-  "auth.tiktok": "Continue with TikTok",
-  "auth.or": "or continue with",
-  "auth.social.title": "Social Login",
-  "auth.social.subtitle": "Choose your preferred login method",
+  // Checkout
+  "checkout.title": "Choose Payment Method",
+  "checkout.selectedPlan": "Selected Plan",
 };
