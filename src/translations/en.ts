@@ -170,5 +170,42 @@ export const en = {
   "payment.select": "Select Payment Method",
 
   // Checkout
-  "checkout.selectedPlan": "Selected Plan"
+  "checkout.selectedPlan": "Selected Plan",
+
+  // Landing Page
+  "landing.hero.title": "Connect with Vietnam's Top KOLs Through AI-Powered Matchmaking",
+  "landing.hero.subtitle": "Launch successful campaigns with data-driven insights and real-time analytics. Join thousands of brands and influencers already growing with Kolerr.",
+  "landing.hero.cta.start": "Start Free Trial",
+  "landing.hero.cta.demo": "Watch Demo",
+  "landing.hero.stats.kols": "Active KOLs",
+  "landing.hero.stats.reach": "Total Reach",
+  "landing.hero.stats.campaigns": "Campaigns",
+  "landing.hero.stats.success": "Success Rate",
+
+  "landing.features.title": "Powerful Features for Growth",
+  "landing.features.ai.title": "AI-Powered Matchmaking",
+  "landing.features.ai.desc": "Connect with the perfect KOL or brand based on real-time data and AI-powered algorithms.",
+  "landing.features.campaign.title": "Real-Time Campaign Management",
+  "landing.features.campaign.desc": "Track and optimize your campaigns with comprehensive analytics and performance insights.",
+  "landing.features.booking.title": "Instant Slot Booking",
+  "landing.features.booking.desc": "Book campaign slots instantly and manage your content calendar efficiently.",
+  "landing.features.analytics.title": "Smart Analytics",
+  "landing.features.analytics.desc": "Make data-driven decisions with advanced analytics and performance tracking.",
+
+  "landing.testimonials.title": "What Our Users Are Saying",
+  "landing.testimonials.role.director": "Marketing Director",
+  "landing.testimonials.role.creator": "Content Creator",
+  "landing.testimonials.role.manager": "Brand Manager",
+
+  "landing.trusted.title": "Trusted By Leading Brands",
+
+  "landing.contact.title": "Get in Touch",
+  "landing.contact.visit": "Visit Us",
+  "landing.contact.email": "Email Us",
+  "landing.contact.call": "Call Us",
+  "landing.contact.form.name": "Your Name",
+  "landing.contact.form.email": "Your Email",
+  "landing.contact.form.subject": "Subject",
+  "landing.contact.form.message": "Your Message",
+  "landing.contact.form.send": "Send Message",
 };
