@@ -106,7 +106,6 @@ export const vi = {
   
   // Plan Names
   "pricing.plans.free.name": "Miễn Phí",
-  "pricing.plans.free.duration": "14 ngày dùng thử",
   "pricing.plans.basic.name": "Cơ Bản",
   "pricing.plans.pro.name": "Chuyên Nghiệp",
   "pricing.plans.enterprise.name": "Doanh Nghiệp",

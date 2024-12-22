@@ -3,6 +3,7 @@ import PaymentMethods from "@/components/checkout/PaymentMethods";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useSearchParams } from "react-router-dom";
+import { TranslationKey } from "@/translations";
 
 const Checkout = () => {
   const { t } = useLanguage();
@@ -33,6 +34,7 @@ const Checkout = () => {
   };
 
   const price = getPriceForPlan();
+  const planNameKey = plan ? `pricing.plans.${plan}.name` as TranslationKey : null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -42,7 +44,7 @@ const Checkout = () => {
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl">
-                {t("checkout.selectedPlan")}: {plan && t(`pricing.plans.${plan}.name`)}
+                {t("checkout.selectedPlan")}: {planNameKey && t(planNameKey)}
               </CardTitle>
             </CardHeader>
             <CardContent>
