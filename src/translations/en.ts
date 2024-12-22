@@ -88,5 +88,43 @@ export const en = {
   "slots.mySlots.requirements": "Requirements",
   "slots.mySlots.progress": "Progress",
   "slots.mySlots.viewDetails": "View Details",
-  "slots.mySlots.acceptInvitation": "Accept Invitation"
+  "slots.mySlots.acceptInvitation": "Accept Invitation",
+
+  // Pricing Section
+  "pricing.title": "Choose Your Perfect Plan",
+  "pricing.subtitle": "Flexible pricing options designed to match your influencer marketing needs",
+  "pricing.monthly": "Monthly Billing",
+  "pricing.annual": "Annual Billing",
+  "pricing.getStarted": "Get Started",
+  "pricing.recommended": "Recommended",
+  "pricing.custom": "Custom",
+  "pricing.contactUs": "Contact us",
+  "pricing.perMonth": "per month",
+  "pricing.perYear": "per year",
+  "pricing.duration": "/{duration}",
+
+  // Plan Names and Features
+  "pricing.plans.free.name": "Free Trial",
+  "pricing.plans.free.duration": "14 days",
+  "pricing.plans.pro.name": "Pro",
+  "pricing.plans.enterprise.name": "Enterprise",
+  "pricing.plans.enterprise.duration": "tailored solution",
+
+  // Features
+  "pricing.features.basicAI": "Basic AI matchmaking",
+  "pricing.features.limitedSlots": "Limited slots",
+  "pricing.features.basicAnalytics": "Basic analytics",
+  "pricing.features.emailSupport": "Email support",
+  "pricing.features.advancedAI": "Advanced AI matchmaking",
+  "pricing.features.unlimitedSlots": "Unlimited slots",
+  "pricing.features.realtimeAnalytics": "Real-time analytics",
+  "pricing.features.prioritySupport": "Priority support",
+  "pricing.features.campaignManagement": "Campaign management",
+  "pricing.features.performanceInsights": "Performance insights",
+  "pricing.features.fullAccess": "Full platform access",
+  "pricing.features.dedicatedManager": "Dedicated account manager",
+  "pricing.features.customIntegrations": "Custom integrations",
+  "pricing.features.advancedReporting": "Advanced reporting",
+  "pricing.features.apiAccess": "API access",
+  "pricing.features.premiumSupport": "24/7 premium support"
 };

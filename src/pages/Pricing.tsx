@@ -5,44 +5,44 @@ import { PricingCard } from "@/components/pricing/PricingCard";
 const Pricing = () => {
   const plans = [
     {
-      name: "Free Trial",
+      name: "pricing.plans.free.name",
       priceUSD: 0,
       priceVND: "0",
-      duration: "14 days",
+      duration: "pricing.plans.free.duration",
       features: [
-        "Basic AI matchmaking",
-        "Limited slots",
-        "Basic analytics",
-        "Email support"
+        "pricing.features.basicAI",
+        "pricing.features.limitedSlots",
+        "pricing.features.basicAnalytics",
+        "pricing.features.emailSupport"
       ]
     },
     {
-      name: "Pro",
+      name: "pricing.plans.pro.name",
       priceUSD: 49,
       priceVND: "1,225,000",
-      duration: "per month",
+      duration: "pricing.perMonth",
       recommended: true,
       features: [
-        "Advanced AI matchmaking",
-        "Unlimited slots",
-        "Real-time analytics",
-        "Priority support",
-        "Campaign management",
-        "Performance insights"
+        "pricing.features.advancedAI",
+        "pricing.features.unlimitedSlots",
+        "pricing.features.realtimeAnalytics",
+        "pricing.features.prioritySupport",
+        "pricing.features.campaignManagement",
+        "pricing.features.performanceInsights"
       ]
     },
     {
-      name: "Enterprise",
+      name: "pricing.plans.enterprise.name",
       priceUSD: null,
       priceVND: null,
-      duration: "tailored solution",
+      duration: "pricing.plans.enterprise.duration",
       features: [
-        "Full platform access",
-        "Dedicated account manager",
-        "Custom integrations",
-        "Advanced reporting",
-        "API access",
-        "24/7 premium support"
+        "pricing.features.fullAccess",
+        "pricing.features.dedicatedManager",
+        "pricing.features.customIntegrations",
+        "pricing.features.advancedReporting",
+        "pricing.features.apiAccess",
+        "pricing.features.premiumSupport"
       ]
     }
   ];

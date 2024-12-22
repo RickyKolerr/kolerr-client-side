@@ -88,5 +88,43 @@ export const vi = {
   "slots.mySlots.requirements": "Yêu cầu",
   "slots.mySlots.progress": "Tiến độ",
   "slots.mySlots.viewDetails": "Xem Chi Tiết",
-  "slots.mySlots.acceptInvitation": "Chấp Nhận Lời Mời"
+  "slots.mySlots.acceptInvitation": "Chấp Nhận Lời Mời",
+
+  // Pricing Section
+  "pricing.title": "Chọn Gói Phù Hợp",
+  "pricing.subtitle": "Các lựa chọn giá linh hoạt được thiết kế phù hợp với nhu cầu tiếp thị của bạn",
+  "pricing.monthly": "Thanh Toán Hàng Tháng",
+  "pricing.annual": "Thanh Toán Hàng Năm",
+  "pricing.getStarted": "Bắt Đầu Ngay",
+  "pricing.recommended": "Đề xuất",
+  "pricing.custom": "Tùy chỉnh",
+  "pricing.contactUs": "Liên hệ",
+  "pricing.perMonth": "mỗi tháng",
+  "pricing.perYear": "mỗi năm",
+  "pricing.duration": "/{duration}",
+
+  // Plan Names and Features
+  "pricing.plans.free.name": "Dùng Thử",
+  "pricing.plans.free.duration": "14 ngày",
+  "pricing.plans.pro.name": "Pro",
+  "pricing.plans.enterprise.name": "Doanh Nghiệp",
+  "pricing.plans.enterprise.duration": "giải pháp tùy chỉnh",
+
+  // Features
+  "pricing.features.basicAI": "Kết nối AI cơ bản",
+  "pricing.features.limitedSlots": "Số lượng slot giới hạn",
+  "pricing.features.basicAnalytics": "Phân tích cơ bản",
+  "pricing.features.emailSupport": "Hỗ trợ qua email",
+  "pricing.features.advancedAI": "Kết nối AI nâng cao",
+  "pricing.features.unlimitedSlots": "Không giới hạn slot",
+  "pricing.features.realtimeAnalytics": "Phân tích thời gian thực",
+  "pricing.features.prioritySupport": "Hỗ trợ ưu tiên",
+  "pricing.features.campaignManagement": "Quản lý chiến dịch",
+  "pricing.features.performanceInsights": "Thông tin hiệu suất",
+  "pricing.features.fullAccess": "Truy cập đầy đủ nền tảng",
+  "pricing.features.dedicatedManager": "Người quản lý tài khoản riêng",
+  "pricing.features.customIntegrations": "Tích hợp tùy chỉnh",
+  "pricing.features.advancedReporting": "Báo cáo nâng cao",
+  "pricing.features.apiAccess": "Truy cập API",
+  "pricing.features.premiumSupport": "Hỗ trợ cao cấp 24/7"
 };
