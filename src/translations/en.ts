@@ -151,6 +151,12 @@ export const en = {
   "payment.select": "Select Payment Method",
 
   // Authentication
+  "auth.password": "Password",
+  "auth.accountType": "Account Type",
+  "auth.selectAccountType": "Select Account Type",
+  "auth.accountType.kol": "KOL/Influencer",
+  "auth.accountType.brand": "Brand/Business",
+  "auth.haveAccount": "Already have an account?",
   "auth.google": "Continue with Google",
   "auth.facebook": "Continue with Facebook",
   "auth.instagram": "Continue with Instagram",
