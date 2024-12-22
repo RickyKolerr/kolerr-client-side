@@ -16,7 +16,6 @@ const Navbar = () => {
   const { t, toggleLanguage } = useLanguage();
 
   const navItems = [
-    { label: t('nav.home'), path: '/' },
     { label: t('nav.campaigns'), path: '/campaigns' },
     { label: t('nav.slots'), path: '/slots' },
     { label: t('nav.kols'), path: '/kols' },
