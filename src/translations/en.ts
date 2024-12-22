@@ -152,20 +152,13 @@ export const en = {
   "pricing.features.teamTools": "Team collaboration tools",
 
   // Pay per search
-  "pricing.payPerSearch.title": "Pay Per Search",
-  "pricing.payPerSearch.single": "5,000 VND per search",
-  "pricing.payPerSearch.bulk10": "10 searches: 45,000 VND",
-  "pricing.payPerSearch.bulk50": "50 searches: 200,000 VND",
-  "pricing.payPerSearch.bulk100": "100 searches: 380,000 VND",
-
-  // Payment Methods
-  "payment.stripe.desc": "Pay securely with credit or debit card",
-  "payment.local.title": "Local Payment",
-  "payment.local.desc": "Pay using Vietnamese local payment methods",
-  "payment.paypal.desc": "Pay securely with PayPal",
-  "payment.select": "Select Payment Method",
-
-  // Checkout
-  "checkout.selectedPlan": "Selected Plan",
-  "checkout.paymentMethods": "Payment Methods",
+  "pricing.payPerSearch.title": "Pay Per Search Plans",
+  "pricing.payPerSearch.single": "Single Search",
+  "pricing.payPerSearch.bulk10": "Search Pack (10)",
+  "pricing.payPerSearch.bulk50": "Search Pack (50)",
+  "pricing.payPerSearch.bulk100": "Search Pack (100)",
+  "pricing.payPerSearch.desc.single": "One-time AI-powered search credit",
+  "pricing.payPerSearch.desc.bulk10": "10 AI-powered searches with 10% discount",
+  "pricing.payPerSearch.desc.bulk50": "50 AI-powered searches with 20% discount",
+  "pricing.payPerSearch.desc.bulk100": "100 AI-powered searches with 24% discount",
 };

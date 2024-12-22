@@ -152,10 +152,14 @@ export const vi = {
 
   // Pay per search
   "pricing.payPerSearch.title": "Gói Trả Theo Lượt",
-  "pricing.payPerSearch.single": "5,000 VND/lượt",
-  "pricing.payPerSearch.bulk10": "10 lượt: 45,000 VND",
-  "pricing.payPerSearch.bulk50": "50 lượt: 200,000 VND",
-  "pricing.payPerSearch.bulk100": "100 lượt: 380,000 VND",
+  "pricing.payPerSearch.single": "Một Lượt Tìm",
+  "pricing.payPerSearch.bulk10": "Gói 10 Lượt",
+  "pricing.payPerSearch.bulk50": "Gói 50 Lượt",
+  "pricing.payPerSearch.bulk100": "Gói 100 Lượt",
+  "pricing.payPerSearch.desc.single": "Một lượt tìm kiếm AI",
+  "pricing.payPerSearch.desc.bulk10": "10 lượt tìm kiếm AI (giảm 10%)",
+  "pricing.payPerSearch.desc.bulk50": "50 lượt tìm kiếm AI (giảm 20%)",
+  "pricing.payPerSearch.desc.bulk100": "100 lượt tìm kiếm AI (giảm 24%)",
 
   // Payment Methods
   "payment.stripe.desc": "Thanh toán an toàn bằng thẻ tín dụng hoặc ghi nợ",

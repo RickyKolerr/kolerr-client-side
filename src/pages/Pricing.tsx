@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { PricingHeader } from "@/components/pricing/PricingHeader";
 import { PricingCard } from "@/components/pricing/PricingCard";
+import { AddOnCard } from "@/components/pricing/AddOnCard";
 import { useState } from "react";
 import { TranslationKey } from "@/translations";
 
@@ -75,12 +76,35 @@ const Pricing = () => {
     }
   ];
 
+  const searchPackages = [
+    {
+      name: "Single Search",
+      price: 5000,
+      description: "One-time AI-powered search credit"
+    },
+    {
+      name: "Search Pack (10)",
+      price: 45000,
+      description: "10 AI-powered searches with 10% discount"
+    },
+    {
+      name: "Search Pack (50)",
+      price: 200000,
+      description: "50 AI-powered searches with 20% discount"
+    },
+    {
+      name: "Search Pack (100)",
+      price: 380000,
+      description: "100 AI-powered searches with 24% discount"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto px-4 py-16">
         <PricingHeader isAnnual={isAnnual} onToggle={() => setIsAnnual(!isAnnual)} />
-        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
           {plans.map((plan) => (
             <PricingCard
               key={plan.name}
@@ -94,6 +118,22 @@ const Pricing = () => {
               isAnnual={isAnnual}
             />
           ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto mt-20">
+          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+            Pay Per Search Plans
+          </h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {searchPackages.map((pkg) => (
+              <AddOnCard
+                key={pkg.name}
+                name={pkg.name}
+                price={pkg.price}
+                description={pkg.description}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
