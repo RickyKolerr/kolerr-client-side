@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { TranslationKey } from "@/translations";
 
 interface PricingCardProps {
-  name: string;
+  name: TranslationKey;
   priceUSD: number | null;
   priceVND: string | null;
-  duration: string;
-  features: string[];
+  duration: TranslationKey;
+  features: TranslationKey[];
   recommended?: boolean;
 }
 
@@ -34,7 +35,7 @@ export const PricingCard = ({
         </div>
       )}
       <CardHeader>
-        <CardTitle className="text-2xl text-center">{name}</CardTitle>
+        <CardTitle className="text-2xl text-center">{t(name)}</CardTitle>
         <div className="text-center mt-4">
           <div className="text-4xl font-bold">
             {priceUSD === null ? t("pricing.custom") : `$${priceUSD}`}
@@ -42,7 +43,7 @@ export const PricingCard = ({
           <div className="text-sm text-muted-foreground">
             {priceVND === null ? t("pricing.contactUs") : `${priceVND} VND`}
           </div>
-          <div className="text-foreground/60">{t("pricing.duration").replace("{duration}", duration)}</div>
+          <div className="text-foreground/60">{t(duration)}</div>
         </div>
       </CardHeader>
       <CardContent>
