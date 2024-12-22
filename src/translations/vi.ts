@@ -91,32 +91,34 @@ export const vi = {
   "slots.mySlots.acceptInvitation": "Chấp Nhận Lời Mời",
 
   // Pricing Section
+
+  // Pricing
   "pricing.title": "Chọn Gói Phù Hợp",
-  "pricing.subtitle": "Các lựa chọn giá linh hoạt được thiết kế phù hợp với nhu cầu tiếp thị của bạn",
+  "pricing.subtitle": "Giá cả phải chăng với nhiều tính năng hấp dẫn cho doanh nghiệp Việt Nam",
   "pricing.monthly": "Thanh Toán Hàng Tháng",
   "pricing.annual": "Thanh Toán Hàng Năm",
   "pricing.getStarted": "Bắt Đầu Ngay",
-  "pricing.recommended": "Đề xuất",
+  "pricing.recommended": "Phổ biến nhất",
   "pricing.custom": "Tùy chỉnh",
   "pricing.contactUs": "Liên hệ",
   "pricing.perMonth": "mỗi tháng",
   "pricing.perYear": "mỗi năm",
-  "pricing.duration": "/{duration}",
+  "pricing.searchCredits": "lượt tìm kiếm KOL",
 
-  // Plan Names and Features
-  "pricing.plans.free.name": "Dùng Thử",
-  "pricing.plans.free.duration": "14 ngày",
-  "pricing.plans.pro.name": "Pro",
+  // Plan Names
+  "pricing.plans.starter.name": "Khởi Đầu",
+  "pricing.plans.growth.name": "Phát Triển",
   "pricing.plans.enterprise.name": "Doanh Nghiệp",
   "pricing.plans.enterprise.duration": "giải pháp tùy chỉnh",
 
   // Features
   "pricing.features.basicAI": "Kết nối AI cơ bản",
-  "pricing.features.limitedSlots": "Số lượng slot giới hạn",
+  "pricing.features.limitedSlots": "10 chiến dịch mỗi tháng",
   "pricing.features.basicAnalytics": "Phân tích cơ bản",
   "pricing.features.emailSupport": "Hỗ trợ qua email",
+  "pricing.features.searchCredits": "Tìm kiếm KOL có giới hạn",
   "pricing.features.advancedAI": "Kết nối AI nâng cao",
-  "pricing.features.unlimitedSlots": "Không giới hạn slot",
+  "pricing.features.unlimitedSlots": "Không giới hạn chiến dịch",
   "pricing.features.realtimeAnalytics": "Phân tích thời gian thực",
   "pricing.features.prioritySupport": "Hỗ trợ ưu tiên",
   "pricing.features.campaignManagement": "Quản lý chiến dịch",
@@ -126,5 +128,6 @@ export const vi = {
   "pricing.features.customIntegrations": "Tích hợp tùy chỉnh",
   "pricing.features.advancedReporting": "Báo cáo nâng cao",
   "pricing.features.apiAccess": "Truy cập API",
-  "pricing.features.premiumSupport": "Hỗ trợ cao cấp 24/7"
+  "pricing.features.premiumSupport": "Hỗ trợ cao cấp 24/7",
+  "pricing.features.unlimitedSearches": "Không giới hạn tìm kiếm KOL"
 };

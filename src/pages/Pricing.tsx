@@ -2,32 +2,39 @@ import Navbar from "@/components/Navbar";
 import { PricingHeader } from "@/components/pricing/PricingHeader";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { TranslationKey } from "@/translations";
+import { useState } from "react";
 
 const Pricing = () => {
+  const [isAnnual, setIsAnnual] = useState(true);
+
   const plans: {
     name: TranslationKey;
     priceUSD: number | null;
     priceVND: string | null;
+    searchCredits: number;
     duration: TranslationKey;
     features: TranslationKey[];
     recommended?: boolean;
   }[] = [
     {
-      name: "pricing.plans.free.name",
-      priceUSD: 0,
-      priceVND: "0",
-      duration: "pricing.plans.free.duration",
+      name: "pricing.plans.starter.name",
+      priceUSD: 19,
+      priceVND: "475,000",
+      searchCredits: 100,
+      duration: "pricing.perMonth",
       features: [
         "pricing.features.basicAI",
         "pricing.features.limitedSlots",
         "pricing.features.basicAnalytics",
-        "pricing.features.emailSupport"
+        "pricing.features.emailSupport",
+        "pricing.features.searchCredits"
       ]
     },
     {
-      name: "pricing.plans.pro.name",
+      name: "pricing.plans.growth.name",
       priceUSD: 49,
       priceVND: "1,225,000",
+      searchCredits: 500,
       duration: "pricing.perMonth",
       recommended: true,
       features: [
@@ -36,13 +43,15 @@ const Pricing = () => {
         "pricing.features.realtimeAnalytics",
         "pricing.features.prioritySupport",
         "pricing.features.campaignManagement",
-        "pricing.features.performanceInsights"
+        "pricing.features.performanceInsights",
+        "pricing.features.searchCredits"
       ]
     },
     {
       name: "pricing.plans.enterprise.name",
       priceUSD: null,
       priceVND: null,
+      searchCredits: 0,
       duration: "pricing.plans.enterprise.duration",
       features: [
         "pricing.features.fullAccess",
@@ -50,7 +59,8 @@ const Pricing = () => {
         "pricing.features.customIntegrations",
         "pricing.features.advancedReporting",
         "pricing.features.apiAccess",
-        "pricing.features.premiumSupport"
+        "pricing.features.premiumSupport",
+        "pricing.features.unlimitedSearches"
       ]
     }
   ];
@@ -64,12 +74,8 @@ const Pricing = () => {
           {plans.map((plan) => (
             <PricingCard
               key={plan.name}
-              name={plan.name}
-              priceUSD={plan.priceUSD}
-              priceVND={plan.priceVND}
-              duration={plan.duration}
-              features={plan.features}
-              recommended={plan.recommended}
+              {...plan}
+              isAnnual={isAnnual}
             />
           ))}
         </div>
