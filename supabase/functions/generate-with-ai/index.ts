@@ -18,10 +18,6 @@ serve(async (req) => {
     const { prompt } = await req.json();
     console.log('Received prompt:', prompt);
 
-    if (!openAIApiKey) {
-      throw new Error('OpenAI API key is not configured');
-    }
-
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -29,7 +25,7 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4o-mini',
         messages: [
           { 
             role: 'system', 
@@ -37,23 +33,12 @@ serve(async (req) => {
           },
           { role: 'user', content: prompt }
         ],
-        max_tokens: 200,
         temperature: 0.7,
       }),
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      console.error('OpenAI API error:', error);
-      throw new Error('Failed to generate content');
-    }
-
     const data = await response.json();
-    console.log('OpenAI response:', data);
-
-    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-      throw new Error('Invalid response format from OpenAI');
-    }
+    console.log('OpenAI response received');
 
     return new Response(JSON.stringify({ 
       text: data.choices[0].message.content 
