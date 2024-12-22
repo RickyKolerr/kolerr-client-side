@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { translations, TranslationKey } from "@/translations";
 
-type Language = "en" | "vi";
+export type Language = "en" | "vi";
 
 type LanguageContextType = {
   language: Language;
@@ -15,7 +15,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("language") as Language) || "en";
+      const stored = localStorage.getItem("language");
+      return (stored === "en" || stored === "vi" ? stored : "en") as Language;
     }
     return "en";
   });

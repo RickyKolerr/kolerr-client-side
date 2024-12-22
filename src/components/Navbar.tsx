@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Languages, Menu } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage, Language } from "@/contexts/LanguageContext";
 import {
   Sheet,
   SheetContent,
@@ -28,7 +28,7 @@ const Navbar = () => {
     { label: t('nav.contact'), path: '/contact' },
   ];
 
-  const languages = [
+  const languages: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
     { code: 'vi', label: 'Tiếng Việt' },
   ];
