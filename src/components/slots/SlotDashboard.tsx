@@ -15,7 +15,7 @@ const SlotDashboard = () => {
   // Simulated user type - in real app, this would come from auth context
   const userType: UserType = "kol"; // or "brand" or "agency"
 
-  const getWelcomeMessage = () => {
+  const getWelcomeMessage = (userType: UserType): string => {
     const name = "John Doe"; // This would come from auth context
     switch (userType) {
       case "kol":
@@ -98,7 +98,7 @@ const SlotDashboard = () => {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold text-gradient bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-            {getWelcomeMessage()}
+            {getWelcomeMessage(userType)}
           </h1>
           <p className="text-muted-foreground mt-2">
             {userType === "kol" 
