@@ -6,15 +6,19 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Facebook, Instagram, Mail } from "lucide-react";
+import { Facebook, Instagram, Mail, Wand2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import { useAiGenerate } from "@/hooks/use-ai-generate";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("");
+  const [description, setDescription] = useState("");
   const { toast } = useToast();
   const { t } = useLanguage();
+  const { generate, isGenerating } = useAiGenerate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +26,36 @@ const Register = () => {
       title: "Registration Attempted",
       description: "This is a placeholder. Actual registration will be implemented with Supabase.",
     });
+  };
+
+  const handleGenerateDescription = async () => {
+    if (!accountType) {
+      toast({
+        title: "Please select an account type",
+        description: "We need to know if you're a KOL or brand to generate a relevant description.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const prompt = `Write a professional profile description for a ${accountType === 'kol' ? 'Key Opinion Leader (KOL)' : 'brand'} on Kolerr platform. Keep it concise, engaging, and highlight key strengths. The description should be around 2-3 sentences.`;
+    
+    try {
+      const result = await generate(prompt);
+      if (result) {
+        setDescription(result);
+        toast({
+          title: "Description Generated",
+          description: "Feel free to edit the generated text to better match your profile.",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Generation Failed",
+        description: "Failed to generate description. Please try again or write your own.",
+        variant: "destructive",
+      });
+    }
   };
 
   const socialButtons = [
@@ -126,6 +160,31 @@ const Register = () => {
                   <SelectItem value="brand">{t("auth.accountType.brand")}</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label htmlFor="description" className="text-sm font-medium text-foreground">
+                  Profile Description
+                </label>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleGenerateDescription}
+                  disabled={isGenerating}
+                  className="flex items-center gap-1"
+                >
+                  <Wand2 className="w-4 h-4" />
+                  {isGenerating ? "Generating..." : "Generate"}
+                </Button>
+              </div>
+              <Textarea
+                id="description"
+                placeholder="Tell us about yourself or your brand..."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="min-h-[100px]"
+              />
             </div>
             <Button type="submit" className="w-full">
               {t("auth.signup")}
