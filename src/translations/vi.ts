@@ -7,10 +7,10 @@ export const vi = {
   "nav.brands": "Thương hiệu",
   "nav.pricing": "Bảng giá",
   "nav.contact": "Liên hệ",
-  "auth.signin": "Đăng nhập",
-  "auth.signup": "Đăng ký",
 
   // Authentication
+  "auth.signin": "Đăng nhập",
+  "auth.signup": "Đăng ký",
   "auth.password": "Mật khẩu",
   "auth.accountType": "Loại tài khoản",
   "auth.selectAccountType": "Chọn loại tài khoản",
@@ -118,13 +118,14 @@ export const vi = {
   "pricing.perYear": "mỗi năm",
   "pricing.savePercent": "Tiết kiệm {percent}%",
   "pricing.searchCredits": "lượt tìm kiếm",
-  
+
   // Plan Names
   "pricing.plans.free.name": "Miễn Phí",
+  "pricing.plans.free.duration": "Dùng thử 14 ngày",
   "pricing.plans.basic.name": "Cơ Bản",
   "pricing.plans.pro.name": "Chuyên Nghiệp",
   "pricing.plans.enterprise.name": "Doanh Nghiệp",
-  
+
   // Features
   "pricing.features.basicAI": "Tính năng kết nối cơ bản",
   "pricing.features.limitedSearches": "10 lượt tìm kiếm AI mỗi tháng",
@@ -145,7 +146,7 @@ export const vi = {
   "pricing.features.prioritySupport": "Hỗ trợ ưu tiên",
   
   "pricing.features.unlimitedSlots": "Không giới hạn slot",
-  "pricing.features.trendAnalysis": "Phân tích xu hướng",
+  "pricing.features.trendAnalysis": "Công cụ phân tích xu hướng",
   "pricing.features.dedicatedManager": "Quản lý tài khoản riêng",
   "pricing.features.customIntegrations": "Tích hợp tùy chỉnh",
   "pricing.features.teamTools": "Công cụ làm việc nhóm",

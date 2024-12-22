@@ -7,10 +7,10 @@ export const en = {
   "nav.brands": "Brands",
   "nav.pricing": "Pricing",
   "nav.contact": "Contact",
-  "auth.signin": "Sign In",
-  "auth.signup": "Sign Up",
 
   // Authentication
+  "auth.signin": "Sign In",
+  "auth.signup": "Sign Up",
   "auth.password": "Password",
   "auth.accountType": "Account Type",
   "auth.selectAccountType": "Select Account Type",
@@ -118,14 +118,14 @@ export const en = {
   "pricing.perYear": "per year",
   "pricing.savePercent": "Save {percent}%",
   "pricing.searchCredits": "searches",
-  
+
   // Plan Names
   "pricing.plans.free.name": "Free",
   "pricing.plans.free.duration": "14-day trial",
   "pricing.plans.basic.name": "Basic",
   "pricing.plans.pro.name": "Pro",
   "pricing.plans.enterprise.name": "Enterprise",
-  
+
   // Features
   "pricing.features.basicAI": "Basic matchmaking features",
   "pricing.features.limitedSearches": "10 monthly AI-powered searches",
