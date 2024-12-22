@@ -1,13 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, TrendingUp, Users, Star, DollarSign, TrendingDown, BarChart3, Calendar, Filter, SlidersHorizontal } from "lucide-react";
+import { Search, TrendingUp, Users, Star, DollarSign, SlidersHorizontal } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
-import { CampaignFilters } from "./CampaignFilters";
+import { MetricsCard } from "./MetricsCard";
+import { CampaignCard } from "./CampaignCard";
 
 export function BrandDashboard() {
   const { t } = useLanguage();
@@ -137,29 +135,7 @@ export function BrandDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {metrics.map((metric, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <div className="space-y-1">
-                <CardTitle className="text-sm text-muted-foreground">
-                  {metric.title}
-                </CardTitle>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl font-bold">{metric.value}</span>
-                  {metric.trend === "up" ? (
-                    <TrendingUp className={`h-4 w-4 text-green-500`} />
-                  ) : (
-                    <TrendingDown className={`h-4 w-4 text-red-500`} />
-                  )}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  {metric.description}
-                </p>
-              </div>
-              <div className={`w-12 h-12 rounded-full bg-${metric.color}/10 flex items-center justify-center`}>
-                <metric.icon className={`h-6 w-6 text-${metric.color}`} />
-              </div>
-            </CardHeader>
-          </Card>
+          <MetricsCard key={index} {...metric} />
         ))}
       </div>
 
@@ -194,57 +170,9 @@ export function BrandDashboard() {
           </div>
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {activeCampaigns.map((campaign) => (
-            <Card key={campaign.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <CardTitle className="text-xl font-semibold">
-                      {campaign.name}
-                    </CardTitle>
-                    <Badge variant="outline">{campaign.category}</Badge>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span>Deadline: {campaign.deadline}</span>
-                  </div>
-                </div>
-                <Badge
-                  variant={campaign.status === "Active" ? "default" : "secondary"}
-                  className={campaign.status === "Active" ? "bg-green-500" : ""}
-                >
-                  {campaign.status}
-                </Badge>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between text-sm">
-                    <span>Progress</span>
-                    <span>{campaign.progress}%</span>
-                  </div>
-                  <Progress value={campaign.progress} className="h-2" />
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
-                      <p className="text-sm text-muted-foreground">KOLs</p>
-                      <p className="font-semibold">{campaign.kols}</p>
-                    </div>
-                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
-                      <p className="text-sm text-muted-foreground">Budget</p>
-                      <p className="font-semibold">{campaign.budget}</p>
-                    </div>
-                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
-                      <p className="text-sm text-muted-foreground">Engagement</p>
-                      <p className="font-semibold">{campaign.engagement}</p>
-                    </div>
-                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
-                      <p className="text-sm text-muted-foreground">ROI</p>
-                      <p className="font-semibold text-green-500">{campaign.roi}</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <CampaignCard key={campaign.id} campaign={campaign} />
           ))}
         </div>
       </div>
