@@ -61,5 +61,32 @@ export const en = {
   "howItWorks.ai.title": "AI Matching",
   "howItWorks.ai.desc": "Get intelligent recommendations",
   "howItWorks.collab.title": "Collaborate",
-  "howItWorks.collab.desc": "Launch successful campaigns"
+  "howItWorks.collab.desc": "Launch successful campaigns",
+
+  // Slots Page
+  "slots.title": "Campaign Slots",
+  "slots.subtitle": "Browse and manage your campaign slots",
+  "slots.tabs.dashboard": "Dashboard",
+  "slots.tabs.available": "Available Slots",
+  "slots.tabs.mySlots": "My Slots",
+  
+  // Available Slots
+  "slots.available.search": "Search slots...",
+  "slots.available.category": "Category",
+  "slots.available.platform": "Platform",
+  "slots.available.filter": "Filter",
+  "slots.available.brand": "Brand",
+  "slots.available.budget": "Budget",
+  "slots.available.dates": "Campaign Dates",
+  "slots.available.followers": "Required Followers",
+  "slots.available.applyNow": "Apply Now",
+
+  // My Slots
+  "slots.mySlots.brand": "Brand",
+  "slots.mySlots.budget": "Budget",
+  "slots.mySlots.deadline": "Deadline",
+  "slots.mySlots.requirements": "Requirements",
+  "slots.mySlots.progress": "Progress",
+  "slots.mySlots.viewDetails": "View Details",
+  "slots.mySlots.acceptInvitation": "Accept Invitation"
 };

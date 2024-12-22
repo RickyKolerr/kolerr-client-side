@@ -61,5 +61,32 @@ export const vi = {
   "howItWorks.ai.title": "Kết Nối AI",
   "howItWorks.ai.desc": "Nhận đề xuất thông minh",
   "howItWorks.collab.title": "Hợp Tác",
-  "howItWorks.collab.desc": "Triển khai chiến dịch thành công"
+  "howItWorks.collab.desc": "Triển khai chiến dịch thành công",
+
+  // Slots Page
+  "slots.title": "Vị Trí Chiến Dịch",
+  "slots.subtitle": "Duyệt và quản lý vị trí chiến dịch của bạn",
+  "slots.tabs.dashboard": "Bảng Điều Khiển",
+  "slots.tabs.available": "Vị Trí Khả Dụng",
+  "slots.tabs.mySlots": "Vị Trí Của Tôi",
+  
+  // Available Slots
+  "slots.available.search": "Tìm vị trí...",
+  "slots.available.category": "Danh mục",
+  "slots.available.platform": "Nền tảng",
+  "slots.available.filter": "Lọc",
+  "slots.available.brand": "Thương hiệu",
+  "slots.available.budget": "Ngân sách",
+  "slots.available.dates": "Ngày chiến dịch",
+  "slots.available.followers": "Yêu cầu người theo dõi",
+  "slots.available.applyNow": "Ứng Tuyển Ngay",
+
+  // My Slots
+  "slots.mySlots.brand": "Thương hiệu",
+  "slots.mySlots.budget": "Ngân sách",
+  "slots.mySlots.deadline": "Hạn chót",
+  "slots.mySlots.requirements": "Yêu cầu",
+  "slots.mySlots.progress": "Tiến độ",
+  "slots.mySlots.viewDetails": "Xem Chi Tiết",
+  "slots.mySlots.acceptInvitation": "Chấp Nhận Lời Mời"
 };
