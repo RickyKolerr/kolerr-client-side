@@ -6,25 +6,27 @@ type Language = "en" | "vi";
 type LanguageContextType = {
   language: Language;
   toggleLanguage: () => void;
+  setLanguage: (lang: Language) => void;
   t: (key: TranslationKey) => string;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>(() => {
+  const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== "undefined") {
       return (localStorage.getItem("language") as Language) || "en";
     }
     return "en";
   });
 
+  const setLanguage = (lang: Language) => {
+    localStorage.setItem("language", lang);
+    setLanguageState(lang);
+  };
+
   const toggleLanguage = () => {
-    setLanguage((prev) => {
-      const newLang = prev === "en" ? "vi" : "en";
-      localStorage.setItem("language", newLang);
-      return newLang;
-    });
+    setLanguage(language === "en" ? "vi" : "en");
   };
 
   const t = (key: TranslationKey): string => {
@@ -32,7 +34,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

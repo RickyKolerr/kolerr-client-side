@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Languages, Menu } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
+import { Languages, Menu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Sheet,
@@ -10,10 +9,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
-  const { t, toggleLanguage } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
 
   const navItems = [
     { label: t('nav.campaigns'), path: '/campaigns' },
@@ -24,8 +28,13 @@ const Navbar = () => {
     { label: t('nav.contact'), path: '/contact' },
   ];
 
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'vi', label: 'Tiếng Việt' },
+  ];
+
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-gray-800 transition-colors duration-300">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -54,23 +63,30 @@ const Navbar = () => {
             ))}
             
             <div className="flex items-center space-x-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="hover:scale-110 transition-transform"
-              >
-                {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </Button>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleLanguage}
-                className="hover:scale-110 transition-transform"
-              >
-                <Languages className="h-5 w-5" />
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hover:scale-110 transition-transform"
+                  >
+                    <Languages className="h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={`cursor-pointer ${
+                        language === lang.code ? 'bg-accent' : ''
+                      }`}
+                    >
+                      {lang.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               <Link to="/auth/login">
                 <Button 
@@ -119,26 +135,20 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ))}
-                  <hr className="my-4 border-gray-800" />
-                  <div className="flex items-center justify-between px-3">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={toggleTheme}
-                      className="hover:scale-110 transition-transform"
-                    >
-                      {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={toggleLanguage}
-                      className="hover:scale-110 transition-transform"
-                    >
-                      <Languages className="h-5 w-5" />
-                    </Button>
-                  </div>
+                  <hr className="my-4" />
                   <div className="flex flex-col gap-2 px-3">
+                    {languages.map((lang) => (
+                      <Button
+                        key={lang.code}
+                        variant="ghost"
+                        onClick={() => setLanguage(lang.code)}
+                        className={`justify-start ${
+                          language === lang.code ? 'bg-accent' : ''
+                        }`}
+                      >
+                        {lang.label}
+                      </Button>
+                    ))}
                     <Link to="/auth/login" className="w-full">
                       <Button 
                         variant="ghost" 
