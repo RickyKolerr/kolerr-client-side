@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Languages, Menu, X } from "lucide-react";
+import { Moon, Sun, Languages, Menu } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -15,7 +14,6 @@ import {
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const { t, toggleLanguage } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { label: t('nav.home'), path: '/' },
