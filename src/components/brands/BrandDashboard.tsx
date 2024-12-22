@@ -3,9 +3,12 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Filter, TrendingUp, Users, Clock, Target, BarChart3, Calendar } from "lucide-react";
+import { Search, Filter, TrendingUp, Users, Clock, Target, BarChart3, Calendar, Star, DollarSign, TrendingDown } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function BrandDashboard() {
+  const { t } = useLanguage();
+  
   const activeCampaigns = [
     {
       id: 1,
@@ -15,7 +18,8 @@ export function BrandDashboard() {
       kols: 5,
       deadline: "2024-04-15",
       budget: "$15,000",
-      engagement: "12.5K"
+      engagement: "12.5K",
+      roi: "+15.2%"
     },
     {
       id: 2,
@@ -25,8 +29,44 @@ export function BrandDashboard() {
       kols: 3,
       deadline: "2024-04-20",
       budget: "$8,000",
-      engagement: "5.2K"
+      engagement: "5.2K",
+      roi: "+8.7%"
     },
+  ];
+
+  const metrics = [
+    {
+      title: "Campaign Performance",
+      value: "+24.5%",
+      trend: "up",
+      icon: TrendingUp,
+      description: "vs. last month",
+      color: "green-500"
+    },
+    {
+      title: "Average ROI",
+      value: "182%",
+      trend: "up",
+      icon: DollarSign,
+      description: "across campaigns",
+      color: "blue-500"
+    },
+    {
+      title: "KOL Retention",
+      value: "92%",
+      trend: "down",
+      icon: Users,
+      description: "-3% this month",
+      color: "yellow-500"
+    },
+    {
+      title: "Brand Rating",
+      value: "4.8",
+      trend: "up",
+      icon: Star,
+      description: "from KOLs",
+      color: "purple-500"
+    }
   ];
 
   return (
@@ -37,7 +77,7 @@ export function BrandDashboard() {
             Brand Dashboard
           </h1>
           <p className="text-muted-foreground mt-2">
-            Manage your campaigns and track performance
+            Manage your campaigns and track performance metrics
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
@@ -61,50 +101,31 @@ export function BrandDashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center space-y-0">
-            <div className="w-14 h-14 rounded-full bg-kolerr-purple/10 flex items-center justify-center mr-4">
-              <TrendingUp className="h-6 w-6 text-kolerr-purple" />
-            </div>
-            <div>
-              <CardTitle className="text-lg">Active Campaigns</CardTitle>
-              <p className="text-3xl font-bold mt-2">12</p>
-            </div>
-          </CardHeader>
-        </Card>
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center space-y-0">
-            <div className="w-14 h-14 rounded-full bg-kolerr-cyan/10 flex items-center justify-center mr-4">
-              <Users className="h-6 w-6 text-kolerr-cyan" />
-            </div>
-            <div>
-              <CardTitle className="text-lg">Total KOLs</CardTitle>
-              <p className="text-3xl font-bold mt-2">48</p>
-            </div>
-          </CardHeader>
-        </Card>
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center space-y-0">
-            <div className="w-14 h-14 rounded-full bg-kolerr-orange/10 flex items-center justify-center mr-4">
-              <Clock className="h-6 w-6 text-kolerr-orange" />
-            </div>
-            <div>
-              <CardTitle className="text-lg">Pending Reviews</CardTitle>
-              <p className="text-3xl font-bold mt-2">7</p>
-            </div>
-          </CardHeader>
-        </Card>
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center space-y-0">
-            <div className="w-14 h-14 rounded-full bg-kolerr-yellow/10 flex items-center justify-center mr-4">
-              <Target className="h-6 w-6 text-kolerr-yellow" />
-            </div>
-            <div>
-              <CardTitle className="text-lg">Success Rate</CardTitle>
-              <p className="text-3xl font-bold mt-2">92%</p>
-            </div>
-          </CardHeader>
-        </Card>
+        {metrics.map((metric, index) => (
+          <Card key={index} className="hover:shadow-lg transition-shadow">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <div className="space-y-1">
+                <CardTitle className="text-sm text-muted-foreground">
+                  {metric.title}
+                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold">{metric.value}</span>
+                  {metric.trend === "up" ? (
+                    <TrendingUp className={`h-4 w-4 text-green-500`} />
+                  ) : (
+                    <TrendingDown className={`h-4 w-4 text-red-500`} />
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {metric.description}
+                </p>
+              </div>
+              <div className={`w-12 h-12 rounded-full bg-${metric.color}/10 flex items-center justify-center`}>
+                <metric.icon className={`h-6 w-6 text-${metric.color}`} />
+              </div>
+            </CardHeader>
+          </Card>
+        ))}
       </div>
 
       <div className="space-y-6">
@@ -142,7 +163,7 @@ export function BrandDashboard() {
                     <span>{campaign.progress}%</span>
                   </div>
                   <Progress value={campaign.progress} className="h-2" />
-                  <div className="grid grid-cols-3 gap-4 pt-4">
+                  <div className="grid grid-cols-4 gap-4 pt-4">
                     <div className="text-center p-2 bg-background rounded-lg">
                       <p className="text-sm text-muted-foreground">KOLs</p>
                       <p className="font-semibold">{campaign.kols}</p>
@@ -154,6 +175,10 @@ export function BrandDashboard() {
                     <div className="text-center p-2 bg-background rounded-lg">
                       <p className="text-sm text-muted-foreground">Engagement</p>
                       <p className="font-semibold">{campaign.engagement}</p>
+                    </div>
+                    <div className="text-center p-2 bg-background rounded-lg">
+                      <p className="text-sm text-muted-foreground">ROI</p>
+                      <p className="font-semibold text-green-500">{campaign.roi}</p>
                     </div>
                   </div>
                 </div>
