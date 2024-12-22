@@ -144,29 +144,24 @@ export const vi = {
   "pricing.payPerSearch.bulk100": "100 lượt: 380,000 VND",
 
   // Payment Methods
-  "payment.methods.title": "Chọn Phương Thức Thanh Toán",
   "payment.stripe.desc": "Thanh toán an toàn bằng thẻ tín dụng hoặc ghi nợ",
+  "payment.local.title": "Thanh Toán Nội Địa",
+  "payment.local.desc": "Thanh toán bằng phương thức thanh toán nội địa Việt Nam",
   "payment.paypal.desc": "Thanh toán an toàn với PayPal",
-  "payment.momo.desc": "Thanh toán bằng ví điện tử MoMo",
-  "payment.vnpay.desc": "Thanh toán bằng mã QR VNPay",
-  "payment.banking.title": "Chuyển khoản ngân hàng",
-  "payment.banking.desc": "Thanh toán qua chuyển khoản ngân hàng",
-  "payment.cod.title": "Thanh toán khi nhận hàng",
-  "payment.cod.desc": "Thanh toán khi nhận được hàng",
   "payment.select": "Chọn Phương Thức Thanh Toán",
-  
-  // Auth Social
-  "auth.google": "Tiếp tục với Google",
-  "auth.facebook": "Tiếp tục với Facebook",
-  "auth.instagram": "Tiếp tục với Instagram",
-  "auth.tiktok": "Tiếp tục với TikTok",
-  "auth.social.title": "Đăng nhập mạng xã hội",
-  "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích của bạn",
-  "auth.or": "hoặc tiếp tục với",
+
+  // Authentication
   "auth.password": "Mật khẩu",
   "auth.accountType": "Loại tài khoản",
   "auth.selectAccountType": "Chọn loại tài khoản",
   "auth.accountType.kol": "KOL/Người ảnh hưởng",
   "auth.accountType.brand": "Thương hiệu/Doanh nghiệp",
   "auth.haveAccount": "Đã có tài khoản?",
+  "auth.google": "Tiếp tục với Google",
+  "auth.facebook": "Tiếp tục với Facebook",
+  "auth.instagram": "Tiếp tục với Instagram", 
+  "auth.tiktok": "Tiếp tục với TikTok",
+  "auth.or": "hoặc tiếp tục với",
+  "auth.social.title": "Đăng nhập mạng xã hội",
+  "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích của bạn",
 };

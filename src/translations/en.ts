@@ -144,33 +144,24 @@ export const en = {
   "pricing.payPerSearch.bulk100": "100 searches: 380,000 VND",
 
   // Payment Methods
-  "payment.methods.title": "Choose Payment Method",
   "payment.stripe.desc": "Pay securely with credit or debit card",
+  "payment.local.title": "Local Payment",
+  "payment.local.desc": "Pay using Vietnamese local payment methods",
   "payment.paypal.desc": "Pay securely with PayPal",
-  "payment.momo.desc": "Pay with MoMo e-wallet",
-  "payment.vnpay.desc": "Pay with VNPay QR code",
-  "payment.banking.title": "Bank Transfer",
-  "payment.banking.desc": "Pay via bank transfer",
-  "payment.cod.title": "Cash on Delivery",
-  "payment.cod.desc": "Pay when you receive",
   "payment.select": "Select Payment Method",
 
-  // Checkout
-  "checkout.title": "Choose Payment Method",
-  "checkout.selectedPlan": "Selected Plan",
-
-  // Auth Social
+  // Authentication
+  "auth.password": "Password",
+  "auth.accountType": "Account Type",
+  "auth.selectAccountType": "Select Account Type",
+  "auth.accountType.kol": "KOL/Influencer",
+  "auth.accountType.brand": "Brand/Business",
+  "auth.haveAccount": "Already have an account?",
   "auth.google": "Continue with Google",
   "auth.facebook": "Continue with Facebook",
   "auth.instagram": "Continue with Instagram",
   "auth.tiktok": "Continue with TikTok",
-  "auth.social.title": "Social Sign In",
-  "auth.social.subtitle": "Choose your preferred sign in method",
   "auth.or": "or continue with",
-  "auth.password": "Password",
-  "auth.accountType": "Account Type",
-  "auth.selectAccountType": "Select account type",
-  "auth.accountType.kol": "KOL/Influencer",
-  "auth.accountType.brand": "Brand/Business",
-  "auth.haveAccount": "Already have an account?",
+  "auth.social.title": "Social Login",
+  "auth.social.subtitle": "Choose your preferred login method",
 };

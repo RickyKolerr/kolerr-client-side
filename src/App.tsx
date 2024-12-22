@@ -26,11 +26,7 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               {routes.map(({ path, element: Element }) => (
-                <Route 
-                  key={path} 
-                  path={path} 
-                  element={typeof Element === 'function' ? <Element /> : Element} 
-                />
+                <Route key={path} path={path} element={<Element />} />
               ))}
             </Routes>
           </BrowserRouter>

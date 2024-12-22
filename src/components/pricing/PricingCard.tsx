@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TranslationKey } from "@/translations";
-import { useNavigate } from "react-router-dom";
 
 interface PricingCardProps {
   name: TranslationKey;
@@ -23,18 +22,6 @@ export const PricingCard = ({
   recommended,
 }: PricingCardProps) => {
   const { t } = useLanguage();
-  const navigate = useNavigate();
-
-  const handleGetStarted = () => {
-    // Store pricing info in session storage for the checkout process
-    sessionStorage.setItem('selectedPlan', JSON.stringify({
-      name,
-      priceUSD,
-      priceVND,
-      duration
-    }));
-    navigate('/checkout');
-  };
 
   return (
     <Card className={`relative hover:shadow-lg transition-all duration-300 ${
@@ -70,7 +57,6 @@ export const PricingCard = ({
         </ul>
         <Button 
           className="w-full mt-6 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange hover:opacity-90"
-          onClick={handleGetStarted}
         >
           {t("pricing.getStarted")}
         </Button>
