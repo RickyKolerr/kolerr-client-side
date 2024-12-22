@@ -6,5 +6,5 @@ export const translations = {
   vi,
 } as const;
 
-// Update the TranslationKey type to include all possible translation keys
+// Create a union type of all possible translation keys
 export type TranslationKey = keyof typeof en;

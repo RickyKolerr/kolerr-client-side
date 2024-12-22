@@ -8,167 +8,101 @@ export const vi = {
   "nav.pricing": "Bảng giá",
   "nav.contact": "Liên hệ",
 
-  // Authentication
-  "auth.signin": "Đăng nhập",
-  "auth.signup": "Đăng ký",
-  "auth.password": "Mật khẩu",
-  "auth.accountType": "Loại tài khoản",
-  "auth.selectAccountType": "Chọn loại tài khoản",
-  "auth.accountType.kol": "KOL/Người ảnh hưởng",
-  "auth.accountType.brand": "Thương hiệu/Doanh nghiệp",
-  "auth.haveAccount": "Đã có tài khoản?",
-  "auth.google": "Tiếp tục với Google",
-  "auth.facebook": "Tiếp tục với Facebook",
-  "auth.instagram": "Tiếp tục với Instagram",
-  "auth.tiktok": "Tiếp tục với TikTok",
-  "auth.or": "hoặc tiếp tục với",
-  "auth.social.title": "Đăng nhập qua mạng xã hội",
-  "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích",
+  // Landing Page
+  "landing.hero.title": "Kết nối với KOL hàng đầu Việt Nam qua AI",
+  "landing.hero.subtitle": "Triển khai chiến dịch thành công với phân tích dữ liệu thời gian thực",
+  "landing.hero.cta.start": "Dùng thử miễn phí",
+  "landing.hero.cta.demo": "Xem Demo",
+  "landing.hero.stats.kols": "KOL đang hoạt động",
+  "landing.hero.stats.reach": "Tổng tiếp cận",
+  "landing.hero.stats.campaigns": "Chiến dịch",
+  "landing.hero.stats.success": "Tỷ lệ thành công",
 
-  // Hero Section
-  "hero.title": "Khai Phá Tiềm Năng Thương Hiệu Với Kolerr",
-  "hero.subtitle": "Kết nối, hợp tác và mở rộng chiến dịch của bạn với nền tảng tiếp thị KOL hàng đầu Việt Nam",
-  "hero.getStarted": "Bắt đầu ngay",
-  "hero.learnMore": "Tìm hiểu thêm",
-  "hero.searchPlaceholder": "Tìm KOL theo Tên, Ngành hoặc Nền tảng",
-
-  // Features
-  "features.title": "Tính Năng Mạnh Mẽ Cho Sự Phát Triển",
-  "features.ai": "Kết Nối Thông Minh AI",
-  "features.ai.desc": "Kết nối với KOL hoặc thương hiệu phù hợp dựa trên dữ liệu thời gian thực và thuật toán AI.",
-  "features.campaign": "Quản Lý Chiến Dịch Thời Gian Thực",
-  "features.campaign.desc": "Theo dõi và tối ưu hóa chiến dịch với phân tích và thông tin chi tiết.",
-  "features.booking": "Đặt Lịch Tức Thì",
-  "features.booking.desc": "Đặt lịch chiến dịch ngay lập tức và quản lý lịch nội dung hiệu quả.",
-  "features.analytics": "Phân Tích Thông Minh",
-  "features.analytics.desc": "Ra quyết định dựa trên dữ liệu với phân tích và theo dõi hiệu suất nâng cao.",
-
-  // Stats
-  "stats.activeKols": "KOL Đang Hoạt Động",
-  "stats.totalReach": "Tổng Lượt Tiếp Cận",
-  "stats.campaigns": "Chiến Dịch Thành Công",
-  "stats.satisfaction": "Độ Hài Lòng",
-
-  // Benefits
-  "benefits.title": "Tại Sao Chọn Kolerr?",
-  "benefits.access": "Tiếp cận KOL hàng đầu đã xác thực",
-  "benefits.ai": "Thuật toán kết nối AI",
-  "benefits.tracking": "Theo dõi chiến dịch thời gian thực",
-  "benefits.analytics": "Báo cáo và phân tích chi tiết",
-  "benefits.safety": "Giám sát an toàn thương hiệu",
-  "benefits.support": "Đội ngũ hỗ trợ tận tâm",
-
-  // CTA
-  "cta.title": "Sẵn Sàng Thay Đổi Tầm Ảnh Hưởng?",
-  "cta.subtitle": "Tham gia cùng hàng nghìn thương hiệu và KOL thành công trên Kolerr. Bắt đầu hành trình của bạn ngay hôm nay.",
-  "cta.button": "Bắt Đầu Ngay",
-
-  // Showcase
-  "showcase.title": "KOL Nổi Bật",
-  "showcase.search": "Tìm KOL...",
-  "showcase.sort": "Sắp xếp theo",
-  "showcase.partnership": "Bắt Đầu Hợp Tác",
+  // Features Section
+  "landing.features.title": "Tính năng mạnh mẽ cho sự phát triển",
+  "landing.features.ai.title": "Kết nối thông minh AI",
+  "landing.features.ai.desc": "Kết nối với KOL hoặc thương hiệu phù hợp dựa trên dữ liệu thực",
+  "landing.features.campaign.title": "Quản lý chiến dịch thời gian thực",
+  "landing.features.campaign.desc": "Theo dõi và tối ưu hóa chiến dịch với phân tích toàn diện",
+  "landing.features.booking.title": "Đặt lịch tức thì",
+  "landing.features.booking.desc": "Đặt lịch chiến dịch ngay và quản lý lịch của bạn",
+  "landing.features.analytics.title": "Phân tích thông minh",
+  "landing.features.analytics.desc": "Ra quyết định dựa trên phân tích nâng cao",
 
   // How It Works
-  "howItWorks.title": "Cách Thức Hoạt Động",
-  "howItWorks.search.title": "Tìm Kiếm & Khám Phá",
-  "howItWorks.search.desc": "Tìm KOL phù hợp cho thương hiệu của bạn",
-  "howItWorks.ai.title": "Kết Nối AI",
-  "howItWorks.ai.desc": "Nhận đề xuất thông minh",
-  "howItWorks.collab.title": "Hợp Tác",
-  "howItWorks.collab.desc": "Triển khai chiến dịch thành công",
+  "landing.howItWorks.title": "Cách thức hoạt động",
+  "landing.howItWorks.search.title": "Tìm kiếm & Khám phá",
+  "landing.howItWorks.search.desc": "Tìm KOL phù hợp cho thương hiệu của bạn",
+  "landing.howItWorks.ai.title": "Kết nối AI",
+  "landing.howItWorks.ai.desc": "Nhận đề xuất thông minh",
+  "landing.howItWorks.collab.title": "Hợp tác",
+  "landing.howItWorks.collab.desc": "Triển khai chiến dịch thành công",
 
-  // Slots Page
-  "slots.title": "Vị Trí Chiến Dịch",
-  "slots.subtitle": "Duyệt và quản lý vị trí chiến dịch của bạn",
-  "slots.tabs.dashboard": "Bảng Điều Khiển",
-  "slots.tabs.available": "Vị Trí Khả Dụng",
-  "slots.tabs.mySlots": "Vị Trí Của Tôi",
-  
-  // Available Slots
-  "slots.available.search": "Tìm vị trí...",
-  "slots.available.category": "Danh mục",
-  "slots.available.platform": "Nền tảng",
-  "slots.available.filter": "Lọc",
-  "slots.available.brand": "Thương hiệu",
-  "slots.available.budget": "Ngân sách",
-  "slots.available.dates": "Ngày chiến dịch",
-  "slots.available.followers": "Yêu cầu người theo dõi",
-  "slots.available.applyNow": "Ứng Tuyển Ngay",
+  // Contact Section
+  "landing.contact.title": "Liên hệ với chúng tôi",
+  "landing.contact.visit": "Địa chỉ",
+  "landing.contact.email": "Email",
+  "landing.contact.call": "Điện thoại",
+  "landing.contact.form.name": "Họ tên",
+  "landing.contact.form.email": "Email",
+  "landing.contact.form.subject": "Tiêu đề",
+  "landing.contact.form.message": "Nội dung",
+  "landing.contact.form.send": "Gửi tin nhắn",
 
-  // My Slots
-  "slots.mySlots.brand": "Thương hiệu",
-  "slots.mySlots.budget": "Ngân sách",
-  "slots.mySlots.deadline": "Hạn chót",
-  "slots.mySlots.requirements": "Yêu cầu",
-  "slots.mySlots.progress": "Tiến độ",
-  "slots.mySlots.viewDetails": "Xem Chi Tiết",
-  "slots.mySlots.acceptInvitation": "Chấp Nhận Lời Mời",
+  // Showcase
+  "landing.showcase.title": "KOL nổi bật",
+  "landing.showcase.search": "Tìm KOL...",
+  "landing.showcase.sort": "Sắp xếp theo",
+  "landing.showcase.partnership": "Bắt đầu hợp tác",
 
-  // Pricing Section
-  "pricing.title": "Chọn Gói Phù Hợp",
-  "pricing.subtitle": "Giải pháp linh hoạt cho mọi nhu cầu marketing của bạn",
-  "pricing.monthly": "Thanh Toán Hàng Tháng",
-  "pricing.annual": "Thanh Toán Hàng Năm",
-  "pricing.getStarted": "Bắt Đầu Ngay",
+  // Stats
+  "landing.stats.activeKols": "KOL đang hoạt động",
+  "landing.stats.totalReach": "Tổng tiếp cận",
+  "landing.stats.campaigns": "Chiến dịch thành công",
+  "landing.stats.satisfaction": "Độ hài lòng",
+
+  // CTA
+  "landing.cta.title": "Sẵn sàng thay đổi tầm ảnh hưởng?",
+  "landing.cta.subtitle": "Tham gia cùng hàng nghìn thương hiệu và KOL thành công trên Kolerr",
+  "landing.cta.button": "Bắt đầu ngay",
+
+  // Pricing
+  "pricing.title": "Chọn gói phù hợp",
+  "pricing.subtitle": "Giải pháp linh hoạt cho mọi nhu cầu marketing",
+  "pricing.monthly": "Thanh toán hàng tháng",
+  "pricing.annual": "Thanh toán hàng năm",
+  "pricing.getStarted": "Bắt đầu ngay",
   "pricing.recommended": "Phổ biến nhất",
   "pricing.custom": "Tùy chỉnh",
   "pricing.contactUs": "Liên hệ",
   "pricing.perMonth": "mỗi tháng",
   "pricing.perYear": "mỗi năm",
-  "pricing.savePercent": "Tiết kiệm {percent}%",
-  "pricing.searchCredits": "lượt tìm kiếm",
-
-  // Plan Names
-  "pricing.plans.free.name": "Miễn Phí",
+  "pricing.plans.free.name": "Miễn phí",
   "pricing.plans.free.duration": "Dùng thử 14 ngày",
-  "pricing.plans.basic.name": "Cơ Bản",
-  "pricing.plans.pro.name": "Chuyên Nghiệp",
-  "pricing.plans.enterprise.name": "Doanh Nghiệp",
+  "pricing.plans.basic.name": "Cơ bản",
+  "pricing.plans.pro.name": "Chuyên nghiệp",
+  "pricing.plans.enterprise.name": "Doanh nghiệp",
 
-  // Features
-  "pricing.features.basicAI": "Tính năng kết nối cơ bản",
-  "pricing.features.limitedSearches": "10 lượt tìm kiếm AI mỗi tháng",
-  "pricing.features.basicAnalytics": "Phân tích dữ liệu cơ bản",
-  "pricing.features.communityAccess": "Truy cập cộng đồng",
-  "pricing.features.freeTrial": "Dùng thử premium 14 ngày",
-  
-  "pricing.features.searches50": "50 lượt tìm kiếm AI mỗi tháng",
-  "pricing.features.slots2": "2 slot hoạt động mỗi tháng",
-  "pricing.features.advancedFiltering": "Lọc dữ liệu nâng cao",
-  "pricing.features.communityTools": "Công cụ tương tác cộng đồng",
-  "pricing.features.payPerSearch": "Mua thêm lượt tìm: 5,000 VND/lượt",
-  
-  "pricing.features.unlimitedSearches": "Không giới hạn lượt tìm kiếm",
-  "pricing.features.slots10": "10 slot hoạt động mỗi tháng",
-  "pricing.features.enhancedAnalytics": "Phân tích nâng cao",
-  "pricing.features.realtimeTracking": "Theo dõi dự án thời gian thực",
-  "pricing.features.prioritySupport": "Hỗ trợ ưu tiên",
-  
-  "pricing.features.unlimitedSlots": "Không giới hạn slot",
-  "pricing.features.trendAnalysis": "Công cụ phân tích xu hướng",
-  "pricing.features.dedicatedManager": "Quản lý tài khoản riêng",
-  "pricing.features.customIntegrations": "Tích hợp tùy chỉnh",
-  "pricing.features.teamTools": "Công cụ làm việc nhóm",
-
-  // Pay per search
-  "pricing.payPerSearch.title": "Gói Trả Theo Lượt",
-  "pricing.payPerSearch.single": "Một Lượt Tìm",
-  "pricing.payPerSearch.bulk10": "Gói 10 Lượt",
-  "pricing.payPerSearch.bulk50": "Gói 50 Lượt",
-  "pricing.payPerSearch.bulk100": "Gói 100 Lượt",
-  "pricing.payPerSearch.desc.single": "Một lượt tìm kiếm AI",
-  "pricing.payPerSearch.desc.bulk10": "10 lượt tìm kiếm AI (giảm 10%)",
-  "pricing.payPerSearch.desc.bulk50": "50 lượt tìm kiếm AI (giảm 20%)",
-  "pricing.payPerSearch.desc.bulk100": "100 lượt tìm kiếm AI (giảm 24%)",
-
-  // Payment Methods
-  "payment.stripe.desc": "Thanh toán an toàn bằng thẻ tín dụng hoặc ghi nợ",
-  "payment.local.title": "Thanh Toán Nội Địa",
-  "payment.local.desc": "Thanh toán bằng phương thức thanh toán nội địa Việt Nam",
-  "payment.paypal.desc": "Thanh toán an toàn với PayPal",
-  "payment.select": "Chọn Phương Thức Thanh Toán",
+  // Slots
+  "slots.title": "Vị trí chiến dịch",
+  "slots.subtitle": "Duyệt và quản lý vị trí chiến dịch",
+  "slots.tabs.dashboard": "Bảng điều khiển",
+  "slots.tabs.available": "Vị trí khả dụng",
+  "slots.tabs.mySlots": "Vị trí của tôi",
+  "slots.available.search": "Tìm vị trí...",
+  "slots.available.brand": "Thương hiệu",
+  "slots.available.budget": "Ngân sách",
+  "slots.available.dates": "Ngày chiến dịch",
+  "slots.available.followers": "Yêu cầu người theo dõi",
+  "slots.available.applyNow": "Ứng tuyển ngay",
+  "slots.mySlots.brand": "Thương hiệu",
+  "slots.mySlots.budget": "Ngân sách",
+  "slots.mySlots.deadline": "Hạn chót",
+  "slots.mySlots.requirements": "Yêu cầu",
+  "slots.mySlots.progress": "Tiến độ",
+  "slots.mySlots.viewDetails": "Xem chi tiết",
+  "slots.mySlots.acceptInvitation": "Chấp nhận lời mời",
 
   // Checkout
   "checkout.selectedPlan": "Gói đã chọn"
-};
+} as const;
