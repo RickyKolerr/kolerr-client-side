@@ -1,12 +1,8 @@
 import Navbar from "@/components/Navbar";
 import { KOLFilters } from "@/components/kol-filters/KOLFilters";
 import KOLCard from "@/components/KOLCard";
-import { UserType, getWelcomeMessage, getSubtitleMessage } from "@/utils/userTypeUtils";
 
 const KOLs = () => {
-  // Simulated user type - in real app, this would come from auth context
-  const userType: UserType = "kol";
-
   const kols = [
     {
       name: "Alex Johnson",
@@ -100,10 +96,10 @@ const KOLs = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-            {getWelcomeMessage(userType)}
+            Key Opinion Leaders
           </h1>
           <p className="text-muted-foreground">
-            {getSubtitleMessage(userType)}
+            Connect with top Vietnamese influencers for your brand campaigns
           </p>
 
           <KOLFilters />

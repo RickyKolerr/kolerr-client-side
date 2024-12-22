@@ -4,14 +4,30 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
-import { UserType, getWelcomeMessage, getSubtitleMessage } from "@/utils/userTypeUtils";
+
+// Define the user type
+type UserType = "kol" | "brand" | "agency";
 
 const SlotDashboard = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   
   // Simulated user type - in real app, this would come from auth context
-  const userType: UserType = "kol";
+  const userType: UserType = "kol"; // or "brand" or "agency"
+
+  const getWelcomeMessage = (userType: UserType): string => {
+    const name = "John Doe"; // This would come from auth context
+    switch (userType) {
+      case "kol":
+        return `Welcome, ${name}! Let's connect you to the perfect campaigns and grow your influence.`;
+      case "brand":
+        return `Welcome, ${name}! Ready to launch impactful campaigns?`;
+      case "agency":
+        return `Welcome, ${name}! Let's streamline your influencer marketing campaigns.`;
+      default:
+        return `Welcome, ${name}!`;
+    }
+  };
 
   const stats = [
     {
@@ -85,7 +101,9 @@ const SlotDashboard = () => {
             {getWelcomeMessage(userType)}
           </h1>
           <p className="text-muted-foreground mt-2">
-            {getSubtitleMessage(userType)}
+            {userType === "kol" 
+              ? "View and manage your campaign slots" 
+              : "Manage and track your campaign slots"}
           </p>
         </div>
         <Button
