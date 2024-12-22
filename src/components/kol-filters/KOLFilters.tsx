@@ -2,23 +2,30 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Filter, X } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { PrimaryFilters } from "./PrimaryFilters";
 import { AdvancedFilters } from "./AdvancedFilters";
 
-export const KOLFilters = () => {
+interface KOLFiltersProps {
+  onFilterChange: (filters: string[]) => void;
+}
+
+export const KOLFilters = ({ onFilterChange }: KOLFiltersProps) => {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [followerRange, setFollowerRange] = useState([0, 1000000]);
   const [engagementRange, setEngagementRange] = useState([0, 100]);
+  const [isPending, startTransition] = useTransition();
   
   const handleFilterChange = (filter: string) => {
-    if (activeFilters.includes(filter)) {
-      setActiveFilters(activeFilters.filter(f => f !== filter));
-    } else {
-      setActiveFilters([...activeFilters, filter]);
-    }
+    startTransition(() => {
+      const newFilters = activeFilters.includes(filter)
+        ? activeFilters.filter(f => f !== filter)
+        : [...activeFilters, filter];
+      
+      setActiveFilters(newFilters);
+      onFilterChange(newFilters);
+    });
   };
 
   return (
@@ -48,24 +55,6 @@ export const KOLFilters = () => {
               <Separator />
 
               <AdvancedFilters handleFilterChange={handleFilterChange} />
-
-              <Separator />
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Sort By</label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select sort order" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="followers-high">Followers (High to Low)</SelectItem>
-                    <SelectItem value="followers-low">Followers (Low to High)</SelectItem>
-                    <SelectItem value="engagement-high">Engagement (High to Low)</SelectItem>
-                    <SelectItem value="engagement-low">Engagement (Low to High)</SelectItem>
-                    <SelectItem value="relevance">Relevance</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
             </div>
           </SheetContent>
         </Sheet>

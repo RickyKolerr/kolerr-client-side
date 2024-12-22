@@ -1,94 +1,72 @@
+import { useState, useTransition } from 'react';
 import Navbar from "@/components/Navbar";
 import { KOLFilters } from "@/components/kol-filters/KOLFilters";
 import KOLCard from "@/components/KOLCard";
+import SearchBar from "@/components/SearchBar";
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from "@/integrations/supabase/client";
 
 const KOLs = () => {
-  const kols = [
-    {
-      name: "Alex Johnson",
-      image: "https://i.pravatar.cc/150?img=1",
-      followers: "1.2M",
-      engagement: "8.5%",
-      expertise: "Tech & Gaming",
-    },
-    {
-      name: "Sarah Lee",
-      image: "https://i.pravatar.cc/150?img=5",
-      followers: "980K",
-      engagement: "7.2%",
-      expertise: "Lifestyle & Fashion",
-    },
-    {
-      name: "Michael Brown",
-      image: "https://i.pravatar.cc/150?img=8",
-      followers: "1.5M",
-      engagement: "9.1%",
-      expertise: "Food & Travel",
-    },
-    {
-      name: "Linh Nguyen",
-      image: "https://i.pravatar.cc/150?img=10",
-      followers: "2.1M",
-      engagement: "10.2%",
-      expertise: "Beauty & Lifestyle",
-    },
-    {
-      name: "Minh Tran",
-      image: "https://i.pravatar.cc/150?img=12",
-      followers: "850K",
-      engagement: "8.9%",
-      expertise: "Technology Reviews",
-    },
-    {
-      name: "Hoa Pham",
-      image: "https://i.pravatar.cc/150?img=15",
-      followers: "1.8M",
-      engagement: "9.5%",
-      expertise: "Fashion & Beauty",
-    },
-    {
-      name: "Duc Le",
-      image: "https://i.pravatar.cc/150?img=20",
-      followers: "750K",
-      engagement: "11.2%",
-      expertise: "Gaming & Esports",
-    },
-    {
-      name: "Mai Thi",
-      image: "https://i.pravatar.cc/150?img=25",
-      followers: "1.3M",
-      engagement: "8.7%",
-      expertise: "Cooking & Lifestyle",
-    },
-    {
-      name: "Thanh Dao",
-      image: "https://i.pravatar.cc/150?img=30",
-      followers: "920K",
-      engagement: "9.8%",
-      expertise: "Travel & Culture",
-    },
-    {
-      name: "Anh Nguyen",
-      image: "https://i.pravatar.cc/150?img=35",
-      followers: "1.6M",
-      engagement: "7.9%",
-      expertise: "Business & Finance",
-    },
-    {
-      name: "Trang Le",
-      image: "https://i.pravatar.cc/150?img=40",
-      followers: "680K",
-      engagement: "12.3%",
-      expertise: "Health & Fitness",
-    },
-    {
-      name: "Hung Vu",
-      image: "https://i.pravatar.cc/150?img=45",
-      followers: "1.1M",
-      engagement: "8.4%",
-      expertise: "Education & Career",
-    },
-  ];
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState('popularity');
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const [isPending, startTransition] = useTransition();
+
+  const { data: kols, isLoading } = useQuery({
+    queryKey: ['kols', searchQuery, sortBy, activeFilters],
+    queryFn: async () => {
+      let query = supabase
+        .from('profiles')
+        .select('*')
+        .eq('role', 'kol');
+
+      if (searchQuery) {
+        query = query.ilike('username', `%${searchQuery}%`);
+      }
+
+      if (activeFilters.length > 0) {
+        query = query.contains('categories', activeFilters);
+      }
+
+      switch (sortBy) {
+        case 'followers':
+          query = query.order('follower_count', { ascending: false });
+          break;
+        case 'engagement':
+          query = query.order('engagement_rate', { ascending: false });
+          break;
+        default:
+          query = query.order('follower_count', { ascending: false });
+      }
+
+      const { data, error } = await query;
+      
+      if (error) {
+        console.error('Error fetching KOLs:', error);
+        throw error;
+      }
+
+      return data || [];
+    }
+  });
+
+  const handleSearch = (query: string) => {
+    startTransition(() => {
+      setSearchQuery(query);
+    });
+  };
+
+  const handleSort = (value: string) => {
+    startTransition(() => {
+      setSortBy(value);
+    });
+  };
+
+  const handleFilterChange = (filters: string[]) => {
+    startTransition(() => {
+      setActiveFilters(filters);
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -102,19 +80,33 @@ const KOLs = () => {
             Connect with top Vietnamese influencers for your brand campaigns
           </p>
 
-          <KOLFilters />
+          <SearchBar 
+            onSearch={handleSearch}
+            onSort={handleSort}
+            sortBy={sortBy}
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {kols.map((kol) => (
-              <KOLCard
-                key={kol.name}
-                name={kol.name}
-                image={kol.image}
-                followers={kol.followers}
-                engagement={kol.engagement}
-              />
-            ))}
-          </div>
+          <KOLFilters onFilterChange={handleFilterChange} />
+
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="h-64 bg-gray-800 animate-pulse rounded-lg"></div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {kols?.map((kol) => (
+                <KOLCard
+                  key={kol.id}
+                  name={kol.username || 'Anonymous'}
+                  image={kol.avatar_url || 'https://i.pravatar.cc/150'}
+                  followers={kol.follower_count?.toString() || '0'}
+                  engagement={`${kol.engagement_rate || 0}%`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
