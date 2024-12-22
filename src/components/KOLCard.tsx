@@ -6,9 +6,10 @@ interface KOLCardProps {
   image: string;
   followers: string;
   engagement: string;
+  expertise?: string;
 }
 
-const KOLCard = ({ name, image, followers, engagement }: KOLCardProps) => {
+const KOLCard = ({ name, image, followers, engagement, expertise }: KOLCardProps) => {
   return (
     <Card className="overflow-hidden bg-white shadow-lg transition-transform hover:scale-105">
       <div className="p-6 text-center">
@@ -19,6 +20,7 @@ const KOLCard = ({ name, image, followers, engagement }: KOLCardProps) => {
         <div className="mb-4 space-y-2 text-sm text-gray-600">
           <p>Followers: {followers}</p>
           <p>Engagement: {engagement}</p>
+          {expertise && <p>Expertise: {expertise}</p>}
         </div>
         <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:opacity-90">
           Partnership Details
