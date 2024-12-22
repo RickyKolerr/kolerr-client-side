@@ -170,42 +170,5 @@ export const vi = {
   "payment.select": "Chọn Phương Thức Thanh Toán",
 
   // Checkout
-  "checkout.selectedPlan": "Gói đã chọn",
-
-  // Landing Page
-  "landing.hero.title": "Kết Nối với KOL Hàng Đầu Việt Nam Thông Qua Công Nghệ AI",
-  "landing.hero.subtitle": "Triển khai chiến dịch thành công với phân tích dữ liệu thời gian thực. Tham gia cùng hàng nghìn thương hiệu và người có tầm ảnh hưởng đang phát triển với Kolerr.",
-  "landing.hero.cta.start": "Dùng Thử Miễn Phí",
-  "landing.hero.cta.demo": "Xem Demo",
-  "landing.hero.stats.kols": "KOL Đang Hoạt Động",
-  "landing.hero.stats.reach": "Tổng Lượt Tiếp Cận",
-  "landing.hero.stats.campaigns": "Chiến Dịch",
-  "landing.hero.stats.success": "Tỷ Lệ Thành Công",
-
-  "landing.features.title": "Tính Năng Mạnh Mẽ Cho Sự Phát Triển",
-  "landing.features.ai.title": "Kết Nối Thông Minh AI",
-  "landing.features.ai.desc": "Kết nối với KOL hoặc thương hiệu phù hợp dựa trên dữ liệu thời gian thực và thuật toán AI.",
-  "landing.features.campaign.title": "Quản Lý Chiến Dịch Thời Gian Thực",
-  "landing.features.campaign.desc": "Theo dõi và tối ưu hóa chiến dịch với phân tích và thông tin chi tiết.",
-  "landing.features.booking.title": "Đặt Lịch Tức Thì",
-  "landing.features.booking.desc": "Đặt lịch chiến dịch ngay lập tức và quản lý lịch nội dung hiệu quả.",
-  "landing.features.analytics.title": "Phân Tích Thông Minh",
-  "landing.features.analytics.desc": "Ra quyết định dựa trên dữ liệu với phân tích và theo dõi hiệu suất nâng cao.",
-
-  "landing.testimonials.title": "Khách Hàng Nói Gì Về Chúng Tôi",
-  "landing.testimonials.role.director": "Giám Đốc Marketing",
-  "landing.testimonials.role.creator": "Người Sáng Tạo Nội Dung",
-  "landing.testimonials.role.manager": "Quản Lý Thương Hiệu",
-
-  "landing.trusted.title": "Được Tin Dùng Bởi Các Thương Hiệu Hàng Đầu",
-
-  "landing.contact.title": "Liên Hệ Với Chúng Tôi",
-  "landing.contact.visit": "Địa Chỉ",
-  "landing.contact.email": "Email",
-  "landing.contact.call": "Điện Thoại",
-  "landing.contact.form.name": "Họ Tên",
-  "landing.contact.form.email": "Email",
-  "landing.contact.form.subject": "Tiêu Đề",
-  "landing.contact.form.message": "Nội Dung",
-  "landing.contact.form.send": "Gửi Tin Nhắn",
+  "checkout.selectedPlan": "Gói đã chọn"
 };
