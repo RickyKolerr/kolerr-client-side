@@ -3,7 +3,8 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, TrendingUp, Users, Star, DollarSign, TrendingDown, BarChart3, Calendar } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search, TrendingUp, Users, Star, DollarSign, TrendingDown, BarChart3, Calendar, Filter, SlidersHorizontal } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { CampaignFilters } from "./CampaignFilters";
@@ -21,7 +22,8 @@ export function BrandDashboard() {
       deadline: "2024-04-15",
       budget: "$15,000",
       engagement: "12.5K",
-      roi: "+15.2%"
+      roi: "+15.2%",
+      category: "Fashion"
     },
     {
       id: 2,
@@ -32,8 +34,45 @@ export function BrandDashboard() {
       deadline: "2024-04-20",
       budget: "$8,000",
       engagement: "5.2K",
-      roi: "+8.7%"
+      roi: "+8.7%",
+      category: "Technology"
     },
+    {
+      id: 3,
+      name: "Beauty Influencer Series",
+      status: "Active",
+      progress: 60,
+      kols: 8,
+      deadline: "2024-05-01",
+      budget: "$20,000",
+      engagement: "18.3K",
+      roi: "+20.5%",
+      category: "Beauty"
+    },
+    {
+      id: 4,
+      name: "Food & Lifestyle Blog",
+      status: "Active",
+      progress: 45,
+      kols: 4,
+      deadline: "2024-04-25",
+      budget: "$10,000",
+      engagement: "8.7K",
+      roi: "+12.3%",
+      category: "Lifestyle"
+    },
+    {
+      id: 5,
+      name: "Gaming Stream Event",
+      status: "Pending",
+      progress: 15,
+      kols: 6,
+      deadline: "2024-05-10",
+      budget: "$25,000",
+      engagement: "22.1K",
+      roi: "+18.9%",
+      category: "Gaming"
+    }
   ];
 
   const metrics = [
@@ -96,8 +135,6 @@ export function BrandDashboard() {
         </div>
       </div>
 
-      <CampaignFilters />
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {metrics.map((metric, index) => (
           <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -127,21 +164,47 @@ export function BrandDashboard() {
       </div>
 
       <div className="space-y-6">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <h2 className="text-2xl font-semibold">Active Campaigns</h2>
-          <Button variant="outline" size="sm">
-            <BarChart3 className="h-4 w-4 mr-2" />
-            View All
-          </Button>
+          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
+            <Select defaultValue="all">
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Filter by Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Campaigns</SelectItem>
+                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="pending">Pending</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select defaultValue="all">
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Sort by" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Default</SelectItem>
+                <SelectItem value="progress">Progress</SelectItem>
+                <SelectItem value="budget">Budget</SelectItem>
+                <SelectItem value="roi">ROI</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="icon">
+              <SlidersHorizontal className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
+
         <div className="grid gap-6">
           {activeCampaigns.map((campaign) => (
             <Card key={campaign.id} className="hover:shadow-lg transition-shadow">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <div className="space-y-1">
-                  <CardTitle className="text-xl font-semibold">
-                    {campaign.name}
-                  </CardTitle>
+                  <div className="flex items-center gap-2">
+                    <CardTitle className="text-xl font-semibold">
+                      {campaign.name}
+                    </CardTitle>
+                    <Badge variant="outline">{campaign.category}</Badge>
+                  </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
                     <span>Deadline: {campaign.deadline}</span>
@@ -161,20 +224,20 @@ export function BrandDashboard() {
                     <span>{campaign.progress}%</span>
                   </div>
                   <Progress value={campaign.progress} className="h-2" />
-                  <div className="grid grid-cols-4 gap-4 pt-4">
-                    <div className="text-center p-2 bg-background rounded-lg">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
                       <p className="text-sm text-muted-foreground">KOLs</p>
                       <p className="font-semibold">{campaign.kols}</p>
                     </div>
-                    <div className="text-center p-2 bg-background rounded-lg">
+                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
                       <p className="text-sm text-muted-foreground">Budget</p>
                       <p className="font-semibold">{campaign.budget}</p>
                     </div>
-                    <div className="text-center p-2 bg-background rounded-lg">
+                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
                       <p className="text-sm text-muted-foreground">Engagement</p>
                       <p className="font-semibold">{campaign.engagement}</p>
                     </div>
-                    <div className="text-center p-2 bg-background rounded-lg">
+                    <div className="text-center p-3 bg-background rounded-lg hover:bg-accent transition-colors">
                       <p className="text-sm text-muted-foreground">ROI</p>
                       <p className="font-semibold text-green-500">{campaign.roi}</p>
                     </div>
