@@ -58,11 +58,6 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -72,10 +67,22 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "glow": {
+          "0%": {
+            "box-shadow": "0 0 5px rgb(0 245 255 / 0.5), 0 0 10px rgb(156 39 176 / 0.5), 0 0 15px rgb(255 87 34 / 0.5)",
+          },
+          "50%": {
+            "box-shadow": "0 0 10px rgb(0 245 255 / 0.7), 0 0 20px rgb(156 39 176 / 0.7), 0 0 30px rgb(255 87 34 / 0.7)",
+          },
+          "100%": {
+            "box-shadow": "0 0 5px rgb(0 245 255 / 0.5), 0 0 10px rgb(156 39 176 / 0.5), 0 0 15px rgb(255 87 34 / 0.5)",
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "glow": "glow 2s ease-in-out infinite",
       },
     },
   },
