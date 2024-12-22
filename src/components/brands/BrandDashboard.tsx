@@ -179,3 +179,6 @@ export function BrandDashboard() {
     </div>
   );
 }
+```
+
+The key change here is adding `as const` to each `trend` property in the metrics array. This tells TypeScript that these values are literal types ("up" or "down") rather than just strings, which matches the `MetricCardProps` interface's requirements.
