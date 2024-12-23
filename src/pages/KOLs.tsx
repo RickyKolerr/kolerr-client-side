@@ -10,6 +10,11 @@ const KOLs = () => {
       followers: "1.2M",
       engagement: "8.5%",
       expertise: "Tech & Gaming",
+      socialLinks: [
+        { platform: "youtube", url: "https://youtube.com/techalex" },
+        { platform: "twitter", url: "https://twitter.com/techalex" },
+        { platform: "instagram", url: "https://instagram.com/techalex" }
+      ]
     },
     {
       name: "Sarah Lee",
@@ -108,10 +113,7 @@ const KOLs = () => {
             {kols.map((kol) => (
               <KOLCard
                 key={kol.name}
-                name={kol.name}
-                image={kol.image}
-                followers={kol.followers}
-                engagement={kol.engagement}
+                {...kol}
               />
             ))}
           </div>

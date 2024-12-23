@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { SocialLinksBar } from "@/components/social/SocialLinksBar";
+import { Facebook, Instagram, Youtube, Twitter, Linkedin } from "lucide-react";
+
+interface SocialLink {
+  platform: string;
+  url: string;
+}
 
 interface KOLCardProps {
   name: string;
@@ -8,9 +13,18 @@ interface KOLCardProps {
   followers: string;
   engagement: string;
   expertise?: string;
+  socialLinks?: SocialLink[];
 }
 
-const KOLCard = ({ name, image, followers, engagement, expertise }: KOLCardProps) => {
+const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }: KOLCardProps) => {
+  const platformIcons = {
+    facebook: <Facebook className="h-4 w-4" />,
+    instagram: <Instagram className="h-4 w-4" />,
+    youtube: <Youtube className="h-4 w-4" />,
+    twitter: <Twitter className="h-4 w-4" />,
+    linkedin: <Linkedin className="h-4 w-4" />
+  };
+
   return (
     <Card className="overflow-hidden bg-white shadow-lg transition-transform hover:scale-105">
       <div className="p-6 text-center">
@@ -23,9 +37,23 @@ const KOLCard = ({ name, image, followers, engagement, expertise }: KOLCardProps
           <p>Engagement: {engagement}</p>
           {expertise && <p>Expertise: {expertise}</p>}
         </div>
-        <div className="mb-4">
-          <SocialLinksBar />
-        </div>
+        {socialLinks && socialLinks.length > 0 && (
+          <div className="mb-4">
+            <div className="flex justify-center gap-3">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  {platformIcons[link.platform as keyof typeof platformIcons]}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
         <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:opacity-90">
           Partnership Details
         </Button>
