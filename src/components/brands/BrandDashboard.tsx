@@ -15,7 +15,7 @@ export function BrandDashboard() {
     {
       id: 1,
       name: "Summer Fashion Collection",
-      status: "Active",
+      status: "Active" as const,
       progress: 75,
       kols: 5,
       deadline: "2024-04-15",
@@ -41,7 +41,7 @@ export function BrandDashboard() {
     {
       id: 2,
       name: "Tech Product Launch",
-      status: "Pending",
+      status: "Pending" as const,
       progress: 30,
       kols: 3,
       deadline: "2024-04-20",
@@ -54,7 +54,7 @@ export function BrandDashboard() {
     {
       id: 3,
       name: "Beauty Influencer Series",
-      status: "Active",
+      status: "Active" as const,
       progress: 60,
       kols: 8,
       deadline: "2024-05-01",
@@ -67,7 +67,7 @@ export function BrandDashboard() {
     {
       id: 4,
       name: "Food & Lifestyle Blog",
-      status: "Active",
+      status: "Active" as const,
       progress: 45,
       kols: 4,
       deadline: "2024-04-25",
@@ -80,7 +80,7 @@ export function BrandDashboard() {
     {
       id: 5,
       name: "Gaming Stream Event",
-      status: "Pending",
+      status: "Pending" as const,
       progress: 15,
       kols: 6,
       deadline: "2024-05-10",
