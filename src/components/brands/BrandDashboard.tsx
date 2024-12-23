@@ -4,7 +4,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { MetricsOverview } from "./dashboard/MetricsOverview";
 import { CampaignsList } from "./dashboard/CampaignsList";
-import { SlotManagement } from "./dashboard/SlotManagement";
 import { useState } from "react";
 
 export function BrandDashboard() {
@@ -119,7 +118,6 @@ export function BrandDashboard() {
 
       <MetricsOverview />
       <CampaignsList campaigns={activeCampaigns} />
-      <SlotManagement />
     </div>
   );
 }

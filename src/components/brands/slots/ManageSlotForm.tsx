@@ -6,32 +6,30 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, DollarSign, Users } from "lucide-react";
-import { Slot } from "@/types/campaign";
 
 interface ManageSlotFormProps {
-  slot?: Slot;
+  campaignId: number;
   onClose?: () => void;
 }
 
-export const ManageSlotForm = ({ slot, onClose }: ManageSlotFormProps) => {
+export const ManageSlotForm = ({ campaignId, onClose }: ManageSlotFormProps) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    title: slot?.title || "",
-    requirements: slot?.requirements || "",
-    deadline: slot?.deadline || "",
-    budget: slot?.budget || "",
-    maxKols: slot?.maxKols || 1,
-    status: slot?.status || "Open"
+    title: "",
+    requirements: "",
+    deadline: "",
+    budget: "",
+    maxKols: 1,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically make an API call to update the slot
-    console.log("Submitting slot data:", formData);
+    // Here you would typically make an API call to create the slot
+    console.log("Submitting slot data:", { ...formData, campaignId });
     
     toast({
       title: "Success",
-      description: slot ? "Slot updated successfully" : "Slot created successfully",
+      description: "Slot created successfully",
     });
 
     if (onClose) {
@@ -40,9 +38,9 @@ export const ManageSlotForm = ({ slot, onClose }: ManageSlotFormProps) => {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="w-full">
       <CardHeader>
-        <CardTitle>{slot ? "Edit Slot" : "Create New Slot"}</CardTitle>
+        <CardTitle>Create New Slot</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -123,7 +121,7 @@ export const ManageSlotForm = ({ slot, onClose }: ManageSlotFormProps) => {
               </Button>
             )}
             <Button type="submit">
-              {slot ? "Update Slot" : "Create Slot"}
+              Create Slot
             </Button>
           </div>
         </form>

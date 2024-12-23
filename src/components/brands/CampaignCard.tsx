@@ -4,14 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, Users } from "lucide-react";
 import { Campaign } from "@/types/campaign";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ManageSlotForm } from "./slots/ManageSlotForm";
 
 interface CampaignCardProps {
   campaign: Campaign;
 }
 
 export const CampaignCard = ({ campaign }: CampaignCardProps) => {
-  const navigate = useNavigate();
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const totalSlots = campaign.slots?.length || 0;
   const filledSlots = campaign.slots?.filter(slot => slot.status === "Filled").length || 0;
 
@@ -81,12 +83,21 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
         <Button 
           variant="outline" 
           className="w-full"
-          onClick={() => navigate(`/brands/campaigns/${campaign.id}/slots`)}
+          onClick={() => setIsFormOpen(true)}
         >
           <Users className="h-4 w-4 mr-2" />
           Manage Slots
         </Button>
       </CardContent>
+
+      <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+        <DialogContent className="max-w-3xl">
+          <ManageSlotForm 
+            campaignId={campaign.id}
+            onClose={() => setIsFormOpen(false)}
+          />
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 };
