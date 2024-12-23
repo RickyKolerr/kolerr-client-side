@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { calculateMatchScore, getMatchLevel, getMatchColor } from "@/utils/matchmaking";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { SocialLinksBar } from "@/components/social/SocialLinksBar";
 
 interface SlotRecommendationProps {
   slot: Slot;
@@ -114,6 +115,8 @@ export const SlotRecommendation = ({ slot }: SlotRecommendationProps) => {
             {slot.collaborators || 0}/{slot.maxCollaborators || 3} Collaborators
           </span>
         </div>
+
+        <SocialLinksBar />
 
         <div className="flex justify-between gap-2">
           <Button 

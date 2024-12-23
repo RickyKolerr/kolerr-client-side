@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { ContractForm } from "@/components/contracts/ContractForm";
-import { SocialLinksBar } from "@/components/social/SocialLinksBar";
 import { ContractHandleBar } from "@/components/contracts/ContractHandleBar";
 
 const Communication = () => {
@@ -17,8 +16,7 @@ const Communication = () => {
             <ChatWindow />
             <ContractForm />
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <SocialLinksBar />
+          <div>
             <ContractHandleBar />
           </div>
         </div>

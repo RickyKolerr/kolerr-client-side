@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SocialLinksBar } from "@/components/social/SocialLinksBar";
 
 interface KOLCardProps {
   name: string;
@@ -21,6 +22,9 @@ const KOLCard = ({ name, image, followers, engagement, expertise }: KOLCardProps
           <p>Followers: {followers}</p>
           <p>Engagement: {engagement}</p>
           {expertise && <p>Expertise: {expertise}</p>}
+        </div>
+        <div className="mb-4">
+          <SocialLinksBar />
         </div>
         <Button className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:opacity-90">
           Partnership Details
