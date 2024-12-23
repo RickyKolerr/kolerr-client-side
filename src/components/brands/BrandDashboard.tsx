@@ -22,7 +22,21 @@ export function BrandDashboard() {
       budget: "$15,000",
       engagement: "12.5K",
       roi: "+15.2%",
-      category: "Fashion"
+      category: "Fashion",
+      slots: [
+        {
+          id: 1,
+          campaignId: 1,
+          title: "Fashion Influencer",
+          requirements: "Min 50k followers, Fashion/Lifestyle niche",
+          deadline: "2024-04-15",
+          budget: "$3,000",
+          applicants: 12,
+          status: "Open",
+          maxKols: 3,
+          currentKols: 1
+        }
+      ]
     },
     {
       id: 2,
@@ -34,7 +48,8 @@ export function BrandDashboard() {
       budget: "$8,000",
       engagement: "5.2K",
       roi: "+8.7%",
-      category: "Technology"
+      category: "Technology",
+      slots: []
     },
     {
       id: 3,
@@ -46,7 +61,8 @@ export function BrandDashboard() {
       budget: "$20,000",
       engagement: "18.3K",
       roi: "+20.5%",
-      category: "Beauty"
+      category: "Beauty",
+      slots: []
     },
     {
       id: 4,
@@ -58,7 +74,8 @@ export function BrandDashboard() {
       budget: "$10,000",
       engagement: "8.7K",
       roi: "+12.3%",
-      category: "Lifestyle"
+      category: "Lifestyle",
+      slots: []
     },
     {
       id: 5,
@@ -70,7 +87,8 @@ export function BrandDashboard() {
       budget: "$25,000",
       engagement: "22.1K",
       roi: "+18.9%",
-      category: "Gaming"
+      category: "Gaming",
+      slots: []
     }
   ];
 
