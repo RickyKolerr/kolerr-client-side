@@ -182,6 +182,26 @@ export function BrandDashboard() {
           ))}
         </div>
       </div>
+      <style>
+        {`
+          .gradient-border {
+            position: relative;
+            border: none;
+          }
+          .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 0.75rem;
+            padding: 1px;
+            background: linear-gradient(to right, #00F5FF, #9C27B0, #FF5722);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+          }
+        `}
+      </style>
     </div>
   );
 }
