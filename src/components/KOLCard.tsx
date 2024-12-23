@@ -29,37 +29,33 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
   };
 
   return (
-    <Card className="group relative overflow-hidden bg-white transition-all duration-300 hover:shadow-xl">
-      {/* Background gradient overlay */}
+    <Card className="group relative overflow-hidden bg-white card-hover animate-fade-in">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       
       <div className="relative p-6">
-        {/* Profile section */}
         <div className="relative mb-6 flex items-center gap-4">
-          <div className="relative h-20 w-20 overflow-hidden rounded-xl ring-2 ring-kolerr-purple/20">
+          <div className="relative h-20 w-20 overflow-hidden rounded-xl gradient-border">
             <img src={image} alt={name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
           </div>
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+            <h3 className="text-xl font-bold gradient-text">{name}</h3>
             {expertise && (
-              <p className="text-sm text-gray-600">{expertise}</p>
+              <p className="text-sm text-muted-foreground">{expertise}</p>
             )}
           </div>
         </div>
 
-        {/* Stats section */}
         <div className="mb-6 grid grid-cols-2 gap-4">
-          <div className="rounded-lg bg-gray-50 p-3 text-center">
-            <p className="text-sm text-gray-600">Followers</p>
-            <p className="text-lg font-bold text-gray-900">{followers}</p>
+          <div className="rounded-lg bg-background p-3 text-center hover-scale">
+            <p className="text-sm text-muted-foreground">Followers</p>
+            <p className="text-lg font-bold gradient-text">{followers}</p>
           </div>
-          <div className="rounded-lg bg-gray-50 p-3 text-center">
-            <p className="text-sm text-gray-600">Engagement</p>
-            <p className="text-lg font-bold text-gray-900">{engagement}</p>
+          <div className="rounded-lg bg-background p-3 text-center hover-scale">
+            <p className="text-sm text-muted-foreground">Engagement</p>
+            <p className="text-lg font-bold gradient-text">{engagement}</p>
           </div>
         </div>
 
-        {/* Social links */}
         {socialLinks && socialLinks.length > 0 && (
           <div className="mb-6">
             <div className="flex justify-center gap-3">
@@ -69,10 +65,10 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/icon relative rounded-lg bg-gradient-to-br from-kolerr-cyan via-kolerr-purple to-kolerr-orange p-[1px] transition-all hover:scale-110"
+                  className="group/icon relative gradient-border hover-scale"
                 >
                   <div className="rounded-lg bg-white p-2 transition-colors group-hover/icon:bg-transparent">
-                    <span className="text-gray-600 transition-colors group-hover/icon:text-white">
+                    <span className="text-muted-foreground transition-colors group-hover/icon:text-white">
                       {platformIcons[link.platform as keyof typeof platformIcons]}
                     </span>
                   </div>
@@ -82,11 +78,8 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
           </div>
         )}
 
-        {/* Action button */}
         <Button 
-          className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white 
-                     transition-all duration-300 hover:scale-105 hover:opacity-90
-                     hover:shadow-[0_0_20px_rgba(0,245,255,0.3)]"
+          className="w-full gradient-bg text-white hover-scale"
         >
           View Profile
         </Button>
