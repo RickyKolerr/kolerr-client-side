@@ -8,6 +8,13 @@ export interface CampaignInsight {
   recommendation?: string;
 }
 
+export interface PerformanceMetrics {
+  engagement: number;
+  reach: number;
+  conversion: number;
+  roi: number;
+}
+
 export const analyzeCampaignPerformance = (campaign: Campaign): CampaignInsight[] => {
   const insights: CampaignInsight[] = [];
   
@@ -35,36 +42,26 @@ export const analyzeCampaignPerformance = (campaign: Campaign): CampaignInsight[
   return insights;
 };
 
-export const recommendKOLsForCampaign = (campaign: Campaign, availableKOLs: KOL[]): KOL[] => {
+export const recommendKOLsForCampaign = (
+  campaign: Campaign, 
+  availableKOLs: KOL[], 
+  performanceHistory: Map<string, PerformanceMetrics>
+): KOL[] => {
   return availableKOLs
     .filter(kol => {
-      // Basic filtering
       const meetsFollowerRequirement = kol.followers >= campaign.minFollowers;
       const matchesCategory = campaign.categories.includes(kol.expertise);
       const withinBudget = kol.averageRate <= campaign.maxBudgetPerKOL;
       
       return meetsFollowerRequirement && matchesCategory && withinBudget;
     })
-    .sort((a, b) => {
-      // Score based on multiple factors
-      const getKOLScore = (kol: KOL) => {
-        let score = 0;
-        
-        // Engagement rate weight
-        score += (kol.engagement || 0) * 0.4;
-        
-        // Rating weight
-        score += (kol.rating || 0) * 0.3;
-        
-        // Previous campaign success weight
-        score += (kol.successfulCampaigns || 0) * 0.3;
-        
-        return score;
-      };
-      
-      return getKOLScore(b) - getKOLScore(a);
+    .map(kol => {
+      // Calculate KOL score based on performance history
+      const performanceScore = calculatePerformanceScore(kol, performanceHistory);
+      return { ...kol, score: performanceScore };
     })
-    .slice(0, 10); // Return top 10 matches
+    .sort((a, b) => (b.score || 0) - (a.score || 0))
+    .slice(0, 10);
 };
 
 const calculateBudgetUtilization = (campaign: Campaign): number => {
@@ -74,4 +71,27 @@ const calculateBudgetUtilization = (campaign: Campaign): number => {
   }, 0);
   
   return usedBudget / totalBudget;
+};
+
+const calculatePerformanceScore = (
+  kol: KOL, 
+  performanceHistory: Map<string, PerformanceMetrics>
+): number => {
+  const history = performanceHistory.get(kol.id.toString());
+  if (!history) return 0;
+
+  // Weight different metrics based on importance
+  const weights = {
+    engagement: 0.4,
+    reach: 0.2,
+    conversion: 0.3,
+    roi: 0.1
+  };
+
+  return (
+    history.engagement * weights.engagement +
+    history.reach * weights.reach +
+    history.conversion * weights.conversion +
+    history.roi * weights.roi
+  );
 };
