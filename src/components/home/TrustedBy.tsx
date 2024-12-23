@@ -9,66 +9,82 @@ const TrustedBy = () => {
     "The Coffee House", "Highlands Coffee"
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <section className="relative py-20">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+    <section className="relative py-16 overflow-hidden">
+      {/* Glassmorphism background */}
+      <div className="absolute inset-0 bg-black/5 backdrop-blur-sm" />
+      
+      {/* Gradient border top */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-kolerr-cyan/50 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.h2 
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center space-y-6 mb-12"
+          className="text-center text-lg font-medium tracking-wider gradient-text mb-12"
         >
-          <h2 className="text-2xl md:text-3xl font-bold gradient-text">
-            Trusted by Industry Leaders
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            Join the growing network of successful brands leveraging our platform
-          </p>
-        </motion.div>
+          TRUSTED BY LEADING BRANDS IN VIETNAM
+        </motion.h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center"
+        >
           {brands.map((brand, index) => (
             <motion.div
-              key={brand}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut"
+              key={index}
+              variants={itemVariants}
+              whileHover={{ 
+                scale: 1.05,
+                filter: "brightness(1.2)",
+                transition: { duration: 0.2 }
               }}
-              whileHover={{ scale: 1.05 }}
-              className="group"
+              className="group relative"
             >
-              <div className="relative p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm
-                            hover:bg-white/10 hover:border-kolerr-cyan/30 transition-all duration-300
-                            hover:shadow-[0_0_30px_rgba(0,245,255,0.1)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-kolerr-cyan/0 to-kolerr-purple/0 
-                              group-hover:from-kolerr-cyan/5 group-hover:to-kolerr-purple/5 
-                              rounded-xl transition-all duration-300" />
-                <h3 className="relative text-lg font-medium text-center text-foreground/70 
-                             group-hover:text-foreground transition-colors duration-300">
+              {/* Gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-kolerr-cyan/0 via-kolerr-purple/0 to-kolerr-orange/0 
+                            group-hover:from-kolerr-cyan/10 group-hover:via-kolerr-purple/10 group-hover:to-kolerr-orange/10 
+                            rounded-lg transition-all duration-300" />
+              
+              {/* Glass card effect */}
+              <div className="relative px-6 py-3 rounded-lg glass-effect">
+                <span className="text-lg font-medium text-foreground/60 group-hover:text-foreground/90 transition-colors duration-300">
                   {brand}
-                </h3>
+                </span>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-sm text-foreground/40">
-            And many more companies trust Kolerr for their influencer marketing needs
-          </p>
         </motion.div>
       </div>
+      
+      {/* Gradient border bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-kolerr-orange/50 to-transparent" />
     </section>
   );
 };
