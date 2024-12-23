@@ -25,7 +25,7 @@ const FeaturesSection = () => {
       title: "landing.features.analytics.title",
       description: "landing.features.analytics.desc"
     }
-  ];
+  ] as const; // Make the array readonly to ensure type safety
 
   return (
     <section className="py-20 bg-card">

@@ -6,6 +6,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const HeroSection = () => {
   const { t } = useLanguage();
 
+  const stats = [
+    { number: "10K+", label: "landing.hero.stats.kols" },
+    { number: "50M+", label: "landing.hero.stats.reach" },
+    { number: "1000+", label: "landing.hero.stats.campaigns" },
+    { number: "95%", label: "landing.hero.stats.success" }
+  ] as const; // Make the array readonly to ensure type safety
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-background to-background/80 py-20">
       <div className="container mx-auto px-4">
@@ -44,12 +51,7 @@ const HeroSection = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 text-center">
-            {[
-              { number: "10K+", label: "landing.hero.stats.kols" },
-              { number: "50M+", label: "landing.hero.stats.reach" },
-              { number: "1000+", label: "landing.hero.stats.campaigns" },
-              { number: "95%", label: "landing.hero.stats.success" }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <div key={index} className="space-y-2">
                 <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-kolerr-cyan to-kolerr-purple bg-clip-text text-transparent">
                   {stat.number}

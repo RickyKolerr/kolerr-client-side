@@ -29,7 +29,7 @@ const AvailableSlots = () => {
       id: 1,
       title: "Fashion Spring Collection",
       brand: "StyleHub",
-      status: "Open",
+      status: "Open" as const, // Explicitly type as "Open"
       deadline: "2024-04-01",
       requirements: "2 Instagram posts, 1 Story",
       budget: "$1,500",
@@ -44,7 +44,7 @@ const AvailableSlots = () => {
       title: "Tech Review Series",
       brand: "TechGiant",
       deadline: "2024-04-15",
-      status: "Open",
+      status: "Open" as const, // Explicitly type as "Open"
       requirements: "Tech niche focus",
       budget: "$2,000",
       category: "Technology",
