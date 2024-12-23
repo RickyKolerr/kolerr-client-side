@@ -4,7 +4,6 @@ import { careersRoutes } from "./careersRoutes";
 import { supportRoutes } from "./supportRoutes";
 import { salesRoutes } from "./salesRoutes";
 import { pressRoutes } from "./pressRoutes";
-export { AppRoutes } from "./AppRoutes";
 
 export const routes = [
   ...mainRoutes,
