@@ -32,7 +32,7 @@ export function BrandDashboard() {
           deadline: "2024-04-15",
           budget: "$3,000",
           applicants: 12,
-          status: "Open",
+          status: "Open" as const,
           maxKols: 3,
           currentKols: 1
         }
