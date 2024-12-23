@@ -15,27 +15,45 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
   const totalSlots = campaign.slots?.length || 0;
   const filledSlots = campaign.slots?.filter(slot => slot.status === "Filled").length || 0;
 
+  const campaignBackgrounds = {
+    "Fashion": "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    "Tech": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    "Beauty": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    "default": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+  };
+
+  const backgroundImage = campaignBackgrounds[campaign.category as keyof typeof campaignBackgrounds] || campaignBackgrounds.default;
+
   return (
-    <Card className="hover:shadow-lg transition-shadow">
-      <CardHeader className="flex flex-col">
-        <div className="flex items-start justify-between">
-          <div className="space-y-1">
-            <CardTitle className="text-lg font-semibold line-clamp-2">
-              {campaign.name}
-            </CardTitle>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="outline">{campaign.category}</Badge>
-              <Badge
-                variant={campaign.status === "Active" ? "default" : "secondary"}
-                className={campaign.status === "Active" ? "bg-green-500" : ""}
-              >
-                {campaign.status}
-              </Badge>
+    <Card className="hover:shadow-lg transition-shadow overflow-hidden">
+      <div 
+        className="h-32 w-full bg-cover bg-center"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(${backgroundImage})` 
+        }}
+      >
+        <CardHeader className="flex flex-col h-full">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <CardTitle className="text-lg font-semibold line-clamp-2 text-white">
+                {campaign.name}
+              </CardTitle>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="outline" className="bg-white/10 text-white border-white/20">
+                  {campaign.category}
+                </Badge>
+                <Badge
+                  variant={campaign.status === "Active" ? "default" : "secondary"}
+                  className={campaign.status === "Active" ? "bg-green-500" : ""}
+                >
+                  {campaign.status}
+                </Badge>
+              </div>
             </div>
           </div>
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-4">
+        </CardHeader>
+      </div>
+      <CardContent className="space-y-4 pt-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Calendar className="h-4 w-4" />
           <span>Deadline: {campaign.deadline}</span>

@@ -16,6 +16,15 @@ interface SlotRecommendationProps {
 export const SlotRecommendation = ({ slot }: SlotRecommendationProps) => {
   const { toast } = useToast();
 
+  const slotBackgrounds = {
+    "Fashion": "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b",
+    "Tech": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "Beauty": "https://images.unsplash.com/photo-1504893524553-b855bce32c67",
+    "default": "https://images.unsplash.com/photo-1469474968028-56623f02e42e"
+  };
+
+  const backgroundImage = slotBackgrounds[slot.category as keyof typeof slotBackgrounds] || slotBackgrounds.default;
+
   // Mock KOL profile - in real app, this would come from auth context
   const mockKolProfile = {
     categories: [slot.category],
@@ -48,47 +57,54 @@ export const SlotRecommendation = ({ slot }: SlotRecommendationProps) => {
   };
 
   return (
-    <Card className={`hover:shadow-lg transition-shadow ${slot.isFeatured ? 'border-kolerr-purple' : ''}`}>
-      <CardHeader>
-        <div className="flex justify-between items-start">
-          <div>
-            <CardTitle className="text-xl">{slot.title}</CardTitle>
-            <p className="text-sm text-muted-foreground mt-1">{slot.brand}</p>
-          </div>
-          <div className="flex gap-2">
-            <Tooltip>
-              <TooltipTrigger>
-                <Badge className={matchColor}>
-                  {matchScore.score >= 80 ? (
-                    <Sparkles className="h-4 w-4 mr-1" />
-                  ) : matchScore.score >= 70 ? (
-                    <Trophy className="h-4 w-4 mr-1" />
-                  ) : (
-                    <Award className="h-4 w-4 mr-1" />
-                  )}
-                  {matchLevel}
+    <Card className="hover:shadow-lg transition-shadow overflow-hidden">
+      <div 
+        className="h-32 w-full bg-cover bg-center"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(${backgroundImage})` 
+        }}
+      >
+        <CardHeader>
+          <div className="flex justify-between items-start">
+            <div>
+              <CardTitle className="text-xl text-white">{slot.title}</CardTitle>
+              <p className="text-sm text-white/80 mt-1">{slot.brand}</p>
+            </div>
+            <div className="flex gap-2">
+              <Tooltip>
+                <TooltipTrigger>
+                  <Badge className={`${matchColor} bg-white/10`}>
+                    {matchScore.score >= 80 ? (
+                      <Sparkles className="h-4 w-4 mr-1" />
+                    ) : matchScore.score >= 70 ? (
+                      <Trophy className="h-4 w-4 mr-1" />
+                    ) : (
+                      <Award className="h-4 w-4 mr-1" />
+                    )}
+                    {matchLevel}
+                  </Badge>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="space-y-2">
+                    <p className="font-semibold">Match Analysis:</p>
+                    <ul className="list-disc list-inside">
+                      {matchScore.reasons.map((reason, index) => (
+                        <li key={index} className="text-sm">{reason}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+              {slot.isFeatured && (
+                <Badge className="bg-kolerr-purple">
+                  <Star className="h-4 w-4 mr-1" />
+                  Featured
                 </Badge>
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className="space-y-2">
-                  <p className="font-semibold">Match Analysis:</p>
-                  <ul className="list-disc list-inside">
-                    {matchScore.reasons.map((reason, index) => (
-                      <li key={index} className="text-sm">{reason}</li>
-                    ))}
-                  </ul>
-                </div>
-              </TooltipContent>
-            </Tooltip>
-            {slot.isFeatured && (
-              <Badge className="bg-kolerr-purple">
-                <Star className="h-4 w-4 mr-1" />
-                Featured
-              </Badge>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      </CardHeader>
+        </CardHeader>
+      </div>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="flex items-center gap-2">
