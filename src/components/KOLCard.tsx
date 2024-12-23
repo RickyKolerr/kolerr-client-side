@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Facebook, Instagram, Youtube, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Youtube, Tiktok } from "lucide-react";
 
 interface SocialLink {
   platform: string;
@@ -21,8 +21,7 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
     facebook: <Facebook className="h-4 w-4" />,
     instagram: <Instagram className="h-4 w-4" />,
     youtube: <Youtube className="h-4 w-4" />,
-    twitter: <Twitter className="h-4 w-4" />,
-    linkedin: <Linkedin className="h-4 w-4" />
+    tiktok: <Tiktok className="h-4 w-4" />
   };
 
   return (

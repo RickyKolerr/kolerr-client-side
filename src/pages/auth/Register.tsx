@@ -6,35 +6,31 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Facebook, Instagram, Mail } from "lucide-react";
+import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("");
-  const [socialLinks, setSocialLinks] = useState<Array<{ platform: string; url: string }>>([]);
+  const [socialLinks, setSocialLinks] = useState({
+    facebook: "",
+    instagram: "",
+    youtube: "",
+    tiktok: ""
+  });
   const { toast } = useToast();
   const { t } = useLanguage();
 
-  const handleAddSocialLink = (platform: string, url: string) => {
-    if (!url.trim()) return;
-    
-    setSocialLinks(prev => {
-      // Remove existing link for the same platform if it exists
-      const filtered = prev.filter(link => link.platform !== platform);
-      return [...filtered, { platform, url }];
-    });
-
-    toast({
-      title: "Social Link Added",
-      description: `Your ${platform} link has been added successfully.`
-    });
+  const handleSocialLinkChange = (platform: string, value: string) => {
+    setSocialLinks(prev => ({
+      ...prev,
+      [platform]: value
+    }));
   };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Include socialLinks in the registration data when implementing with Supabase
     toast({
       title: "Registration Attempted",
       description: "This is a placeholder. Actual registration will be implemented with Supabase.",
@@ -51,9 +47,7 @@ const Register = () => {
         <CardContent>
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-foreground">
-                Email
-              </label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -64,9 +58,7 @@ const Register = () => {
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium text-foreground">
-                {t("auth.password")}
-              </label>
+              <Label htmlFor="password">{t("auth.password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -90,15 +82,20 @@ const Register = () => {
 
             {accountType === "kol" && (
               <div className="space-y-4">
-                <h3 className="text-sm font-medium">Social Media Links</h3>
-                {["instagram", "youtube", "twitter", "facebook", "linkedin"].map((platform) => (
-                  <div key={platform} className="flex gap-2">
-                    <Input
-                      placeholder={`${platform.charAt(0).toUpperCase() + platform.slice(1)} URL`}
-                      onChange={(e) => handleAddSocialLink(platform, e.target.value)}
-                    />
-                  </div>
-                ))}
+                <Label>Social Media Links</Label>
+                <div className="space-y-3">
+                  {Object.keys(socialLinks).map((platform) => (
+                    <div key={platform} className="space-y-1">
+                      <Label htmlFor={platform} className="capitalize">{platform}</Label>
+                      <Input
+                        id={platform}
+                        placeholder={`Your ${platform} profile URL`}
+                        value={socialLinks[platform as keyof typeof socialLinks]}
+                        onChange={(e) => handleSocialLinkChange(platform, e.target.value)}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
