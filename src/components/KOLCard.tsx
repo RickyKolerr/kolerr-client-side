@@ -40,14 +40,14 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
         </div>
         {socialLinks && socialLinks.length > 0 && (
           <div className="mb-4">
-            <div className="flex justify-center gap-3">
+            <div className="flex justify-center gap-4">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="rounded-full bg-gray-100 p-2 text-gray-600 transition-all hover:bg-gray-200 hover:text-gray-900"
                 >
                   {platformIcons[link.platform as keyof typeof platformIcons]}
                 </a>
