@@ -8,7 +8,7 @@ export interface KOLRating {
 }
 
 export interface Badge {
-  type: "topKol" | "highlyRatedBrand";
+  type: "topKol" | "highlyRatedBrand" | "trending" | "topInviter" | "fiveStarKol" | "proCollaborator";
   name: string;
   description: string;
   progress: number;
@@ -30,6 +30,8 @@ export interface Slot {
   maxCollaborators?: number;
   progress: number;
   isRecommended?: boolean;
+  matchScore?: number;
+  matchReasons?: string[];
 }
 
 export interface SlotCreationData {
