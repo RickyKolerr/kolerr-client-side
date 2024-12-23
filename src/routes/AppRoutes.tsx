@@ -8,7 +8,7 @@ export function AppRoutes() {
         <Route
           key={route.path}
           path={route.path}
-          element={route.element}
+          element={<route.element />}
         />
       ))}
     </Routes>
