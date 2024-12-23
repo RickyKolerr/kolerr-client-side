@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, DollarSign, Users, Star, Sparkles } from "lucide-react";
+import { Calendar, DollarSign, Users, Star, Sparkles, Trophy, Award } from "lucide-react";
 import { Slot } from "@/types/slot";
 import { useToast } from "@/hooks/use-toast";
-import { calculateMatchScore } from "@/utils/matchmaking";
+import { calculateMatchScore, getMatchLevel, getMatchColor } from "@/utils/matchmaking";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -20,15 +20,29 @@ export const SlotRecommendation = ({ slot }: SlotRecommendationProps) => {
     categories: [slot.category],
     followers: 150000,
     engagement: 7.5,
-    previousCampaigns: 8
+    previousCampaigns: 8,
+    completedCampaigns: 6,
+    averageRating: 4.3,
+    specializations: ["Instagram", "TikTok", "Fashion"],
+    location: "New York",
+    languages: ["English", "Spanish"]
   };
 
   const matchScore = calculateMatchScore(slot, mockKolProfile);
+  const matchLevel = getMatchLevel(matchScore.score);
+  const matchColor = getMatchColor(matchScore.score);
 
   const handleInvite = () => {
     toast({
       title: "Invitation Sent",
       description: "Your collaborator will be notified about this opportunity.",
+    });
+  };
+
+  const handleApply = () => {
+    toast({
+      title: "Application Submitted",
+      description: "Your application has been submitted successfully. We'll notify you of updates.",
     });
   };
 
@@ -41,26 +55,30 @@ export const SlotRecommendation = ({ slot }: SlotRecommendationProps) => {
             <p className="text-sm text-muted-foreground mt-1">{slot.brand}</p>
           </div>
           <div className="flex gap-2">
-            {matchScore.score >= 80 && (
-              <Tooltip>
-                <TooltipTrigger>
-                  <Badge className="bg-green-500">
+            <Tooltip>
+              <TooltipTrigger>
+                <Badge className={matchColor}>
+                  {matchScore.score >= 80 ? (
                     <Sparkles className="h-4 w-4 mr-1" />
-                    Perfect Match
-                  </Badge>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <div className="space-y-2">
-                    <p className="font-semibold">Why this matches you:</p>
-                    <ul className="list-disc list-inside">
-                      {matchScore.reasons.map((reason, index) => (
-                        <li key={index} className="text-sm">{reason}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </TooltipContent>
-              </Tooltip>
-            )}
+                  ) : matchScore.score >= 70 ? (
+                    <Trophy className="h-4 w-4 mr-1" />
+                  ) : (
+                    <Award className="h-4 w-4 mr-1" />
+                  )}
+                  {matchLevel}
+                </Badge>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="space-y-2">
+                  <p className="font-semibold">Match Analysis:</p>
+                  <ul className="list-disc list-inside">
+                    {matchScore.reasons.map((reason, index) => (
+                      <li key={index} className="text-sm">{reason}</li>
+                    ))}
+                  </ul>
+                </div>
+              </TooltipContent>
+            </Tooltip>
             {slot.isFeatured && (
               <Badge className="bg-kolerr-purple">
                 <Star className="h-4 w-4 mr-1" />
@@ -111,6 +129,7 @@ export const SlotRecommendation = ({ slot }: SlotRecommendationProps) => {
                 ? 'bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange' 
                 : ''
             }`}
+            onClick={handleApply}
           >
             Apply Now
           </Button>
