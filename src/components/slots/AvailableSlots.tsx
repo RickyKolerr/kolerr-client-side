@@ -11,6 +11,7 @@ import { useState } from "react";
 const AvailableSlots = () => {
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
+  const [isCreateSlotOpen, setIsCreateSlotOpen] = useState(false);
 
   const mockBadges: Badge[] = [
     {
@@ -78,7 +79,11 @@ const AvailableSlots = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <CreateSlotDialog />
+        <CreateSlotDialog 
+          open={isCreateSlotOpen}
+          onOpenChange={setIsCreateSlotOpen}
+          campaignId={1} // Default campaign ID, you might want to pass this as a prop
+        />
       </div>
 
       <div className="grid gap-6 md:grid-cols-[300px_1fr]">

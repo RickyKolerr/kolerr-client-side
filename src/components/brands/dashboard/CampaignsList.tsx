@@ -1,21 +1,13 @@
 import { CampaignCard } from "../CampaignCard";
 import { CampaignFilters } from "../CampaignFilters";
 import { useState } from "react";
+import { Campaign } from "@/types/campaign";
 
-interface Campaign {
-  id: number;
-  name: string;
-  status: string;
-  progress: number;
-  kols: number;
-  deadline: string;
-  budget: string;
-  engagement: string;
-  roi: string;
-  category: string;
+interface CampaignsListProps {
+  campaigns: Campaign[];
 }
 
-export const CampaignsList = ({ campaigns }: { campaigns: Campaign[] }) => {
+export const CampaignsList = ({ campaigns }: CampaignsListProps) => {
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortBy, setSortBy] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");

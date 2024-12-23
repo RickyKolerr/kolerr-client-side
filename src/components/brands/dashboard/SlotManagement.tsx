@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { CreateSlotDialog } from "@/components/slots/CreateSlotDialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Users, Target } from "lucide-react";
+import { useState } from "react";
 
 export const SlotManagement = () => {
+  const [isCreateSlotOpen, setIsCreateSlotOpen] = useState(false);
   const slots = [
     {
       id: 1,
@@ -30,7 +32,11 @@ export const SlotManagement = () => {
           <h2 className="text-2xl font-semibold">Campaign Slots</h2>
           <p className="text-muted-foreground">Manage your campaign slots and requirements</p>
         </div>
-        <CreateSlotDialog />
+        <CreateSlotDialog 
+          open={isCreateSlotOpen}
+          onOpenChange={setIsCreateSlotOpen}
+          campaignId={1} // Default campaign ID, you might want to pass this as a prop
+        />
       </div>
       
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
