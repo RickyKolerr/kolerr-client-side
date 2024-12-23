@@ -11,9 +11,10 @@ const KOLs = () => {
       engagement: "8.5%",
       expertise: "Tech & Gaming",
       socialLinks: [
-        { platform: "youtube", url: "https://youtube.com/techalex" },
+        { platform: "instagram", url: "https://instagram.com/techalex" },
+        { platform: "tiktok", url: "https://tiktok.com/@techalex" },
         { platform: "twitter", url: "https://twitter.com/techalex" },
-        { platform: "instagram", url: "https://instagram.com/techalex" }
+        { platform: "facebook", url: "https://facebook.com/techalex" }
       ]
     },
     {
@@ -109,7 +110,7 @@ const KOLs = () => {
 
           <KOLFilters />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {kols.map((kol) => (
               <KOLCard
                 key={kol.name}
