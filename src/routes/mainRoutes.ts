@@ -13,6 +13,7 @@ import TermsOfService from "@/pages/TermsOfService";
 import GetStarted from "@/pages/GetStarted";
 import LearnMore from "@/pages/LearnMore";
 import Checkout from "@/pages/Checkout";
+import Communication from "@/pages/Communication";
 
 export const mainRoutes = [
   {
@@ -74,5 +75,9 @@ export const mainRoutes = [
   {
     path: "/checkout",
     element: Checkout,
+  },
+  {
+    path: "/communication",
+    element: Communication,
   },
 ];

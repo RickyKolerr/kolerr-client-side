@@ -4,6 +4,7 @@ import {
   Plus,
   Users,
   Wallet,
+  MessageCircle,
 } from "lucide-react";
 import {
   Sidebar,
@@ -24,6 +25,7 @@ const menuItems = [
   { title: "Track Progress", icon: BarChart3, url: "/brands/progress" },
   { title: "Review KOLs", icon: Users, url: "/brands/kols" },
   { title: "Billing & Performance", icon: Wallet, url: "/brands/billing" },
+  { title: "Communication", icon: MessageCircle, url: "/communication" },
 ];
 
 export function BrandSidebar() {
