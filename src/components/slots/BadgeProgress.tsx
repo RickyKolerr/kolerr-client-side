@@ -7,7 +7,9 @@ interface BadgeProgressProps {
   badge: Badge;
 }
 
-const BadgeIcons = {
+const BadgeIcons: Record<string, React.ComponentType> = {
+  topKol: Trophy,
+  highlyRatedBrand: Star,
   trending: Trophy,
   topInviter: Users,
   fiveStarKol: Star,
@@ -15,7 +17,8 @@ const BadgeIcons = {
 };
 
 export const BadgeProgress = ({ badge }: BadgeProgressProps) => {
-  const Icon = BadgeIcons[badge.type];
+  // Default to Trophy if no matching icon is found
+  const Icon = BadgeIcons[badge.type] || Trophy;
 
   return (
     <div className="space-y-2">
