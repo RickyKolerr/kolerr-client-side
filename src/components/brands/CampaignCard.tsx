@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ManageSlotForm } from "./slots/ManageSlotForm";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -27,26 +27,71 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
 
   const backgroundImage = campaignBackgrounds[campaign.category as keyof typeof campaignBackgrounds] || campaignBackgrounds.default;
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    },
+    hover: { 
+      y: -5,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const statsVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.05,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover="hover"
+      layoutId={`campaign-${campaign.id}`}
     >
-      <Card className="hover:shadow-lg transition-shadow overflow-hidden glass-card">
-        <div 
-          className="h-32 w-full bg-cover bg-center"
+      <Card className="overflow-hidden glass-card">
+        <motion.div 
+          className="h-32 w-full bg-cover bg-center relative"
           style={{ 
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(${backgroundImage})` 
           }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
         >
           <CardHeader className="flex flex-col h-full">
             <div className="flex items-start justify-between">
               <div className="space-y-1">
-                <CardTitle className="text-lg font-semibold line-clamp-2 text-white">
-                  {campaign.name}
-                </CardTitle>
-                <div className="flex flex-wrap gap-2">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <CardTitle className="text-lg font-semibold line-clamp-2 text-white">
+                    {campaign.name}
+                  </CardTitle>
+                </motion.div>
+                <motion.div 
+                  className="flex flex-wrap gap-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
                   <Badge variant="outline" className="bg-white/10 text-white border-white/20">
                     {campaign.category}
                   </Badge>
@@ -56,64 +101,93 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
                   >
                     {campaign.status}
                   </Badge>
-                </div>
+                </motion.div>
               </div>
             </div>
           </CardHeader>
-        </div>
+        </motion.div>
         <CardContent className="space-y-4 pt-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <motion.div 
+            className="flex items-center gap-2 text-sm text-muted-foreground"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
             <Calendar className="h-4 w-4" />
             <span>Deadline: {campaign.deadline}</span>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
             <div className="flex justify-between text-sm mb-2">
               <span>Campaign Progress</span>
               <span>{campaign.progress}%</span>
             </div>
             <Progress value={campaign.progress} className="h-2" />
-          </div>
+          </motion.div>
 
           <motion.div 
             className="grid grid-cols-2 gap-2"
-            initial="initial"
-            whileHover="hover"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
           >
             <motion.div 
-              className="text-center p-2 bg-background/50 backdrop-blur-sm rounded-lg hover-scale"
-              whileHover={{ y: -2 }}
+              className="text-center p-2 bg-background/50 backdrop-blur-sm rounded-lg"
+              variants={statsVariants}
+              whileHover="hover"
             >
               <p className="text-xs text-muted-foreground">Slots</p>
               <p className="font-semibold gradient-text">{`${filledSlots}/${totalSlots}`}</p>
             </motion.div>
             <motion.div 
-              className="text-center p-2 bg-background/50 backdrop-blur-sm rounded-lg hover-scale"
-              whileHover={{ y: -2 }}
+              className="text-center p-2 bg-background/50 backdrop-blur-sm rounded-lg"
+              variants={statsVariants}
+              whileHover="hover"
             >
               <p className="text-xs text-muted-foreground">Budget</p>
               <p className="font-semibold gradient-text">{campaign.budget}</p>
             </motion.div>
           </motion.div>
 
-          <Button 
-            variant="outline" 
-            className="w-full gradient-border hover-scale"
-            onClick={() => setIsFormOpen(true)}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
           >
-            <Users className="h-4 w-4 mr-2" />
-            Manage Slots
-          </Button>
+            <Button 
+              variant="outline" 
+              className="w-full gradient-border hover-scale"
+              onClick={() => setIsFormOpen(true)}
+            >
+              <Users className="h-4 w-4 mr-2" />
+              Manage Slots
+            </Button>
+          </motion.div>
         </CardContent>
 
-        <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-          <DialogContent className="max-w-3xl glass-card">
-            <ManageSlotForm 
-              campaignId={campaign.id}
-              onClose={() => setIsFormOpen(false)}
-            />
-          </DialogContent>
-        </Dialog>
+        <AnimatePresence>
+          {isFormOpen && (
+            <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+              <DialogContent className="max-w-3xl glass-card">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ManageSlotForm 
+                    campaignId={campaign.id}
+                    onClose={() => setIsFormOpen(false)}
+                  />
+                </motion.div>
+              </DialogContent>
+            </Dialog>
+          )}
+        </AnimatePresence>
       </Card>
     </motion.div>
   );
