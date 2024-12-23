@@ -253,6 +253,16 @@ export function CreateCampaignDialog() {
           </Button>
         </div>
       </DialogContent>
+      <style>
+        {`
+          .step-gradient {
+            background: linear-gradient(to right, #00F5FF, #9C27B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+        `}
+      </style>
     </Dialog>
   );
 }

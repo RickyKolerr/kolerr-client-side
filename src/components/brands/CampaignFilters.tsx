@@ -206,6 +206,16 @@ export function CampaignFilters({ statusFilter, setStatusFilter, sortBy, setSort
           ))}
         </div>
       </SheetContent>
+      <style>
+        {`
+          .filter-gradient {
+            background: linear-gradient(to right, #00F5FF, #9C27B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+        `}
+      </style>
     </Sheet>
   );
 }
