@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { CreateSlotDialog } from "@/components/slots/CreateSlotDialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Users, Target } from "lucide-react";
 import { useState } from "react";
+import { ManageSlotForm } from "../slots/ManageSlotForm";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export const SlotManagement = () => {
-  const [isCreateSlotOpen, setIsCreateSlotOpen] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  
   const slots = [
     {
       id: 1,
@@ -13,7 +16,11 @@ export const SlotManagement = () => {
       requirements: "Min 50k followers, Fashion/Lifestyle niche",
       deadline: "2024-04-15",
       applicants: 12,
-      status: "Open"
+      status: "Open" as const,
+      maxKols: 3,
+      currentKols: 1,
+      budget: "$3,000",
+      campaignId: 1
     },
     {
       id: 2,
@@ -21,9 +28,18 @@ export const SlotManagement = () => {
       requirements: "Tech expertise, Min 20k subscribers",
       deadline: "2024-04-20",
       applicants: 8,
-      status: "Open"
+      status: "Open" as const,
+      maxKols: 2,
+      currentKols: 0,
+      budget: "$2,500",
+      campaignId: 1
     }
   ];
+
+  const handleManageSlot = (slotId: number) => {
+    setSelectedSlot(slotId);
+    setIsFormOpen(true);
+  };
 
   return (
     <div className="mt-8">
@@ -32,11 +48,9 @@ export const SlotManagement = () => {
           <h2 className="text-2xl font-semibold">Campaign Slots</h2>
           <p className="text-muted-foreground">Manage your campaign slots and requirements</p>
         </div>
-        <CreateSlotDialog 
-          open={isCreateSlotOpen}
-          onOpenChange={setIsCreateSlotOpen}
-          campaignId={1} // Default campaign ID, you might want to pass this as a prop
-        />
+        <Button onClick={() => setIsFormOpen(true)}>
+          Create New Slot
+        </Button>
       </div>
       
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -59,7 +73,11 @@ export const SlotManagement = () => {
                   <Users className="h-4 w-4 text-muted-foreground" />
                   <span>{slot.applicants} Applicants</span>
                 </div>
-                <Button variant="outline" className="w-full">
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => handleManageSlot(slot.id)}
+                >
                   Manage Slot
                 </Button>
               </div>
@@ -67,6 +85,18 @@ export const SlotManagement = () => {
           </Card>
         ))}
       </div>
+
+      <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+        <DialogContent className="max-w-3xl">
+          <ManageSlotForm 
+            slot={selectedSlot ? slots.find(s => s.id === selectedSlot) : undefined}
+            onClose={() => {
+              setIsFormOpen(false);
+              setSelectedSlot(null);
+            }}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
