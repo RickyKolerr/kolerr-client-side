@@ -45,13 +45,12 @@ export const ManageSlotForm = ({ campaignId, onClose }: ManageSlotFormProps) => 
   ];
 
   const handleSubmit = (formData: any) => {
-    console.log("Submitting slot data:", { ...formData, campaignId });
-    
     toast({
-      title: "Success",
-      description: editingSlot ? "Slot updated successfully" : "Slot created successfully",
+      title: editingSlot ? "Slot Updated" : "Slot Created",
+      description: editingSlot 
+        ? "The slot has been updated successfully" 
+        : "A new slot has been created successfully",
     });
-
     setEditingSlot(null);
     setActiveTab("existing");
   };
@@ -63,31 +62,41 @@ export const ManageSlotForm = ({ campaignId, onClose }: ManageSlotFormProps) => 
 
   const handleDelete = (slotId: number) => {
     toast({
-      title: "Success",
-      description: "Slot deleted successfully",
+      title: "Slot Deleted",
+      description: "The slot has been deleted successfully",
     });
   };
 
   const handleViewApplicants = (slotId: number) => {
     toast({
-      title: "Info",
-      description: "Viewing applicants feature coming soon",
+      title: "Coming Soon",
+      description: "The applicants view feature will be available soon",
     });
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Manage Campaign Slots</CardTitle>
+    <Card className="w-full bg-[#121212] border-gray-800">
+      <CardHeader className="border-b border-gray-800">
+        <CardTitle className="text-2xl font-bold text-white">Manage Campaign Slots</CardTitle>
       </CardHeader>
-      <CardContent>
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="existing">Existing Slots</TabsTrigger>
-            <TabsTrigger value="create">{editingSlot ? "Edit Slot" : "Create Slot"}</TabsTrigger>
+      <CardContent className="p-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 bg-[#1A1A1A] p-1 rounded-lg">
+            <TabsTrigger 
+              value="existing"
+              className="data-[state=active]:bg-[#242424] data-[state=active]:text-white"
+            >
+              Existing Slots
+            </TabsTrigger>
+            <TabsTrigger 
+              value="create"
+              className="data-[state=active]:bg-[#242424] data-[state=active]:text-white"
+            >
+              {editingSlot ? "Edit Slot" : "Create Slot"}
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="existing">
+          <TabsContent value="existing" className="mt-6">
             <ExistingSlotsList
               slots={existingSlots}
               onEdit={handleEdit}
@@ -96,7 +105,7 @@ export const ManageSlotForm = ({ campaignId, onClose }: ManageSlotFormProps) => 
             />
           </TabsContent>
 
-          <TabsContent value="create">
+          <TabsContent value="create" className="mt-6">
             <SlotForm
               initialData={editingSlot || undefined}
               onSubmit={handleSubmit}
