@@ -40,9 +40,9 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <img 
-                src="/lovable-uploads/a1f44af1-affe-4843-83d9-b709b2c93e78.png" 
+                src="/lovable-uploads/bf109a68-3ded-4be7-bf03-b641d5c6441d.png" 
                 alt="Kolerr Logo" 
-                className="h-8 w-auto sm:h-10 md:h-12 transform transition-transform duration-300 group-hover:scale-110" 
+                className="h-10 w-auto sm:h-12 md:h-14 lg:h-16 transform transition-transform duration-300 group-hover:scale-110" 
               />
             </Link>
           </div>
@@ -115,9 +115,9 @@ const Navbar = () => {
                 <SheetHeader>
                   <SheetTitle className="flex items-center justify-center">
                     <img 
-                      src="/lovable-uploads/a1f44af1-affe-4843-83d9-b709b2c93e78.png" 
+                      src="/lovable-uploads/bf109a68-3ded-4be7-bf03-b641d5c6441d.png" 
                       alt="Kolerr Logo" 
-                      className="h-10 w-auto" 
+                      className="h-12 w-auto sm:h-14" 
                     />
                   </SheetTitle>
                 </SheetHeader>
