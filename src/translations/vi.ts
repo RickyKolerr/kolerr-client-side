@@ -208,10 +208,4 @@ export const vi = {
   "landing.contact.form.subject": "Tiêu Đề",
   "landing.contact.form.message": "Nội Dung",
   "landing.contact.form.send": "Gửi Tin Nhắn",
-
-  // Search Section
-  "search.title": "Tìm Kiếm Phù Hợp",
-  "search.subtitle": "Tìm kiếm trong hàng nghìn KOL và vị trí có sẵn",
-  "search.placeholder": "Tìm kiếm KOL hoặc vị trí...",
-  "search.button": "Tìm Kiếm Ngay"
 };
