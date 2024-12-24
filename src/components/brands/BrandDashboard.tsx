@@ -105,16 +105,15 @@ export function BrandDashboard() {
               </p>
             </div>
             
-            <div className="flex w-full sm:w-auto items-center gap-2">
+            <div className="relative flex items-center w-full sm:w-[300px]">
               <CreateCampaignDialog />
-              <div className="flex-1 sm:w-[200px]">
-                <Input
-                  placeholder="Search campaigns..."
-                  className="h-9 bg-white/5 border-white/10"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
+              <Input
+                placeholder="Search campaigns..."
+                className="pl-10 h-9 bg-white/5 border-white/10 rounded-l-none"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <Search className="absolute left-[52px] top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4 pointer-events-none" />
             </div>
           </div>
 
