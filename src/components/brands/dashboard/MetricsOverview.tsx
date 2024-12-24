@@ -9,7 +9,7 @@ export const MetricsOverview = () => {
       trend: "up" as const,
       icon: TrendingUp,
       description: "vs. last month",
-      color: "green-500"
+      color: "cyan"
     },
     {
       title: "Average ROI",
@@ -17,7 +17,7 @@ export const MetricsOverview = () => {
       trend: "up" as const,
       icon: DollarSign,
       description: "across campaigns",
-      color: "blue-500"
+      color: "purple"
     },
     {
       title: "KOL Retention",
@@ -25,7 +25,7 @@ export const MetricsOverview = () => {
       trend: "down" as const,
       icon: Users,
       description: "-3% this month",
-      color: "yellow-500"
+      color: "orange"
     },
     {
       title: "Brand Rating",
@@ -33,7 +33,7 @@ export const MetricsOverview = () => {
       trend: "up" as const,
       icon: Star,
       description: "from KOLs",
-      color: "purple-500"
+      color: "yellow"
     }
   ];
 

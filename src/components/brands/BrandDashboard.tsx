@@ -92,32 +92,36 @@ export function BrandDashboard() {
   ];
 
   return (
-    <div className="space-y-8 max-w-[1400px] mx-auto p-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h1 className="text-3xl font-bold gradient-text">
-            Brand Dashboard
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Manage your campaigns and track performance metrics
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-          <div className="relative flex-1 sm:flex-none">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
-            <Input
-              placeholder="Search campaigns..."
-              className="pl-10 w-full sm:w-[300px]"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+    <div className="min-h-screen bg-background">
+      <div className="space-y-8 max-w-[1400px] mx-auto p-4 sm:p-6">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold gradient-text">
+                Brand Dashboard
+              </h1>
+              <p className="text-sm sm:text-base text-muted-foreground mt-2">
+                Manage your campaigns and track performance metrics
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <div className="relative flex-1 sm:flex-none">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
+                <Input
+                  placeholder="Search campaigns..."
+                  className="pl-10 w-full sm:w-[300px] bg-white/5 border-white/10"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+              <CreateCampaignDialog />
+            </div>
           </div>
-          <CreateCampaignDialog />
+
+          <MetricsOverview />
+          <CampaignsList campaigns={activeCampaigns} />
         </div>
       </div>
-
-      <MetricsOverview />
-      <CampaignsList campaigns={activeCampaigns} />
     </div>
   );
 }
