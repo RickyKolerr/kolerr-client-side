@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { translations, TranslationKey } from "@/translations";
+import { translations } from "@/translations";
+import type { TranslationKey } from "@/translations/en";
 
 export type Language = "en" | "vi";
 
