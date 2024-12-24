@@ -104,8 +104,9 @@ export function BrandDashboard() {
                 Manage your campaigns and track performance metrics
               </p>
             </div>
+            {/* Updated search and create campaign section */}
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <div className="relative w-full sm:w-[250px] lg:w-[300px]">
+              <div className="relative flex-1 sm:flex-none sm:w-[250px] lg:w-[300px]">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
                 <Input
                   placeholder="Search campaigns..."
@@ -114,9 +115,7 @@ export function BrandDashboard() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <div className="w-full sm:w-auto">
-                <CreateCampaignDialog />
-              </div>
+              <CreateCampaignDialog />
             </div>
           </div>
 
