@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BenefitsSection from "@/components/home/BenefitsSection";
 import CTASection from "@/components/home/CTASection";
 import KOLShowcase from "@/components/home/KOLShowcase";
+import SearchSection from "@/components/home/SearchSection";
 import Footer from "@/components/home/Footer";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
+      <SearchSection />
       <TrustedBy />
       <FeaturesSection />
       <HowItWorksSection />

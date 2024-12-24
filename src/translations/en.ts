@@ -208,4 +208,10 @@ export const en = {
   "landing.contact.form.subject": "Subject",
   "landing.contact.form.message": "Your Message",
   "landing.contact.form.send": "Send Message",
+
+  // Search Section
+  "search.title": "Find Your Perfect Match",
+  "search.subtitle": "Search through thousands of verified KOLs and available campaign slots",
+  "search.placeholder": "Search by name, category, or platform...",
+  "search.button": "Search Now",
 };
