@@ -104,16 +104,17 @@ export function BrandDashboard() {
                 Manage your campaigns and track performance metrics
               </p>
             </div>
-            
-            <div className="relative flex items-center w-full sm:w-[300px]">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <div className="relative flex-1 sm:flex-none">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
+                <Input
+                  placeholder="Search campaigns..."
+                  className="pl-10 w-full sm:w-[300px] bg-white/5 border-white/10"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
               <CreateCampaignDialog />
-              <Input
-                placeholder="Search campaigns..."
-                className="pl-10 h-9 bg-white/5 border-white/10 rounded-l-none"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <Search className="absolute left-[52px] top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4 pointer-events-none" />
             </div>
           </div>
 
