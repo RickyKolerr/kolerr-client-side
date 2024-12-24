@@ -14,7 +14,6 @@ import GetStarted from "@/pages/GetStarted";
 import LearnMore from "@/pages/LearnMore";
 import Checkout from "@/pages/Checkout";
 import Communication from "@/pages/Communication";
-import ContentTranslation from "@/pages/ContentTranslation";
 
 export const mainRoutes = [
   {
@@ -80,9 +79,5 @@ export const mainRoutes = [
   {
     path: "/communication",
     element: Communication,
-  },
-  {
-    path: "/translation",
-    element: ContentTranslation,
   },
 ];
