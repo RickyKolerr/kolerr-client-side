@@ -1,43 +1,12 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 
 const TrustedBy = () => {
   const { t } = useLanguage();
   
   const brands = [
-    {
-      name: "Shopee",
-      url: "https://shopee.vn",
-    },
-    {
-      name: "Lazada",
-      url: "https://www.lazada.vn",
-    },
-    {
-      name: "Tiki",
-      url: "https://tiki.vn",
-    },
-    {
-      name: "VinFast",
-      url: "https://vinfastauto.com",
-    },
-    {
-      name: "MoMo",
-      url: "https://momo.vn",
-    },
-    {
-      name: "Grab Vietnam",
-      url: "https://grab.com/vn",
-    },
-    {
-      name: "The Coffee House",
-      url: "https://thecoffeehouse.com",
-    },
-    {
-      name: "Highlands Coffee",
-      url: "https://www.highlandscoffee.com.vn",
-    },
+    "Shopee", "Lazada", "Tiki", "VinFast", "MoMo", "Grab Vietnam", 
+    "The Coffee House", "Highlands Coffee"
   ];
 
   const container = {
@@ -69,23 +38,15 @@ const TrustedBy = () => {
           className="flex flex-wrap justify-center items-center gap-8"
         >
           {brands.map((brand, index) => (
-            <motion.a
+            <motion.span 
               key={index}
-              href={brand.url}
-              target="_blank"
-              rel="noopener noreferrer"
               variants={item}
-              className="group relative flex items-center gap-2 text-foreground/40 text-lg font-medium 
-                       hover:text-foreground/90 transition-all duration-300
+              className="text-foreground/40 text-lg font-medium 
+                       hover:text-foreground/60 transition-colors
                        hover:scale-105 cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
-              {brand.name}
-              <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange 
-                           group-hover:w-full transition-all duration-300"></span>
-            </motion.a>
+              {brand}
+            </motion.span>
           ))}
         </motion.div>
       </div>
