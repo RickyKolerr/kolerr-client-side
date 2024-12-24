@@ -1,3 +1,5 @@
+import { translationVi } from "./modules/translation/vi";
+
 export const vi = {
   // Navigation
   "nav.home": "Trang chủ",
@@ -214,4 +216,5 @@ export const vi = {
   "search.subtitle": "Tìm kiếm trong hàng nghìn KOL đã xác thực và vị trí chiến dịch",
   "search.placeholder": "Tìm theo tên, danh mục hoặc nền tảng...",
   "search.button": "Tìm Kiếm",
+  ...translationVi,
 };

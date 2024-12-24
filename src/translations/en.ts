@@ -1,3 +1,5 @@
+import { translationEn } from "./modules/translation/en";
+
 export const en = {
   // Navigation
   "nav.home": "Home",
@@ -214,4 +216,5 @@ export const en = {
   "search.subtitle": "Search through thousands of verified KOLs and available campaign slots",
   "search.placeholder": "Search by name, category, or platform...",
   "search.button": "Search Now",
+  ...translationEn,
 };

@@ -26,6 +26,7 @@ const Navbar = () => {
     { label: t('nav.brands'), path: '/brands' },
     { label: t('nav.pricing'), path: '/pricing' },
     { label: t('nav.contact'), path: '/contact' },
+    { label: t('translation.title'), path: '/translation' },
   ];
 
   const languages: { code: Language; label: string }[] = [
