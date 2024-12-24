@@ -9,5 +9,3 @@ export const en = {
   ...landingEn,
   ...translationEn,
 };
-
-export type TranslationKey = keyof typeof en;
