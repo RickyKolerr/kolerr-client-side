@@ -40,13 +40,10 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <img 
-                src="/lovable-uploads/8fa1fb98-f606-4338-b651-0f6ad91f5537.png" 
+                src="/lovable-uploads/a1f44af1-affe-4843-83d9-b709b2c93e78.png" 
                 alt="Kolerr Logo" 
-                className="h-8 w-8 transform transition-transform duration-300 group-hover:scale-110" 
+                className="h-8 w-auto sm:h-10 md:h-12 transform transition-transform duration-300 group-hover:scale-110" 
               />
-              <span className="ml-2 text-foreground text-xl font-bold group-hover:text-kolerr-cyan transition-colors duration-300">
-                Kolerr
-              </span>
             </Link>
           </div>
 
@@ -116,13 +113,12 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
-                  <SheetTitle className="flex items-center gap-2">
+                  <SheetTitle className="flex items-center justify-center">
                     <img 
-                      src="/lovable-uploads/8fa1fb98-f606-4338-b651-0f6ad91f5537.png" 
+                      src="/lovable-uploads/a1f44af1-affe-4843-83d9-b709b2c93e78.png" 
                       alt="Kolerr Logo" 
-                      className="h-8 w-8" 
+                      className="h-10 w-auto" 
                     />
-                    <span>Kolerr</span>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-4 mt-8">
