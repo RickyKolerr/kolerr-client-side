@@ -1,25 +1,10 @@
-import { commonTranslations } from './sections/common';
-import { authTranslations } from './sections/auth';
-import { landingTranslations } from './sections/landing';
-import { featureTranslations } from './sections/features';
-import { pricingTranslations } from './sections/pricing';
+import { en } from './en';
+import { vi } from './vi';
 
-// Combine all translations
-export const en = {
-  ...commonTranslations,
-  ...authTranslations,
-  ...landingTranslations,
-  ...featureTranslations,
-  ...pricingTranslations,
+export const translations = {
+  en,
+  vi,
 } as const;
 
-export const vi = {
-  ...commonTranslations,
-  ...authTranslations,
-  ...landingTranslations,
-  ...featureTranslations,
-  ...pricingTranslations,
-} as const;
-
-// Create a type that includes all possible translation keys
+// Update the TranslationKey type to include all possible translation keys
 export type TranslationKey = keyof typeof en;
