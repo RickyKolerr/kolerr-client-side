@@ -1,14 +1,4 @@
-import { navigationEn } from './modules/navigation.en';
-import { authEn } from './modules/auth.en';
-import { kolsEn } from './modules/kols.en';
-import { slotsEn } from './modules/slots.en';
-
-export const en = {
-  ...navigationEn,
-  ...authEn,
-  ...kolsEn,
-  ...slotsEn,
-  
+export const slotsEn = {
   "slots.title": "Campaign Slots",
   "slots.subtitle": "Manage and discover campaign opportunities",
   
@@ -45,4 +35,4 @@ export const en = {
   "slots.error.create": "Failed to create slot",
   "slots.error.update": "Failed to update slot",
   "slots.error.delete": "Failed to delete slot",
-};
+} as const;
