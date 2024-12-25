@@ -1,0 +1,12 @@
+/* Component styles */
+.nav-link {
+  @apply relative;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
