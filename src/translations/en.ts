@@ -1,11 +1,10 @@
 import { navigationEn } from './modules/navigation.en';
 import { authEn } from './modules/auth.en';
 
-// ... keep existing code (other imports)
-
 export const en = {
   ...navigationEn,
   ...authEn,
+  
   // Hero Section
   "hero.title": "Unlock Your Brand's Potential with Kolerr",
   "hero.subtitle": "Effortlessly connect, collaborate, and scale your campaigns with Vietnam's leading AI-powered influencer marketing platform",
@@ -195,4 +194,42 @@ export const en = {
   "search.subtitle": "Search through thousands of verified KOLs and available campaign slots",
   "search.placeholder": "Search by name, category, or platform...",
   "search.button": "Search Now",
+
+  // Campaign Section
+  "campaigns.title": "Campaign Management",
+  "campaigns.subtitle": "Create, manage, and analyze your marketing campaigns",
+  "campaigns.searchPlaceholder": "Search campaigns...",
+  "campaigns.filter": "Filter Campaigns",
+  "campaigns.createNew": "Create New Campaign",
+  
+  // Campaign Tabs
+  "campaigns.tabs.create": "Create Campaign",
+  "campaigns.tabs.manage": "Manage Campaigns",
+  "campaigns.tabs.analytics": "Campaign Analytics",
+  
+  // Campaign Creation
+  "campaigns.create.title": "Create New Campaign",
+  "campaigns.create.name": "Campaign Name",
+  "campaigns.create.description": "Campaign Description",
+  "campaigns.create.target": "Target Audience",
+  "campaigns.create.budget": "Budget",
+  "campaigns.create.timeline": "Timeline",
+  "campaigns.create.slots": "Slot Allocation",
+  "campaigns.create.kols": "KOL Selection",
+  "campaigns.create.goals": "Campaign Goals",
+  
+  // Campaign Management
+  "campaigns.manage.filter.all": "All Campaigns",
+  "campaigns.manage.filter.active": "Active",
+  "campaigns.manage.filter.pending": "Pending",
+  "campaigns.manage.filter.completed": "Completed",
+  "campaigns.manage.edit": "Edit Campaign",
+  "campaigns.manage.view": "View Details",
+  "campaigns.manage.performance": "View Performance",
+  
+  // Campaign Analytics
+  "campaigns.analytics.performance": "Performance Statistics",
+  "campaigns.analytics.insights": "Real-time Insights",
+  "campaigns.analytics.progress": "Campaign Progress",
+  "campaigns.analytics.export": "Export Reports",
 } as const;
