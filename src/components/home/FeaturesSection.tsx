@@ -1,27 +1,30 @@
 import { Brain, BarChart3, Calendar, Zap } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 
 const FeaturesSection = () => {
+  const { t } = useLanguage();
+
   const features = [
     {
       icon: Brain,
-      title: "AI-Powered Matching",
-      description: "Our advanced AI algorithms find the perfect influencers for your brand"
+      title: "landing.features.ai.title",
+      description: "landing.features.ai.desc"
     },
     {
       icon: BarChart3,
-      title: "Campaign Management",
-      description: "Streamline your campaigns with our comprehensive management tools"
+      title: "landing.features.campaign.title",
+      description: "landing.features.campaign.desc"
     },
     {
       icon: Calendar,
-      title: "Smart Scheduling",
-      description: "Efficiently plan and schedule your influencer collaborations"
+      title: "landing.features.booking.title",
+      description: "landing.features.booking.desc"
     },
     {
       icon: Zap,
-      title: "Real-time Analytics",
-      description: "Track performance and ROI with detailed analytics dashboard"
+      title: "landing.features.analytics.title",
+      description: "landing.features.analytics.desc"
     }
   ] as const;
 
@@ -44,7 +47,7 @@ const FeaturesSection = () => {
     <section className="py-20 bg-gradient-to-b from-background/50 to-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-          Key Features
+          {t("landing.features.title")}
         </h2>
         <motion.div 
           variants={container}
@@ -65,9 +68,9 @@ const FeaturesSection = () => {
               <feature.icon className="w-12 h-12 mb-4 text-kolerr-cyan 
                                      group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold mb-2 group-hover:text-kolerr-cyan transition-colors">
-                {feature.title}
+                {t(feature.title)}
               </h3>
-              <p className="text-foreground/80">{feature.description}</p>
+              <p className="text-foreground/80">{t(feature.description)}</p>
             </motion.div>
           ))}
         </motion.div>

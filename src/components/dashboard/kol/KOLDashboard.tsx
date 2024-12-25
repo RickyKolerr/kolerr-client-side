@@ -1,21 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Calendar, DollarSign, User, Star } from "lucide-react";
+import { BarChart3, Calendar, DollarSign, User } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
 
 export function KOLDashboard() {
-  const { toast } = useToast();
-
-  const handleAIAssistant = () => {
-    toast({
-      title: "AI Assistant",
-      description: "How can I help you find the perfect campaigns today?",
-      duration: 5000,
-    });
-  };
-
   const containerAnimation = {
     hidden: { opacity: 0 },
     show: {
@@ -36,24 +24,13 @@ export function KOLDashboard() {
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex justify-between items-center"
       >
-        <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-            KOL Dashboard
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Manage your campaigns and track earnings
-          </p>
-        </div>
-        <Button 
-          onClick={handleAIAssistant}
-          variant="outline"
-          className="gap-2"
-        >
-          <Star className="h-4 w-4" />
-          AI Assistant
-        </Button>
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+          KOL Dashboard
+        </h1>
+        <p className="text-muted-foreground mt-2">
+          Manage your campaigns and track earnings
+        </p>
       </motion.div>
 
       <Tabs defaultValue="campaigns" className="space-y-6">
@@ -95,7 +72,7 @@ export function KOLDashboard() {
         >
           <TabsContent value="campaigns">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
@@ -111,7 +88,7 @@ export function KOLDashboard() {
 
           <TabsContent value="availability">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Calendar className="h-5 w-5" />
@@ -127,7 +104,7 @@ export function KOLDashboard() {
 
           <TabsContent value="earnings">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <DollarSign className="h-5 w-5" />
@@ -143,7 +120,7 @@ export function KOLDashboard() {
 
           <TabsContent value="profile">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <User className="h-5 w-5" />

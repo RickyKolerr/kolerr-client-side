@@ -5,8 +5,6 @@ import { supportRoutes } from "./supportRoutes";
 import { salesRoutes } from "./salesRoutes";
 import { pressRoutes } from "./pressRoutes";
 
-export { mainRoutes };
-
 export const routes = [
   ...mainRoutes,
   ...aboutRoutes,

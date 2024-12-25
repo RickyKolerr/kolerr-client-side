@@ -1,24 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Users, Calendar, Info, PieChart, Settings, TrendingUp, Star } from "lucide-react";
+import { BarChart3, Users, Calendar, Info, PieChart, Settings, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { MetricsOverview } from "@/components/brands/dashboard/MetricsOverview";
 import { CampaignsList } from "@/components/brands/dashboard/CampaignsList";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
 
 export function BrandDashboard() {
   const navigate = useNavigate();
-  const { toast } = useToast();
-
-  const handleAIAssistant = () => {
-    toast({
-      title: "AI Assistant",
-      description: "How can I help you with your campaigns today?",
-      duration: 5000,
-    });
-  };
 
   const containerAnimation = {
     hidden: { opacity: 0 },
@@ -50,22 +40,12 @@ export function BrandDashboard() {
             Manage your campaigns and track performance
           </p>
         </div>
-        <div className="flex gap-4">
-          <Button 
-            onClick={handleAIAssistant}
-            variant="outline"
-            className="gap-2"
-          >
-            <Star className="h-4 w-4" />
-            AI Assistant
-          </Button>
-          <Button 
-            onClick={() => navigate("/brands/create")}
-            className="bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90"
-          >
-            Create Campaign
-          </Button>
-        </div>
+        <Button 
+          onClick={() => navigate("/brands/create")}
+          className="bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90"
+        >
+          Create Campaign
+        </Button>
       </motion.div>
 
       <MetricsOverview />
@@ -122,7 +102,7 @@ export function BrandDashboard() {
 
           <TabsContent value="slots">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Calendar className="h-5 w-5" />
@@ -138,7 +118,7 @@ export function BrandDashboard() {
 
           <TabsContent value="kols">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="h-5 w-5" />
@@ -154,7 +134,7 @@ export function BrandDashboard() {
 
           <TabsContent value="analytics">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
@@ -170,7 +150,7 @@ export function BrandDashboard() {
 
           <TabsContent value="profile">
             <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+              <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Info className="h-5 w-5" />

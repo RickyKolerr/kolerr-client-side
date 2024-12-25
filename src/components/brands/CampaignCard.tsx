@@ -5,10 +5,9 @@ import { Calendar, Users } from "lucide-react";
 import { Campaign } from "@/types/campaign";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ManageSlotForm } from "./slots/ManageSlotForm";
 import { motion, AnimatePresence } from "framer-motion";
-import { useToast } from "@/hooks/use-toast";
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -16,7 +15,6 @@ interface CampaignCardProps {
 
 export const CampaignCard = ({ campaign }: CampaignCardProps) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const { toast } = useToast();
   const totalSlots = campaign.slots?.length || 0;
   const filledSlots = campaign.slots?.filter(slot => slot.status === "Filled").length || 0;
 
@@ -28,16 +26,6 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
   };
 
   const backgroundImage = campaignBackgrounds[campaign.category as keyof typeof campaignBackgrounds] || campaignBackgrounds.default;
-
-  const handleManageSlots = () => {
-    setIsFormOpen(true);
-    console.log("Opening slot management for campaign:", campaign.id);
-  };
-
-  const handleCloseDialog = () => {
-    setIsFormOpen(false);
-    console.log("Closing slot management dialog");
-  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -173,7 +161,7 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
             <Button 
               variant="outline" 
               className="w-full gradient-border hover-scale"
-              onClick={handleManageSlots}
+              onClick={() => setIsFormOpen(true)}
             >
               <Users className="h-4 w-4 mr-2" />
               Manage Slots
@@ -183,11 +171,8 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
 
         <AnimatePresence>
           {isFormOpen && (
-            <Dialog open={isFormOpen} onOpenChange={handleCloseDialog}>
+            <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
               <DialogContent className="max-w-3xl glass-card">
-                <DialogDescription className="sr-only">
-                  Manage campaign slots and KOL positions
-                </DialogDescription>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -196,7 +181,7 @@ export const CampaignCard = ({ campaign }: CampaignCardProps) => {
                 >
                   <ManageSlotForm 
                     campaignId={campaign.id}
-                    onClose={handleCloseDialog}
+                    onClose={() => setIsFormOpen(false)}
                   />
                 </motion.div>
               </DialogContent>

@@ -6,7 +6,8 @@
 }
 
 .logo {
-  @apply h-8 sm:h-12 md:h-16 p-2 sm:p-4;
+  height: 6em;
+  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -35,30 +36,49 @@
 }
 
 .card {
-  @apply p-4 sm:p-6 md:p-8;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 2em;
+  }
 }
 
 .read-the-docs {
-  @apply text-gray-500 text-sm sm:text-base;
+  color: #888;
 }
 
 /* Mobile-first responsive design */
 .container {
-  @apply w-full px-4 sm:px-6 mx-auto;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* PWA specific styles */
-@media (display-mode: standalone) {
-  body {
-    @apply overscroll-none;
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
   }
-  
-  .pwa-header {
-    @apply pt-[env(safe-area-inset-top)];
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
   }
-  
-  .pwa-footer {
-    @apply pb-[env(safe-area-inset-bottom)];
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
   }
 }
 
@@ -81,7 +101,8 @@
 /* Better tap targets for mobile */
 button, 
 a {
-  @apply min-h-[44px] min-w-[44px];
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* Prevent text size adjustment on orientation change */

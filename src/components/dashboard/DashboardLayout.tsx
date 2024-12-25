@@ -18,15 +18,9 @@ export function DashboardLayout() {
       return;
     }
 
-    const welcomeMessages = {
-      brand: "Welcome to your Brand Dashboard! Ready to launch impactful campaigns?",
-      agency: "Welcome back to your Agency Dashboard! Let's manage your client campaigns.",
-      kol: "Welcome to your KOL Dashboard! Let's explore new opportunities."
-    };
-
     toast({
-      title: `Welcome back!`,
-      description: welcomeMessages[userType],
+      title: "Welcome back!",
+      description: `You're logged in as a ${userType.toUpperCase()}`,
       duration: 3000,
     });
   }, [userType, navigate, toast]);
@@ -38,7 +32,7 @@ export function DashboardLayout() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-b from-background to-background/80"
+      className="min-h-screen bg-background"
     >
       {userType === "brand" && <BrandDashboard />}
       {userType === "agency" && <AgencyDashboard />}
