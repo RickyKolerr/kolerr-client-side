@@ -1,34 +1,50 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
+import { translations, TranslationKey } from "@/translations";
 
-export type Language = 'en' | 'vi';
+export type Language = "en" | "vi";
 
 type LanguageContextType = {
   language: Language;
+  toggleLanguage: () => void;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("language");
+      return (stored === "en" || stored === "vi" ? stored : "en") as Language;
+    }
+    return "en";
+  });
 
-  const t = (key: string): string => {
-    // Simple translation function - can be expanded later
-    return key;
+  const setLanguage = (lang: Language) => {
+    localStorage.setItem("language", lang);
+    setLanguageState(lang);
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "vi" : "en");
+  };
+
+  const t = (key: TranslationKey): string => {
+    return translations[language][key] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
-};
+}
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };

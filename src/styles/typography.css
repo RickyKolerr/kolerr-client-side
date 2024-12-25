@@ -1,4 +1,0 @@
-/* Typography styles */
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange;
-}

@@ -92,16 +92,7 @@ export default {
         "scale-in": "scale-in 0.2s ease-out",
         "slide-in": "slide-in 0.3s ease-out"
       },
-      spacing: {
-        'safe-top': 'env(safe-area-inset-top)',
-        'safe-bottom': 'env(safe-area-inset-bottom)',
-        'safe-left': 'env(safe-area-inset-left)',
-        'safe-right': 'env(safe-area-inset-right)',
-      },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("tailwindcss-safe-area"),
-  ],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
