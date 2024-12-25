@@ -11,34 +11,11 @@ import "./App.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
+      staleTime: 5 * 60 * 1000,
       retry: 1,
     },
   },
 });
-
-function App() {
-  return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <LanguageProvider>
-          <TooltipProvider>
-            <div className="app-shell">
-              <main className="app-content bg-background">
-                <Routes>
-                  {routes.map(({ path, element: Element }) => (
-                    <Route key={path} path={path} element={<Element />} />
-                  ))}
-                </Routes>
-              </main>
-              <Toaster />
-            </div>
-          </TooltipProvider>
-        </LanguageProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
-  );
-}
 
 // Register service worker
 if ('serviceWorker' in navigator) {
@@ -49,6 +26,31 @@ if ('serviceWorker' in navigator) {
       console.log('SW registration failed:', registrationError);
     });
   });
+}
+
+function App() {
+  return (
+    <React.StrictMode>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <LanguageProvider>
+            <TooltipProvider>
+              <div className="app-shell">
+                <main className="app-content bg-background">
+                  <Routes>
+                    {routes.map(({ path, element: Element }) => (
+                      <Route key={path} path={path} element={<Element />} />
+                    ))}
+                  </Routes>
+                </main>
+                <Toaster />
+              </div>
+            </TooltipProvider>
+          </LanguageProvider>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
 }
 
 export default App;
