@@ -57,84 +57,82 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-[320px,1fr] gap-6">
-          {/* Sidebar */}
-          <Card className="p-4 h-[600px] flex flex-col">
-            <div className="relative mb-4">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search conversations..."
-                className="pl-10"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid lg:grid-cols-[320px,1fr] gap-6">
+        {/* Sidebar */}
+        <Card className="p-4 h-[600px] flex flex-col">
+          <div className="relative mb-4">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              placeholder="Search conversations..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          
+          <Tabs defaultValue="all" className="flex-1">
+            <TabsList className="w-full mb-4">
+              <TabsTrigger value="all" className="flex-1">
+                <MessageCircle className="h-4 w-4 mr-2" />
+                All
+              </TabsTrigger>
+              <TabsTrigger value="archived" className="flex-1">
+                <Archive className="h-4 w-4 mr-2" />
+                Archived
+              </TabsTrigger>
+            </TabsList>
             
-            <Tabs defaultValue="all" className="flex-1">
-              <TabsList className="w-full mb-4">
-                <TabsTrigger value="all" className="flex-1">
-                  <MessageCircle className="h-4 w-4 mr-2" />
-                  All
-                </TabsTrigger>
-                <TabsTrigger value="archived" className="flex-1">
-                  <Archive className="h-4 w-4 mr-2" />
-                  Archived
-                </TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="all" className="flex-1">
-                <ScrollArea className="h-[450px]">
-                  <div className="space-y-2">
-                    {conversations.map((conv) => (
-                      <div
-                        key={conv.id}
-                        className={cn(
-                          "p-3 rounded-lg hover:bg-accent cursor-pointer transition-colors",
-                          activeChat === conv.id && "bg-accent"
-                        )}
-                        onClick={() => setActiveChat(conv.id)}
-                      >
-                        <div className="flex items-center justify-between mb-1">
-                          <div className="flex items-center gap-2">
-                            {getTypeIcon(conv.type)}
-                            <h3 className="font-medium">{conv.name}</h3>
-                          </div>
-                          <span className="text-xs text-muted-foreground">
-                            {conv.time}
-                          </span>
+            <TabsContent value="all" className="flex-1">
+              <ScrollArea className="h-[450px]">
+                <div className="space-y-2">
+                  {conversations.map((conv) => (
+                    <div
+                      key={conv.id}
+                      className={cn(
+                        "p-3 rounded-lg hover:bg-accent cursor-pointer transition-colors",
+                        activeChat === conv.id && "bg-accent"
+                      )}
+                      onClick={() => setActiveChat(conv.id)}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-2">
+                          {getTypeIcon(conv.type)}
+                          <h3 className="font-medium">{conv.name}</h3>
                         </div>
-                        <p className="text-sm text-muted-foreground truncate pl-6">
-                          {conv.lastMessage}
-                        </p>
-                        {conv.unread && (
-                          <div className="flex justify-end">
-                            <Badge
-                              variant="default"
-                              className="mt-2 bg-gradient-to-r from-kolerr-cyan to-kolerr-purple"
-                            >
-                              New
-                            </Badge>
-                          </div>
-                        )}
+                        <span className="text-xs text-muted-foreground">
+                          {conv.time}
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </TabsContent>
-              
-              <TabsContent value="archived" className="flex-1">
-                <div className="h-[450px] flex items-center justify-center text-muted-foreground">
-                  No archived conversations
+                      <p className="text-sm text-muted-foreground truncate pl-6">
+                        {conv.lastMessage}
+                      </p>
+                      {conv.unread && (
+                        <div className="flex justify-end">
+                          <Badge
+                            variant="default"
+                            className="mt-2 bg-gradient-to-r from-kolerr-cyan to-kolerr-purple"
+                          >
+                            New
+                          </Badge>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              </TabsContent>
-            </Tabs>
-          </Card>
+              </ScrollArea>
+            </TabsContent>
+            
+            <TabsContent value="archived" className="flex-1">
+              <div className="h-[450px] flex items-center justify-center text-muted-foreground">
+                No archived conversations
+              </div>
+            </TabsContent>
+          </Tabs>
+        </Card>
 
-          {/* Main Chat Area */}
-          <ChatWindow />
-        </div>
+        {/* Main Chat Area */}
+        <ChatWindow />
       </div>
     </div>
   );

@@ -1,23 +1,12 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
-import { 
-  MessageCircle, 
-  Send, 
-  User, 
-  Paperclip,
-  Image as ImageIcon,
-  File,
-  Building2,
-  Star,
-  Users,
-  HeadphonesIcon
-} from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getUserType } from "@/utils/userTypeUtils";
+import { ChatMessage } from "./ChatMessage";
+import { ChatInput } from "./ChatInput";
+import { ChatLabels } from "./ChatLabels";
 
 interface Message {
   id: string;
@@ -28,12 +17,6 @@ interface Message {
   type: "text" | "file";
   fileUrl?: string;
   fileName?: string;
-}
-
-interface ChatLabel {
-  id: string;
-  name: string;
-  color: string;
 }
 
 export const ChatWindow = () => {
@@ -53,27 +36,12 @@ export const ChatWindow = () => {
   const [newMessage, setNewMessage] = useState("");
   const [selectedLabel, setSelectedLabel] = useState<string>("all");
   
-  const labels: ChatLabel[] = [
+  const labels = [
     { id: "all", name: "All Messages", color: "bg-gray-500" },
     { id: "campaign", name: "Campaign", color: "bg-kolerr-cyan" },
     { id: "contract", name: "Contract", color: "bg-kolerr-purple" },
     { id: "support", name: "Support", color: "bg-kolerr-orange" }
   ];
-
-  const getSenderIcon = (senderType: string) => {
-    switch (senderType) {
-      case 'support':
-        return <HeadphonesIcon className="h-4 w-4 text-white" />;
-      case 'brand':
-        return <Building2 className="h-4 w-4 text-white" />;
-      case 'kol':
-        return <Star className="h-4 w-4 text-white" />;
-      case 'agency':
-        return <Users className="h-4 w-4 text-white" />;
-      default:
-        return <User className="h-4 w-4 text-white" />;
-    }
-  };
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -120,96 +88,26 @@ export const ChatWindow = () => {
           <MessageCircle className="h-5 w-5" />
           Support Chat
         </CardTitle>
-        <div className="flex gap-2 overflow-x-auto pb-2">
-          {labels.map((label) => (
-            <Badge
-              key={label.id}
-              variant={selectedLabel === label.id ? "default" : "outline"}
-              className={`cursor-pointer ${
-                selectedLabel === label.id ? "bg-gradient-to-r from-kolerr-cyan to-kolerr-purple" : ""
-              }`}
-              onClick={() => setSelectedLabel(label.id)}
-            >
-              {label.name}
-            </Badge>
-          ))}
-        </div>
+        <ChatLabels
+          labels={labels}
+          selectedLabel={selectedLabel}
+          setSelectedLabel={setSelectedLabel}
+        />
       </CardHeader>
       <CardContent className="flex-1 flex flex-col p-4">
         <ScrollArea className="flex-1 pr-4">
           <div className="space-y-4">
             {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex items-start gap-2 animate-fade-in ${
-                  message.sender === "You" ? "flex-row-reverse" : ""
-                }`}
-              >
-                <div className="h-8 w-8 rounded-full bg-gradient-to-r from-kolerr-cyan to-kolerr-purple flex items-center justify-center">
-                  {getSenderIcon(message.senderType)}
-                </div>
-                <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
-                    message.sender === "You"
-                      ? "bg-gradient-to-r from-kolerr-cyan to-kolerr-purple text-white"
-                      : "bg-muted"
-                  }`}
-                >
-                  <p className="text-sm font-medium mb-1">{message.sender}</p>
-                  {message.type === "text" ? (
-                    <p className="text-sm">{message.content}</p>
-                  ) : (
-                    <div className="flex items-center gap-2">
-                      <File className="h-4 w-4" />
-                      <a 
-                        href={message.fileUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-sm underline"
-                      >
-                        {message.fileName}
-                      </a>
-                    </div>
-                  )}
-                  <p className="text-xs opacity-70 mt-1">
-                    {message.timestamp.toLocaleTimeString()}
-                  </p>
-                </div>
-              </div>
+              <ChatMessage key={message.id} {...message} />
             ))}
           </div>
         </ScrollArea>
-        <div className="flex gap-2 mt-4 pt-4 border-t">
-          <Input
-            placeholder="Type your message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-            className="flex-1"
-          />
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => document.getElementById("file-upload")?.click()}
-              className="hover:bg-kolerr-purple/10"
-            >
-              <Paperclip className="h-4 w-4" />
-              <input
-                id="file-upload"
-                type="file"
-                className="hidden"
-                onChange={handleFileUpload}
-              />
-            </Button>
-            <Button 
-              onClick={handleSendMessage}
-              className="bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+        <ChatInput
+          newMessage={newMessage}
+          setNewMessage={setNewMessage}
+          handleSendMessage={handleSendMessage}
+          handleFileUpload={handleFileUpload}
+        />
       </CardContent>
     </Card>
   );
