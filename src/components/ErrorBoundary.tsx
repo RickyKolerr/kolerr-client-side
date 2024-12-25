@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 
 interface Props {
   children: React.ReactNode;
+  onError?: (error: Error) => void;
 }
 
 interface State {
@@ -22,6 +23,9 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
+    if (this.props.onError) {
+      this.props.onError(error);
+    }
   }
 
   public render() {
@@ -51,7 +55,7 @@ export function ErrorBoundaryWrapper({ children }: { children: React.ReactNode }
 
   return (
     <ErrorBoundary
-      onError={(error) => {
+      onError={(error: Error) => {
         toast({
           title: "An error occurred",
           description: error.message,
