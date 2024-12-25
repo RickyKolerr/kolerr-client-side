@@ -1,16 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
-  const { t } = useLanguage();
-
   const stats = [
-    { number: "10K+", label: "landing.hero.stats.kols" },
-    { number: "50M+", label: "landing.hero.stats.reach" },
-    { number: "1000+", label: "landing.hero.stats.campaigns" },
-    { number: "95%", label: "landing.hero.stats.success" }
+    { number: "10K+", label: "KOLs Onboarded" },
+    { number: "50M+", label: "Total Reach" },
+    { number: "1000+", label: "Successful Campaigns" },
+    { number: "95%", label: "Success Rate" }
   ] as const;
 
   return (
@@ -23,11 +20,11 @@ const HeroSection = () => {
         <div className="flex flex-col items-center text-center space-y-6 md:space-y-8">
           <div className="space-y-4 max-w-4xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent animate-fade-in">
-              {t("landing.hero.title")}
+              Revolutionize Your Influencer Marketing
             </h1>
             
             <p className="text-base md:text-xl text-foreground/90 max-w-2xl mx-auto animate-fade-in delay-100 px-4">
-              {t("landing.hero.subtitle")}
+              Connect with the perfect influencers for your brand and manage campaigns effortlessly
             </p>
           </div>
 
@@ -41,7 +38,7 @@ const HeroSection = () => {
                          hover:shadow-[0_0_20px_rgba(0,245,255,0.5)]
                          group h-auto"
               >
-                {t("landing.hero.cta.start")} 
+                Get Started Now
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -55,7 +52,7 @@ const HeroSection = () => {
                          group h-auto"
               >
                 <Play className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-                {t("landing.hero.cta.demo")}
+                Watch Demo
               </Button>
             </Link>
           </div>
@@ -69,7 +66,7 @@ const HeroSection = () => {
                 <div className="text-xl md:text-3xl font-bold bg-gradient-to-r from-kolerr-cyan to-kolerr-purple bg-clip-text text-transparent">
                   {stat.number}
                 </div>
-                <div className="text-xs md:text-sm text-foreground/70">{t(stat.label)}</div>
+                <div className="text-xs md:text-sm text-foreground/70">{stat.label}</div>
               </div>
             ))}
           </div>

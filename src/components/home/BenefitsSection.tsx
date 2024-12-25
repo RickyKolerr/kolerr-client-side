@@ -1,23 +1,20 @@
 import { CheckCircle2 } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const BenefitsSection = () => {
-  const { t } = useLanguage();
-
   const benefits = [
-    t("benefits.access"),
-    t("benefits.ai"),
-    t("benefits.tracking"),
-    t("benefits.analytics"),
-    t("benefits.safety"),
-    t("benefits.support")
+    "24/7 Access to Top Influencers",
+    "AI-Powered Matching System",
+    "Real-time Campaign Tracking",
+    "Comprehensive Analytics Dashboard",
+    "Brand Safety Measures",
+    "Dedicated Support Team"
   ];
 
   return (
     <section className="py-20 bg-black/50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-          {t("benefits.title")}
+          Why Choose Kolerr
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (

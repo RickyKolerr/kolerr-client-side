@@ -1,23 +1,20 @@
 import { Search, Brain, Timer } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const HowItWorksSection = () => {
-  const { t } = useLanguage();
-
   const steps = [
     {
-      title: t("howItWorks.search.title"),
-      description: t("howItWorks.search.desc"),
+      title: "Search & Filter",
+      description: "Find the perfect influencers using our advanced search filters",
       icon: Search
     },
     {
-      title: t("howItWorks.ai.title"),
-      description: t("howItWorks.ai.desc"),
+      title: "AI Matching",
+      description: "Let our AI suggest the best matches for your brand",
       icon: Brain
     },
     {
-      title: t("howItWorks.collab.title"),
-      description: t("howItWorks.collab.desc"),
+      title: "Quick Collaboration",
+      description: "Start collaborating with influencers in minutes",
       icon: Timer
     }
   ];
@@ -26,7 +23,7 @@ const HowItWorksSection = () => {
     <section className="bg-black/50 py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-          {t("howItWorks.title")}
+          How It Works
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
