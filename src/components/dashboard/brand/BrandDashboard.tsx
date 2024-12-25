@@ -1,16 +1,16 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Calendar, DollarSign, User } from "lucide-react";
+import { BarChart3, Users, Calendar, Info } from "lucide-react";
 
-export function KOLDashboard() {
+export function BrandDashboard() {
   return (
     <div className="container mx-auto p-6 space-y-8">
       <h1 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-        KOL Dashboard
+        Brand Dashboard
       </h1>
 
       <Tabs defaultValue="campaigns" className="space-y-6">
-        <TabsList className="grid grid-cols-4 gap-4 bg-transparent h-auto p-0">
+        <TabsList className="grid grid-cols-5 gap-4 bg-transparent h-auto p-0">
           <TabsTrigger
             value="campaigns"
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
@@ -18,22 +18,28 @@ export function KOLDashboard() {
             Current Campaigns
           </TabsTrigger>
           <TabsTrigger
-            value="availability"
+            value="slots"
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
-            Slot Availability
+            Slot Management
           </TabsTrigger>
           <TabsTrigger
-            value="earnings"
+            value="kols"
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
-            Earnings/Status
+            KOL Selection
+          </TabsTrigger>
+          <TabsTrigger
+            value="analytics"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
+            Analytics
           </TabsTrigger>
           <TabsTrigger
             value="profile"
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
-            KOL Info
+            Brand Info
           </TabsTrigger>
         </TabsList>
 
@@ -46,35 +52,49 @@ export function KOLDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p>View and manage your active campaign commitments.</p>
+              <p>Your active and upcoming campaign details will appear here.</p>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="availability">
+        <TabsContent value="slots">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
-                Slot Availability
+                Slot Management
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Manage your availability for upcoming campaigns.</p>
+              <p>Manage your campaign slots and KOL positions here.</p>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="earnings">
+        <TabsContent value="kols">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <DollarSign className="h-5 w-5" />
-                Earnings & Status
+                <Users className="h-5 w-5" />
+                KOL Selection
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Track your earnings and campaign performance metrics.</p>
+              <p>Browse and select KOLs for your campaigns.</p>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="analytics">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BarChart3 className="h-5 w-5" />
+                Campaign Analytics
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>View detailed analytics and performance metrics for your campaigns.</p>
             </CardContent>
           </Card>
         </TabsContent>
@@ -83,12 +103,12 @@ export function KOLDashboard() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
-                KOL Information
+                <Info className="h-5 w-5" />
+                Brand Information
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Manage your profile, portfolio, and social media presence.</p>
+              <p>Manage your brand profile, logo, and social media links.</p>
             </CardContent>
           </Card>
         </TabsContent>
