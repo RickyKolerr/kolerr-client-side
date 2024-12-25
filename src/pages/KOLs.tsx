@@ -6,12 +6,25 @@ import { InfiniteScrollList } from "@/components/shared/InfiniteScrollList";
 import { GestureWrapper } from "@/components/shared/GestureWrapper";
 import { useToast } from "@/hooks/use-toast";
 
+interface KOL {
+  id: string;
+  name: string;
+  image: string;
+  followers: string;
+  engagement: string;
+  expertise?: string;
+  socialLinks?: Array<{
+    platform: string;
+    url: string;
+  }>;
+}
+
 const KOLs = () => {
   const { toast } = useToast();
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   
-  const kols = [
+  const kols: KOL[] = [
     {
       id: "kol-1",
       name: "Alex Johnson",
@@ -117,7 +130,6 @@ const KOLs = () => {
   ];
 
   const loadMore = useCallback(() => {
-    // Simulated loading more data
     if (page >= 3) {
       setHasMore(false);
       return;
@@ -157,7 +169,7 @@ const KOLs = () => {
             items={kols}
             hasMore={hasMore}
             loadMore={loadMore}
-            renderItem={(kol) => (
+            renderItem={(kol: KOL) => (
               <GestureWrapper
                 onSwipeLeft={handleSwipeLeft}
                 onSwipeRight={handleSwipeRight}
