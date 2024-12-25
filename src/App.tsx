@@ -4,7 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster } from "@/components/ui/toaster";
 import "./App.css";
-import { mainRoutes } from "./routes";
+import { Routes, Route } from "react-router-dom";
+import { routes } from "./routes";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +16,11 @@ function App() {
         <TooltipProvider>
           <BrowserRouter>
             <main className="min-h-screen bg-background">
-              {mainRoutes}
+              <Routes>
+                {routes.map(({ path, element: Element }) => (
+                  <Route key={path} path={path} element={<Element />} />
+                ))}
+              </Routes>
             </main>
             <Toaster />
           </BrowserRouter>
