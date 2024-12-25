@@ -8,3 +8,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mobile-optimized scrolling */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 640px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

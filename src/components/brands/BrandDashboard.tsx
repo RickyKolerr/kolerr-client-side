@@ -7,12 +7,15 @@ import { CampaignsList } from "./dashboard/CampaignsList";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 export function BrandDashboard() {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSessions, setSelectedSessions] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState("campaigns");
   
   const handleMergeSessions = () => {
     toast({
@@ -22,6 +25,34 @@ export function BrandDashboard() {
     });
     setSelectedSessions([]);
   };
+
+  const tabs = [
+    {
+      id: "campaigns",
+      label: "Current Campaigns",
+      icon: "📊"
+    },
+    {
+      id: "slots",
+      label: "Slot Management",
+      icon: "📅"
+    },
+    {
+      id: "kols",
+      label: "KOL Selection",
+      icon: "👥"
+    },
+    {
+      id: "analytics",
+      label: "Analytics",
+      icon: "📈"
+    },
+    {
+      id: "info",
+      label: "Brand Info",
+      icon: "ℹ️"
+    }
+  ];
 
   const activeCampaigns = [
     {
@@ -106,7 +137,7 @@ export function BrandDashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="space-y-8 max-w-[1400px] mx-auto p-4 sm:p-6">
+      <div className="space-y-6 max-w-[1400px] mx-auto p-4 sm:p-6">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
@@ -131,33 +162,39 @@ export function BrandDashboard() {
             </div>
           </div>
 
-          <div className="overflow-x-auto -mx-4 px-4">
-            <div className="inline-flex min-w-full sm:min-w-0">
-              <nav className="flex space-x-4 border-b border-gray-700 w-full overflow-x-auto pb-2 scrollbar-hide">
-                <button className="text-sm font-medium text-white px-3 py-2 rounded-md bg-primary/10 whitespace-nowrap">
-                  Current Campaigns
-                </button>
-                <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
-                  KOL Selection
-                </button>
-                <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
-                  Analytics
-                </button>
-                <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
-                  Brand Info
-                </button>
+          <ScrollArea className="w-full">
+            <div className="border-b border-gray-700">
+              <div className="flex space-x-1 p-1">
+                {tabs.map((tab) => (
+                  <Button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    variant="ghost"
+                    size="sm"
+                    className={cn(
+                      "flex items-center gap-2 px-3 py-2 rounded-md whitespace-nowrap text-sm font-medium transition-colors",
+                      activeTab === tab.id
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                    )}
+                  >
+                    <span className="hidden sm:inline">{tab.icon}</span>
+                    {tab.label}
+                  </Button>
+                ))}
                 <Button
                   onClick={handleMergeSessions}
                   variant="outline"
                   size="sm"
-                  className="ml-auto flex items-center gap-2 text-primary hover:text-primary-foreground"
+                  className="ml-auto hidden sm:flex items-center gap-2 text-primary hover:text-primary-foreground whitespace-nowrap"
                 >
                   <Link2 className="h-4 w-4" />
                   Combine Sessions
                 </Button>
-              </nav>
+              </div>
             </div>
-          </div>
+            <ScrollBar orientation="horizontal" className="invisible sm:visible" />
+          </ScrollArea>
 
           <MetricsOverview />
           <CampaignsList campaigns={activeCampaigns} />
