@@ -31,15 +31,21 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    @apply antialiased;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground min-h-screen;
     -webkit-tap-highlight-color: transparent;
   }
   
-  /* Improve touch targets on mobile */
-  button, 
-  a {
-    @apply min-h-[44px] min-w-[44px];
+  /* Improve text rendering */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
   }
 }
 
@@ -56,75 +62,104 @@
     @apply relative before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:bg-gradient-to-r before:from-kolerr-cyan before:via-kolerr-purple before:to-kolerr-orange before:content-[''] before:-z-10;
   }
   
-  .hover-scale {
-    @apply transition-all duration-300 hover:scale-105;
-  }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:shadow-kolerr-purple/20;
-  }
-  
-  .glass-card {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20;
-  }
-  
-  .glass-effect {
-    @apply backdrop-blur-md bg-white/10 border border-white/20;
-  }
-
   /* Mobile-optimized containers */
   .container {
-    @apply px-4 sm:px-6 lg:px-8 mx-auto;
-    max-width: 100%;
+    @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-[100%] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px];
   }
 
-  /* Responsive text sizes */
+  /* Responsive text utilities */
   .text-responsive {
-    @apply text-base sm:text-lg md:text-xl;
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
   }
 
-  /* Better touch targets for mobile */
-  .touch-target {
-    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
   }
-}
 
-/* Animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
+  /* Mobile-first buttons */
+  .btn {
+    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200;
+  }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+  /* Card styles with better mobile support */
+  .card {
+    @apply rounded-lg p-4 sm:p-6 bg-card shadow-lg;
+  }
+
+  /* Navigation improvements */
+  .nav-link {
+    @apply px-3 py-2 rounded-md transition-colors duration-200 hover:bg-accent/10;
+  }
+
+  /* Form elements with better touch targets */
+  .form-input {
+    @apply min-h-[44px] w-full rounded-md px-4;
+  }
 }
 
 /* Mobile-specific optimizations */
 @media (max-width: 640px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    @apply px-4;
   }
 
-  /* Prevent text size adjustment on orientation change */
-  html {
-    -webkit-text-size-adjust: 100%;
+  /* Improve touch targets */
+  button, 
+  a,
+  input[type="button"],
+  input[type="submit"] {
+    @apply min-h-[44px] min-w-[44px];
   }
 
-  /* Improve scrolling on mobile */
-  * {
-    -webkit-overflow-scrolling: touch;
+  /* Adjust spacing */
+  .space-y-mobile {
+    @apply space-y-4;
+  }
+
+  /* Stack items on mobile */
+  .stack-mobile {
+    @apply flex flex-col;
+  }
+
+  /* Hide scrollbars but keep functionality */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 
-/* Disable hover effects on mobile */
-@media (hover: none) {
-  .hover\:scale-105:hover {
-    transform: none;
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 640px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"] {
+    @apply text-base;
   }
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Language-specific adjustments */
+[lang="vi"] {
+  /* Adjust line height for Vietnamese text */
+  @apply leading-relaxed;
   
-  .hover\:opacity-90:hover {
-    opacity: 1;
+  /* Increase spacing for Vietnamese characters */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-normal;
   }
 }

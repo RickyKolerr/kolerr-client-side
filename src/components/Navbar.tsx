@@ -55,7 +55,7 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-foreground/80 hover:text-foreground hover:scale-105 transition-all px-3 py-2 text-sm"
+                className="nav-link text-foreground/80 hover:text-foreground transition-all text-sm"
               >
                 {item.label}
               </Link>
