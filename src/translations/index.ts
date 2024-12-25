@@ -6,9 +6,15 @@ export const translations = {
   vi,
 } as const;
 
-// Update the TranslationKey type to include all possible translation keys
 export type TranslationKey = 
   | keyof typeof en 
+  | "slots.mySlots.brand"
+  | "slots.mySlots.budget"
+  | "slots.mySlots.deadline"
+  | "slots.mySlots.requirements"
+  | "slots.mySlots.progress"
+  | "slots.mySlots.viewDetails"
+  | "slots.mySlots.acceptInvitation"
   | "payment.stripe.desc"
   | "payment.local.title"
   | "payment.local.desc"

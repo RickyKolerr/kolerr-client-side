@@ -1,3 +1,14 @@
+export type KOLCategory = 
+  | "Fashion"
+  | "Tech"
+  | "Beauty"
+  | "Lifestyle"
+  | "Food"
+  | "Travel"
+  | "Gaming"
+  | "Sports"
+  | "Entertainment";
+
 export interface Slot {
   id: number;
   brandId: number;
@@ -7,7 +18,7 @@ export interface Slot {
   deadline: string;
   requirements: string;
   budget: string;
-  category: string;
+  category: KOLCategory;
   platform?: string;
   isFeatured?: boolean;
   collaborators: number;
