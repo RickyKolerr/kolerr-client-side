@@ -93,19 +93,20 @@ const Slots = () => {
             )}
           </TabsList>
 
-          <TabsContent value="dashboard" className="space-y-4">
-            <SlotDashboard slots={slotsData?.data || []} />
-          </TabsContent>
+<TabsContent value="dashboard" className="space-y-4">
+  <SlotDashboard />
+</TabsContent>
 
-          <TabsContent value="available" className="space-y-4">
-            <AvailableSlots slots={slotsData?.data || []} />
-          </TabsContent>
+<TabsContent value="available" className="space-y-4">
+  <AvailableSlots />
+</TabsContent>
 
-          {userType === 'kol' && (
-            <TabsContent value="my-slots" className="space-y-4">
-              <MySlots />
-            </TabsContent>
-          )}
+{userType === 'kol' && (
+  <TabsContent value="my-slots" className="space-y-4">
+    <MySlots />
+  </TabsContent>
+)}
+
         </Tabs>
       </div>
     </div>
