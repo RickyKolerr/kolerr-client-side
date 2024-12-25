@@ -3,18 +3,26 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster } from "@/components/ui/toaster";
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { routes } from "./routes";
+import "./App.css";
 
-const queryClient = new QueryClient();
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      retry: 1,
+    },
+  },
+});
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <TooltipProvider>
-          <BrowserRouter>
+        <BrowserRouter>
+          <TooltipProvider>
             <main className="min-h-screen bg-background">
               <Routes>
                 {routes.map(({ path, element: Element }) => (
@@ -23,8 +31,8 @@ function App() {
               </Routes>
             </main>
             <Toaster />
-          </BrowserRouter>
-        </TooltipProvider>
+          </TooltipProvider>
+        </BrowserRouter>
       </LanguageProvider>
     </QueryClientProvider>
   );

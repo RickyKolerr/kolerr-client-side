@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { translations, TranslationKey } from "@/translations";
 
 export type Language = "en" | "vi";
@@ -13,13 +13,14 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("language");
-      return (stored === "en" || stored === "vi" ? stored : "en") as Language;
+  const [language, setLanguageState] = useState<Language>("en");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("language");
+    if (stored === "en" || stored === "vi") {
+      setLanguageState(stored as Language);
     }
-    return "en";
-  });
+  }, []);
 
   const setLanguage = (lang: Language) => {
     localStorage.setItem("language", lang);
@@ -34,8 +35,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return translations[language][key] || key;
   };
 
+  const value = {
+    language,
+    toggleLanguage,
+    setLanguage,
+    t,
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );
