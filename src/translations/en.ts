@@ -1,11 +1,9 @@
 import { navigationEn } from './modules/navigation.en';
 import { authEn } from './modules/auth.en';
-import { kolsEn } from './modules/kols.en';
 
 export const en = {
   ...navigationEn,
   ...authEn,
-  ...kolsEn,
   
   // Hero Section
   "hero.title": "Unlock Your Brand's Potential with Kolerr",
