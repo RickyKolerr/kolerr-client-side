@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Routes } from "@/routes";
 import { ErrorBoundaryWrapper } from "@/components/ErrorBoundary";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,16 +22,18 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <LanguageProvider>
-          <TooltipProvider>
-            <ErrorBoundaryWrapper>
-              <Routes />
-              <Toaster />
-            </ErrorBoundaryWrapper>
-          </TooltipProvider>
-        </LanguageProvider>
-      </QueryClientProvider>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <LanguageProvider>
+            <TooltipProvider>
+              <ErrorBoundaryWrapper>
+                <Routes />
+                <Toaster />
+              </ErrorBoundaryWrapper>
+            </TooltipProvider>
+          </LanguageProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
