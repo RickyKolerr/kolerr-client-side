@@ -20,20 +20,18 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <LanguageProvider>
           <TooltipProvider>
-            <LanguageProvider>
-              <ErrorBoundaryWrapper>
-                <Routes />
-                <Toaster />
-              </ErrorBoundaryWrapper>
-            </LanguageProvider>
+            <ErrorBoundaryWrapper>
+              <Routes />
+              <Toaster />
+            </ErrorBoundaryWrapper>
           </TooltipProvider>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </React.StrictMode>
+        </LanguageProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
