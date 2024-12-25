@@ -32,7 +32,14 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Improve touch targets on mobile */
+  button, 
+  a {
+    @apply min-h-[44px] min-w-[44px];
   }
 }
 
@@ -64,8 +71,25 @@
   .glass-effect {
     @apply backdrop-blur-md bg-white/10 border border-white/20;
   }
+
+  /* Mobile-optimized containers */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 100%;
+  }
+
+  /* Responsive text sizes */
+  .text-responsive {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  /* Better touch targets for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
 }
 
+/* Animations */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -74,4 +98,33 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Prevent text size adjustment on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Improve scrolling on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Disable hover effects on mobile */
+@media (hover: none) {
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+  
+  .hover\:opacity-90:hover {
+    opacity: 1;
+  }
 }
