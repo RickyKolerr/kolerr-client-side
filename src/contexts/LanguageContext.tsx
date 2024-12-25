@@ -31,12 +31,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const t = (key: TranslationKey): string => {
-    const translation = translations[language][key];
-    if (!translation) {
-      console.warn(`Translation missing for key: ${key} in language: ${language}`);
-      return translations["en"][key] || key;
-    }
-    return translation;
+    return translations[language][key] || key;
   };
 
   return (
