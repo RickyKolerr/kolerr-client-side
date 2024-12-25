@@ -7,5 +7,5 @@ export const navigationVi = {
   "nav.brands": "Thương hiệu",
   "nav.pricing": "Bảng giá",
   "nav.contact": "Liên hệ",
-  "nav.communication": "Giao tiếp & Hợp đồng"
+  "nav.chat": "Trò chuyện"
 } as const;
