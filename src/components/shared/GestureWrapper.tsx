@@ -17,8 +17,8 @@ export const GestureWrapper = ({
 }: GestureWrapperProps) => {
   const x = useMotionValue(0);
 
-  const bind = useGesture({
-    onDrag: ({ movement: [mx], direction: [xDir], velocity: [vx], last }) => {
+  const bindGestures = useGesture({
+    onDrag: ({ movement: [mx], velocity: [vx], last }) => {
       if (last) {
         const swipeThreshold = 50;
         const velocityThreshold = 0.5;
@@ -39,7 +39,7 @@ export const GestureWrapper = ({
 
   return (
     <motion.div 
-      {...bind()} 
+      {...bindGestures()}
       style={{ x }} 
       className={`touch-pan-y ${className}`}
     >
