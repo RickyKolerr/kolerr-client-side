@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { routes } from "./routes";
+import Navbar from "@/components/Navbar";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,9 +20,10 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
         <BrowserRouter>
+          <Navbar />
+          <Toaster />
+          <Sonner />
           <Routes>
             {routes.map(({ path, element: Element }) => (
               <Route key={path} path={path} element={<Element />} />
