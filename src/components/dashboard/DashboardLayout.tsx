@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserType } from "@/utils/userTypeUtils";
-import { BrandDashboard } from "./brand/BrandDashboard";
+import { BrandDashboard } from "../brands/BrandDashboard";
 import { AgencyDashboard } from "./agency/AgencyDashboard";
 import { KOLDashboard } from "./kol/KOLDashboard";
 import { motion } from "framer-motion";
