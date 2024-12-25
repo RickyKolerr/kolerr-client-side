@@ -11,10 +11,10 @@ export function FilterButton({ activeFiltersCount, onClick }: FilterButtonProps)
     <Button 
       variant="outline" 
       onClick={onClick}
-      className="bg-black/40 hover:bg-black/60 text-white border-white/10 gap-2 transition-all duration-300"
+      className="w-full sm:w-auto bg-background/50 backdrop-blur-sm hover:bg-background/70 text-white border-gray-700 gap-2 transition-all duration-300"
     >
       <Filter className="h-4 w-4" />
-      Filter Campaigns ({activeFiltersCount})
+      {activeFiltersCount > 0 ? `Filters (${activeFiltersCount})` : 'Filters'}
     </Button>
   );
 }
