@@ -1,49 +1,40 @@
+import { MetricsOverview } from "@/components/brands/dashboard/MetricsOverview";
+import { CampaignsList } from "@/components/brands/dashboard/CampaignsList";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ClientCampaigns } from "./ClientCampaigns";
-import { KOLMatching } from "./KOLMatching";
-import { CampaignReporting } from "./CampaignReporting";
-import { AgencyProfile } from "./AgencyProfile";
-import { Card } from "@/components/ui/card";
 
 export function AgencyDashboard() {
-  const [activeTab, setActiveTab] = useState("campaigns");
+  const { t } = useLanguage();
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <div className="container mx-auto p-6 space-y-8">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold gradient-text">Agency Dashboard</h1>
-        <p className="text-muted-foreground">
-          Manage client campaigns and KOL partnerships
-        </p>
+    <div className="space-y-8 max-w-[1400px] mx-auto p-4 sm:p-6">
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold gradient-text">
+              Agency Dashboard
+            </h1>
+            <p className="text-sm sm:text-base text-muted-foreground mt-2">
+              Manage client campaigns and KOL partnerships
+            </p>
+          </div>
+          <div className="relative flex-1 sm:flex-none">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
+            <Input
+              placeholder="Search campaigns..."
+              className="pl-10 w-full sm:w-[300px] bg-white/5 border-white/10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <MetricsOverview />
+        <CampaignsList campaigns={[]} />
       </div>
-
-      <Card className="p-4">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="campaigns">Client Campaigns</TabsTrigger>
-            <TabsTrigger value="matching">KOL Matching</TabsTrigger>
-            <TabsTrigger value="reporting">Reporting</TabsTrigger>
-            <TabsTrigger value="profile">Profile</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="campaigns" className="mt-6">
-            <ClientCampaigns />
-          </TabsContent>
-
-          <TabsContent value="matching" className="mt-6">
-            <KOLMatching />
-          </TabsContent>
-
-          <TabsContent value="reporting" className="mt-6">
-            <CampaignReporting />
-          </TabsContent>
-
-          <TabsContent value="profile" className="mt-6">
-            <AgencyProfile />
-          </TabsContent>
-        </Tabs>
-      </Card>
     </div>
   );
 }
