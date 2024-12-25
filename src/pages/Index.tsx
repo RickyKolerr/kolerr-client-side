@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import TrustedBy from "@/components/home/TrustedBy";
 import StatsSection from "@/components/home/StatsSection";
@@ -13,6 +14,8 @@ import Footer from "@/components/home/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
+      <HeroSection />
       <SearchSection />
       <TrustedBy />
       <FeaturesSection />

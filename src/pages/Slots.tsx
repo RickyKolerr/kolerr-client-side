@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SlotDashboard from "@/components/slots/SlotDashboard";
 import AvailableSlots from "@/components/slots/AvailableSlots";
@@ -9,6 +10,7 @@ const Slots = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent mb-2">
           {t('slots.title')}
