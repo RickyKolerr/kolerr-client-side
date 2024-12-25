@@ -1,30 +1,11 @@
+import { navigationEn } from './modules/navigation.en';
+import { authEn } from './modules/auth.en';
+
+// ... keep existing code (other imports)
+
 export const en = {
-  // Navigation
-  "nav.home": "Home",
-  "nav.campaigns": "Campaigns",
-  "nav.slots": "Slots",
-  "nav.kols": "KOLs",
-  "nav.brands": "Brands",
-  "nav.pricing": "Pricing",
-  "nav.contact": "Contact",
-
-  // Authentication
-  "auth.signin": "Sign In",
-  "auth.signup": "Sign Up",
-  "auth.password": "Password",
-  "auth.accountType": "Account Type",
-  "auth.selectAccountType": "Select Account Type",
-  "auth.accountType.kol": "KOL/Influencer",
-  "auth.accountType.brand": "Brand/Business",
-  "auth.haveAccount": "Already have an account?",
-  "auth.google": "Continue with Google",
-  "auth.facebook": "Continue with Facebook",
-  "auth.instagram": "Continue with Instagram",
-  "auth.tiktok": "Continue with TikTok",
-  "auth.or": "or continue with",
-  "auth.social.title": "Social Login",
-  "auth.social.subtitle": "Choose your preferred login method",
-
+  ...navigationEn,
+  ...authEn,
   // Hero Section
   "hero.title": "Unlock Your Brand's Potential with Kolerr",
   "hero.subtitle": "Effortlessly connect, collaborate, and scale your campaigns with Vietnam's leading AI-powered influencer marketing platform",
@@ -214,4 +195,4 @@ export const en = {
   "search.subtitle": "Search through thousands of verified KOLs and available campaign slots",
   "search.placeholder": "Search by name, category, or platform...",
   "search.button": "Search Now",
-};
+} as const;
