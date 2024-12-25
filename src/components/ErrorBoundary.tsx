@@ -1,5 +1,6 @@
 import React from "react";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
@@ -32,18 +33,30 @@ class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen flex items-center justify-center bg-background">
-          <div className="text-center space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center space-y-4 p-6 max-w-md mx-auto"
+          >
             <h2 className="text-2xl font-bold text-foreground">Something went wrong</h2>
             <p className="text-muted-foreground">
               {this.state.error?.message || 'An unexpected error occurred'}
             </p>
-            <button
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-              onClick={() => window.location.reload()}
-            >
-              Reload page
-            </button>
-          </div>
+            <div className="space-y-2">
+              <button
+                className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+                onClick={() => window.location.reload()}
+              >
+                Reload page
+              </button>
+              <button
+                className="w-full px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90"
+                onClick={() => this.setState({ hasError: false, error: null })}
+              >
+                Try again
+              </button>
+            </div>
+          </motion.div>
         </div>
       );
     }
