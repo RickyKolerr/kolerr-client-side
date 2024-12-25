@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,26 +30,24 @@ if ('serviceWorker' in navigator) {
 
 function App() {
   return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <LanguageProvider>
-          <BrowserRouter>
-            <TooltipProvider>
-              <div className="app-shell">
-                <main className="app-content bg-background">
-                  <Routes>
-                    {routes.map(({ path, element: Element }) => (
-                      <Route key={path} path={path} element={<Element />} />
-                    ))}
-                  </Routes>
-                </main>
-                <Toaster />
-              </div>
-            </TooltipProvider>
-          </BrowserRouter>
-        </LanguageProvider>
-      </QueryClientProvider>
-    </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <LanguageProvider>
+        <BrowserRouter>
+          <TooltipProvider>
+            <div className="app-shell">
+              <main className="app-content bg-background">
+                <Routes>
+                  {routes.map(({ path, element: Element }) => (
+                    <Route key={path} path={path} element={<Element />} />
+                  ))}
+                </Routes>
+              </main>
+              <Toaster />
+            </div>
+          </TooltipProvider>
+        </BrowserRouter>
+      </LanguageProvider>
+    </QueryClientProvider>
   );
 }
 
