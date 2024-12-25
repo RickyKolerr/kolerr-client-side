@@ -1,9 +1,11 @@
+import React, { memo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Facebook, Instagram, Twitter, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { getUserType } from "@/utils/userTypeUtils";
+import OptimizedImage from "./shared/OptimizedImage";
 
 interface SocialLink {
   platform: string;
@@ -24,7 +26,7 @@ interface KOLCardProps {
   socialLinks?: SocialLink[];
 }
 
-const KOLCard = ({ 
+const KOLCard = memo(({ 
   id,
   name, 
   image, 
@@ -71,7 +73,13 @@ const KOLCard = ({
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <img src={image} alt={name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+              <OptimizedImage 
+                src={image} 
+                alt={name} 
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                width={80}
+                height={80}
+              />
             </motion.div>
             <div className="flex-1">
               <h3 className="text-xl font-bold gradient-text">{name}</h3>
@@ -164,6 +172,8 @@ const KOLCard = ({
       </Card>
     </motion.div>
   );
-};
+});
+
+KOLCard.displayName = 'KOLCard';
 
 export default KOLCard;
