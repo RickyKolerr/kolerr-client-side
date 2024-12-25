@@ -1,16 +1,18 @@
-import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Routes } from "@/routes";
 import { ErrorBoundaryWrapper } from "@/components/ErrorBoundary";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 10 * 60 * 1000, // 10 minutes
       retry: 1,
+      refetchOnWindowFocus: false,
     },
   },
 });

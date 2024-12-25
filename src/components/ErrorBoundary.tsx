@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 interface Props {
@@ -9,12 +8,13 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error?: Error;
+  error: Error | null;
 }
 
-export class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends React.Component<Props, State> {
   public state: State = {
-    hasError: false
+    hasError: false,
+    error: null,
   };
 
   public static getDerivedStateFromError(error: Error): State {
@@ -31,16 +31,18 @@ export class ErrorBoundary extends React.Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <div className="min-h-screen flex items-center justify-center bg-background">
           <div className="text-center space-y-4">
-            <h2 className="text-2xl font-bold text-red-500">Something went wrong</h2>
-            <p className="text-muted-foreground">We're sorry for the inconvenience</p>
-            <Button
-              onClick={() => this.setState({ hasError: false })}
-              className="mt-4"
+            <h2 className="text-2xl font-bold text-foreground">Something went wrong</h2>
+            <p className="text-muted-foreground">
+              {this.state.error?.message || 'An unexpected error occurred'}
+            </p>
+            <button
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+              onClick={() => window.location.reload()}
             >
-              Try again
-            </Button>
+              Reload page
+            </button>
           </div>
         </div>
       );
@@ -67,3 +69,5 @@ export function ErrorBoundaryWrapper({ children }: { children: React.ReactNode }
     </ErrorBoundary>
   );
 }
+
+export default ErrorBoundary;
