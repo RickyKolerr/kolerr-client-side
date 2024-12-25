@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -98,42 +98,46 @@ export const ChatWindow = () => {
   };
 
   return (
-    <Card className="w-full h-[600px] flex flex-col">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <MessageCircle className="h-5 w-5" />
-          Chat
-        </CardTitle>
-        <div className="flex gap-2 overflow-x-auto pb-2">
-          {labels.map((label) => (
-            <Badge
-              key={label.id}
-              variant={selectedLabel === label.id ? "default" : "outline"}
-              className="cursor-pointer"
-              onClick={() => setSelectedLabel(label.id)}
-            >
-              {label.name}
-            </Badge>
-          ))}
+    <Card className="w-full h-[600px] flex flex-col bg-card/50 backdrop-blur-sm border-none shadow-lg">
+      <CardHeader className="border-b border-border/50 pb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <MessageCircle className="h-5 w-5 text-kolerr-cyan" />
+            <h3 className="font-semibold">Messages</h3>
+          </div>
+          <div className="flex gap-2">
+            {labels.map((label) => (
+              <Badge
+                key={label.id}
+                variant={selectedLabel === label.id ? "default" : "outline"}
+                className={`cursor-pointer transition-all hover:scale-105 ${
+                  selectedLabel === label.id ? "gradient-bg" : "hover:gradient-border"
+                }`}
+                onClick={() => setSelectedLabel(label.id)}
+              >
+                {label.name}
+              </Badge>
+            ))}
+          </div>
         </div>
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col">
+      <CardContent className="flex-1 flex flex-col p-4">
         <ScrollArea className="flex-1 pr-4">
           <div className="space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex items-start gap-2 ${
+                className={`flex items-start gap-2 animate-fade-in ${
                   message.sender === "You" ? "flex-row-reverse" : ""
                 }`}
               >
-                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-                  <User className="h-4 w-4" />
+                <div className="h-8 w-8 rounded-full gradient-bg flex items-center justify-center">
+                  <User className="h-4 w-4 text-primary-foreground" />
                 </div>
                 <div
                   className={`max-w-[80%] rounded-lg p-3 ${
                     message.sender === "You"
-                      ? "bg-primary text-primary-foreground"
+                      ? "gradient-bg text-primary-foreground"
                       : "bg-muted"
                   }`}
                 >
@@ -161,18 +165,20 @@ export const ChatWindow = () => {
             ))}
           </div>
         </ScrollArea>
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2 mt-4 pt-4 border-t border-border/50">
           <Input
             placeholder="Type your message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+            className="bg-background/50 border-none focus-visible:ring-1 focus-visible:ring-kolerr-cyan"
           />
           <div className="flex gap-2">
             <Button
               variant="outline"
               size="icon"
               onClick={() => document.getElementById("file-upload")?.click()}
+              className="hover:gradient-border relative"
             >
               <Paperclip className="h-4 w-4" />
               <input
@@ -182,7 +188,7 @@ export const ChatWindow = () => {
                 onChange={handleFileUpload}
               />
             </Button>
-            <Button onClick={handleSendMessage}>
+            <Button onClick={handleSendMessage} className="gradient-bg">
               <Send className="h-4 w-4" />
             </Button>
           </div>
