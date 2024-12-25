@@ -5,22 +5,32 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { StrictMode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Routes } from "@/routes";
+import { ErrorBoundaryWrapper } from "@/components/ErrorBoundary";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      retry: 1,
+    },
+  },
+});
 
 function App() {
   return (
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <TooltipProvider>
-            <LanguageProvider>
-              <Routes />
-              <Toaster />
-            </LanguageProvider>
-          </TooltipProvider>
-        </BrowserRouter>
-      </QueryClientProvider>
+      <ErrorBoundaryWrapper>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <TooltipProvider>
+              <LanguageProvider>
+                <Routes />
+                <Toaster />
+              </LanguageProvider>
+            </TooltipProvider>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ErrorBoundaryWrapper>
     </StrictMode>
   );
 }
