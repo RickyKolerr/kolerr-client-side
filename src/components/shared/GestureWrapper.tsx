@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGesture } from '@use-gesture/react';
-import { motion, useMotionValue, MotionValue } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 
 interface GestureWrapperProps {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ export const GestureWrapper = ({
   const x = useMotionValue(0);
 
   const bind = useGesture({
-    onDrag: ({ movement: [mx], velocity: [vx], last }) => {
+    onDrag: ({ movement: [mx], direction: [xDir], velocity: [vx], last }) => {
       if (last) {
         const swipeThreshold = 50;
         const velocityThreshold = 0.5;
@@ -39,7 +39,7 @@ export const GestureWrapper = ({
 
   return (
     <motion.div 
-      {...(bind() as any)}
+      {...bind()} 
       style={{ x }} 
       className={`touch-pan-y ${className}`}
     >

@@ -23,14 +23,14 @@ function App() {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <LanguageProvider>
-            <TooltipProvider>
+          <TooltipProvider>
+            <LanguageProvider>
               <ErrorBoundaryWrapper>
                 <Routes />
                 <Toaster />
               </ErrorBoundaryWrapper>
-            </TooltipProvider>
-          </LanguageProvider>
+            </LanguageProvider>
+          </TooltipProvider>
         </BrowserRouter>
       </QueryClientProvider>
     </React.StrictMode>
