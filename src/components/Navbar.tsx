@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Languages, Menu } from "lucide-react";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 import { Container } from "@/components/ui/container";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   Sheet,
   SheetContent,
@@ -63,6 +64,7 @@ const Navbar = () => {
             ))}
             
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -135,19 +137,28 @@ const Navbar = () => {
                     </Link>
                   ))}
                   <hr className="my-4 border-gray-800" />
+                  <div className="flex items-center justify-between px-3">
+                    <ThemeToggle />
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <Languages className="h-5 w-5" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        {languages.map((lang) => (
+                          <DropdownMenuItem
+                            key={lang.code}
+                            onClick={() => setLanguage(lang.code)}
+                            className={language === lang.code ? 'bg-accent' : ''}
+                          >
+                            {lang.label}
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                   <div className="flex flex-col gap-3 px-3">
-                    {languages.map((lang) => (
-                      <Button
-                        key={lang.code}
-                        variant="ghost"
-                        onClick={() => setLanguage(lang.code)}
-                        className={`justify-start h-10 ${
-                          language === lang.code ? 'bg-accent' : ''
-                        }`}
-                      >
-                        {lang.label}
-                      </Button>
-                    ))}
                     <Link to="/auth/login" className="w-full mt-2">
                       <Button 
                         variant="ghost" 
