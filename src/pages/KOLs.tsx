@@ -1,20 +1,9 @@
 import Navbar from "@/components/Navbar";
 import { KOLFilters } from "@/components/kol-filters/KOLFilters";
 import KOLCard from "@/components/KOLCard";
-import { useKOLFilters } from "@/contexts/KOLFilterContext";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useQuery } from "@tanstack/react-query";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const KOLs = () => {
-  const { t } = useLanguage();
-  const { filters } = useKOLFilters();
-
-  const { data: kols, isLoading } = useQuery({
-    queryKey: ['kols', filters],
-    queryFn: async () => {
-      // Simulate API call with mock data for now
-      return [
+  const kols = [
     {
       id: "kol-1",
       name: "Alex Johnson",
@@ -117,20 +106,7 @@ const KOLs = () => {
       engagement: "8.4%",
       expertise: "Education & Career",
     },
-      ];
-    },
-  });
-
-  const KOLSkeleton = () => (
-    <div className="space-y-4">
-      <div className="h-20 w-full rounded-lg bg-background/20 animate-pulse" />
-      <div className="grid grid-cols-2 gap-4">
-        <div className="h-16 rounded-lg bg-background/20 animate-pulse" />
-        <div className="h-16 rounded-lg bg-background/20 animate-pulse" />
-      </div>
-      <div className="h-10 w-full rounded-lg bg-background/20 animate-pulse" />
-    </div>
-  );
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -138,27 +114,21 @@ const KOLs = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
-            {t('kols.title')}
+            Key Opinion Leaders
           </h1>
           <p className="text-muted-foreground">
-            {t('kols.subtitle')}
+            Connect with top Vietnamese influencers for your brand campaigns
           </p>
 
           <KOLFilters />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {isLoading ? (
-              Array.from({ length: 6 }).map((_, index) => (
-                <KOLSkeleton key={index} />
-              ))
-            ) : (
-              kols?.map((kol) => (
-                <KOLCard
-                  key={kol.id}
-                  {...kol}
-                />
-              ))
-            )}
+            {kols.map((kol) => (
+              <KOLCard
+                key={kol.id}
+                {...kol}
+              />
+            ))}
           </div>
         </div>
       </div>

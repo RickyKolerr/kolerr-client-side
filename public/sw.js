@@ -4,11 +4,10 @@ const urlsToCache = [
   '/index.html',
   '/manifest.json',
   '/icon-192x192.png',
-  '/icon-512x512.png',
-  '/offline.html'
+  '/icon-512x512.png'
 ];
 
-// Install event - cache core assets
+// Cache first, then network strategy
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -19,7 +18,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Fetch event - serve from cache first, then network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
@@ -29,10 +27,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        // Clone the request
-        const fetchRequest = event.request.clone();
-
-        return fetch(fetchRequest)
+        return fetch(event.request)
           .then((response) => {
             // Check if we received a valid response
             if (!response || response.status !== 200 || response.type !== 'basic') {
@@ -48,14 +43,6 @@ self.addEventListener('fetch', (event) => {
               });
 
             return response;
-          })
-          .catch(() => {
-            // If offline and requesting a page, show offline page
-            if (event.request.mode === 'navigate') {
-              return caches.match('/offline.html');
-            }
-            // Return cached version if available
-            return caches.match(event.request);
           });
       })
   );
@@ -78,33 +65,16 @@ self.addEventListener('activate', (event) => {
 });
 
 // Handle offline functionality
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'syncData') {
-    event.waitUntil(syncData());
+self.addEventListener('fetch', (event) => {
+  if (!navigator.onLine) {
+    event.respondWith(
+      caches.match(event.request)
+        .then((response) => {
+          if (response) {
+            return response;
+          }
+          return caches.match('/offline.html');
+        })
+    );
   }
 });
-
-// Background sync function
-async function syncData() {
-  try {
-    const dataToSync = await getDataToSync();
-    await sendToServer(dataToSync);
-    await clearSyncData();
-  } catch (error) {
-    console.error('Sync failed:', error);
-  }
-}
-
-// Helper functions for background sync
-async function getDataToSync() {
-  // Implementation would depend on your storage method
-  return [];
-}
-
-async function sendToServer(data) {
-  // Implementation would depend on your API
-}
-
-async function clearSyncData() {
-  // Implementation would depend on your storage method
-}
