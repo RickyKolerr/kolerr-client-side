@@ -1,8 +1,16 @@
+import { useState, useCallback } from 'react';
 import Navbar from "@/components/Navbar";
 import { KOLFilters } from "@/components/kol-filters/KOLFilters";
 import KOLCard from "@/components/KOLCard";
+import { InfiniteScrollList } from "@/components/shared/InfiniteScrollList";
+import { GestureWrapper } from "@/components/shared/GestureWrapper";
+import { useToast } from "@/hooks/use-toast";
 
 const KOLs = () => {
+  const { toast } = useToast();
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  
   const kols = [
     {
       id: "kol-1",
@@ -108,6 +116,29 @@ const KOLs = () => {
     },
   ];
 
+  const loadMore = useCallback(() => {
+    // Simulated loading more data
+    if (page >= 3) {
+      setHasMore(false);
+      return;
+    }
+    setPage(prev => prev + 1);
+  }, [page]);
+
+  const handleSwipeLeft = () => {
+    toast({
+      title: "Swiped Left",
+      description: "Action dismissed",
+    });
+  };
+
+  const handleSwipeRight = () => {
+    toast({
+      title: "Swiped Right",
+      description: "Added to favorites",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -122,14 +153,19 @@ const KOLs = () => {
 
           <KOLFilters />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {kols.map((kol) => (
-              <KOLCard
-                key={kol.id}
-                {...kol}
-              />
-            ))}
-          </div>
+          <InfiniteScrollList
+            items={kols}
+            hasMore={hasMore}
+            loadMore={loadMore}
+            renderItem={(kol) => (
+              <GestureWrapper
+                onSwipeLeft={handleSwipeLeft}
+                onSwipeRight={handleSwipeRight}
+              >
+                <KOLCard {...kol} />
+              </GestureWrapper>
+            )}
+          />
         </div>
       </div>
     </div>
