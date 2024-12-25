@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Languages, Menu } from "lucide-react";
-import { useLanguage, Language } from "@/contexts/LanguageContext";
+import { Menu } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import {
   Sheet,
@@ -10,30 +9,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
-  const { t, language, setLanguage } = useLanguage();
-
   const navItems = [
-    { label: t('nav.dashboard'), path: '/dashboard' },
-    { label: t('nav.campaigns'), path: '/campaigns' },
-    { label: t('nav.slots'), path: '/slots' },
-    { label: t('nav.kols'), path: '/kols' },
-    { label: t('nav.brands'), path: '/brands' },
-    { label: t('nav.pricing'), path: '/pricing' },
-    { label: t('nav.contact'), path: '/contact' },
-    { label: t('nav.communication'), path: '/communication' },
-  ];
-
-  const languages: { code: Language; label: string }[] = [
-    { code: 'en', label: 'English' },
-    { code: 'vi', label: 'Tiếng Việt' },
+    { label: 'Dashboard', path: '/dashboard' },
+    { label: 'Campaigns', path: '/campaigns' },
+    { label: 'Slots', path: '/slots' },
+    { label: 'KOLs', path: '/kols' },
+    { label: 'Brands', path: '/brands' },
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'Contact', path: '/contact' },
+    { label: 'Communication', path: '/communication' },
   ];
 
   return (
@@ -63,44 +49,19 @@ const Navbar = () => {
             ))}
             
             <div className="flex items-center space-x-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="hover:scale-110 transition-transform"
-                  >
-                    <Languages className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  {languages.map((lang) => (
-                    <DropdownMenuItem
-                      key={lang.code}
-                      onClick={() => setLanguage(lang.code)}
-                      className={`cursor-pointer ${
-                        language === lang.code ? 'bg-accent' : ''
-                      }`}
-                    >
-                      {lang.label}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-
               <Link to="/auth/login">
                 <Button 
                   variant="ghost" 
                   className="text-foreground hover:scale-105 transition-transform text-sm"
                 >
-                  {t('auth.signin')}
+                  Sign In
                 </Button>
               </Link>
               <Link to="/auth/register">
                 <Button 
                   className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:scale-105 transition-transform hover:opacity-90 text-sm"
                 >
-                  {t('auth.signup')}
+                  Sign Up
                 </Button>
               </Link>
             </div>
@@ -136,31 +97,19 @@ const Navbar = () => {
                   ))}
                   <hr className="my-4 border-gray-800" />
                   <div className="flex flex-col gap-3 px-3">
-                    {languages.map((lang) => (
-                      <Button
-                        key={lang.code}
-                        variant="ghost"
-                        onClick={() => setLanguage(lang.code)}
-                        className={`justify-start h-10 ${
-                          language === lang.code ? 'bg-accent' : ''
-                        }`}
-                      >
-                        {lang.label}
-                      </Button>
-                    ))}
                     <Link to="/auth/login" className="w-full mt-2">
                       <Button 
                         variant="ghost" 
                         className="w-full text-foreground hover:scale-105 transition-transform h-10"
                       >
-                        {t('auth.signin')}
+                        Sign In
                       </Button>
                     </Link>
                     <Link to="/auth/register" className="w-full">
                       <Button 
                         className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:scale-105 transition-transform hover:opacity-90 h-10"
                       >
-                        {t('auth.signup')}
+                        Sign Up
                       </Button>
                     </Link>
                   </div>
