@@ -1,15 +1,28 @@
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, Link2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { MetricsOverview } from "./dashboard/MetricsOverview";
 import { CampaignsList } from "./dashboard/CampaignsList";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 export function BrandDashboard() {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedSessions, setSelectedSessions] = useState<string[]>([]);
   
+  const handleMergeSessions = () => {
+    toast({
+      title: "Sessions Combined",
+      description: "Selected sessions have been merged successfully",
+      duration: 3000,
+    });
+    setSelectedSessions([]);
+  };
+
   const activeCampaigns = [
     {
       id: 1,
@@ -133,6 +146,15 @@ export function BrandDashboard() {
                 <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
                   Brand Info
                 </button>
+                <Button
+                  onClick={handleMergeSessions}
+                  variant="outline"
+                  size="sm"
+                  className="ml-auto flex items-center gap-2 text-primary hover:text-primary-foreground"
+                >
+                  <Link2 className="h-4 w-4" />
+                  Combine Sessions
+                </Button>
               </nav>
             </div>
           </div>
