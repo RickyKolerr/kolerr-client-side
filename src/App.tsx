@@ -30,24 +30,26 @@ if ('serviceWorker' in navigator) {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <BrowserRouter>
-          <TooltipProvider>
-            <div className="app-shell">
-              <main className="app-content bg-background">
-                <Routes>
-                  {routes.map(({ path, element: Element }) => (
-                    <Route key={path} path={path} element={<Element />} />
-                  ))}
-                </Routes>
-              </main>
-              <Toaster />
-            </div>
-          </TooltipProvider>
-        </BrowserRouter>
-      </LanguageProvider>
-    </QueryClientProvider>
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <BrowserRouter>
+            <TooltipProvider>
+              <div className="app-shell">
+                <main className="app-content bg-background">
+                  <Routes>
+                    {routes.map(({ path, element: Element }) => (
+                      <Route key={path} path={path} element={<Element />} />
+                    ))}
+                  </Routes>
+                </main>
+                <Toaster />
+              </div>
+            </TooltipProvider>
+          </BrowserRouter>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </React.StrictMode>
   );
 }
 
