@@ -4,8 +4,13 @@ import App from './App'
 import './index.css'
 import './styles/scrollbar.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root')!)
+// Create root element
+const rootElement = document.getElementById('root')
+if (!rootElement) throw new Error('Root element not found')
 
+const root = ReactDOM.createRoot(rootElement)
+
+// Render app
 root.render(
   <React.StrictMode>
     <App />

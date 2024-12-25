@@ -17,22 +17,11 @@ const queryClient = new QueryClient({
   },
 });
 
-// Register service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(registration => {
-      console.log('SW registered:', registration);
-    }).catch(registrationError => {
-      console.log('SW registration failed:', registrationError);
-    });
-  });
-}
-
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
           <TooltipProvider>
             <div className="app-shell">
               <main className="app-content bg-background">
@@ -45,10 +34,21 @@ function App() {
               <Toaster />
             </div>
           </TooltipProvider>
-        </BrowserRouter>
-      </LanguageProvider>
-    </QueryClientProvider>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
+}
+
+// Register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered:', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed:', registrationError);
+    });
+  });
 }
 
 export default App;
