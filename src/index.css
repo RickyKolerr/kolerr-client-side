@@ -1,260 +1,55 @@
+@import './styles/base.css';
+@import './styles/typography.css';
+@import './styles/components.css';
+@import './styles/layout.css';
+@import './styles/responsive.css';
+@import './styles/animations.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.5rem;
-  }
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
-  html {
-    @apply antialiased;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    height: 100%;
-    overscroll-behavior-y: none;
-  }
-  
-  body {
-    @apply bg-background text-foreground min-h-screen;
-    -webkit-tap-highlight-color: transparent;
-    overscroll-behavior-y: none;
-    font-synthesis: none;
-  }
-  
-  /* Improve text rendering */
-  h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight font-bold;
-  }
-
-  h1 { @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight; }
-  h2 { @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight; }
-  h3 { @apply text-lg sm:text-xl md:text-2xl lg:text-3xl leading-snug; }
-  h4 { @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-snug; }
-  h5 { @apply text-sm sm:text-base md:text-lg lg:text-xl leading-normal; }
-  h6 { @apply text-xs sm:text-sm md:text-base lg:text-lg leading-normal; }
-
-  p { @apply text-sm sm:text-base leading-relaxed; }
-}
-
-@layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent;
-  }
-  
-  .gradient-bg {
-    @apply bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange;
-  }
-  
-  .gradient-border {
-    @apply relative before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:bg-gradient-to-r before:from-kolerr-cyan before:via-kolerr-purple before:to-kolerr-orange before:content-[''] before:-z-10;
-  }
-  
-  /* Mobile-optimized containers */
-  .container {
-    @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-[100%] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px];
-  }
-
-  /* Responsive text utilities */
-  .text-responsive {
-    @apply text-sm sm:text-base md:text-lg lg:text-xl;
-  }
-
-  .heading-responsive {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
-  }
-
-  /* Mobile-first buttons with better touch targets */
-  .btn {
-    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200 
-           touch-manipulation select-none
-           active:scale-95 hover:scale-105
-           disabled:opacity-50 disabled:pointer-events-none;
-  }
-
-  /* Card styles with better mobile support */
-  .card {
-    @apply rounded-lg p-4 sm:p-6 bg-card shadow-lg
-           hover:shadow-xl transition-shadow duration-200
-           border border-border/10 backdrop-blur-sm;
-  }
-
-  /* Navigation improvements */
-  .nav-link {
-    @apply px-3 py-2 rounded-md transition-colors duration-200 
-           hover:bg-accent/10 active:bg-accent/20
-           text-sm sm:text-base font-medium;
-  }
-
-  /* Form elements with better touch targets */
-  .form-input {
-    @apply min-h-[44px] w-full rounded-md px-4
-           bg-background border border-border
-           focus:outline-none focus:ring-2 focus:ring-kolerr-purple/50;
-  }
-
-  /* Mobile-optimized lists */
-  .list-mobile {
-    @apply space-y-2 sm:space-y-3;
-  }
-
-  .list-item-mobile {
-    @apply flex items-center min-h-[44px] px-4
-           hover:bg-accent/5 rounded-md transition-colors;
-  }
-
-  /* Mobile-friendly cards */
-  .card-mobile {
-    @apply p-4 sm:p-6 rounded-lg bg-card
-           border border-border/10 shadow-sm
-           hover:shadow-md transition-all duration-200;
-  }
-
-  /* Touch-friendly dropdown menus */
-  .dropdown-mobile {
-    @apply min-w-[200px] p-2 rounded-lg shadow-lg
-           bg-background border border-border/10
-           backdrop-blur-sm;
-  }
-
-  .dropdown-item-mobile {
-    @apply flex items-center min-h-[44px] px-4 rounded-md
-           hover:bg-accent/10 transition-colors
-           text-sm font-medium;
-  }
-
-  /* PWA specific styles */
-  .app-shell {
-    @apply min-h-screen flex flex-col 
-           pt-[env(safe-area-inset-top)]
-           pb-[env(safe-area-inset-bottom)]
-           pl-[env(safe-area-inset-left)]
-           pr-[env(safe-area-inset-right)];
-  }
-
-  .app-content {
-    @apply flex-1 overflow-auto;
-  }
-
-  .bottom-nav {
-    @apply fixed bottom-0 left-0 right-0 
-           bg-background/80 backdrop-blur-md
-           border-t border-border
-           pb-[env(safe-area-inset-bottom)]
-           md:hidden;
-  }
-}
-
-/* Mobile-specific optimizations */
-@media (max-width: 640px) {
-  .container {
-    @apply px-4;
-  }
-
-  /* Improve touch targets */
-  button, 
-  a,
-  input[type="button"],
-  input[type="submit"] {
-    @apply min-h-[44px] min-w-[44px];
-  }
-
-  /* Adjust spacing */
-  .space-y-mobile {
-    @apply space-y-4;
-  }
-
-  /* Stack items on mobile */
-  .stack-mobile {
-    @apply flex flex-col;
-  }
-
-  /* Hide scrollbars but keep functionality */
-  .scrollbar-hide {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Improve tap target sizes */
-  .tap-target {
-    @apply min-h-[44px] min-w-[44px]
-           flex items-center justify-center;
-  }
-}
-
-/* Prevent zoom on input focus for iOS */
-@media screen and (max-width: 640px) {
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="password"] {
-    @apply text-base;
-  }
-}
-
-/* PWA specific media queries */
-@media (display-mode: standalone) {
-  .app-shell {
-    @apply pt-[env(safe-area-inset-top)]
-           pb-[env(safe-area-inset-bottom)];
-  }
-}
-
-/* Animations */
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
-
-/* Language-specific adjustments */
-[lang="vi"] {
-  /* Adjust line height for Vietnamese text */
-  @apply leading-relaxed;
-  
-  /* Increase spacing for Vietnamese characters */
-  h1, h2, h3, h4, h5, h6 {
-    @apply tracking-normal;
-  }
-}
-
-/* PWA installation prompt */
-.pwa-install-prompt {
-  @apply fixed bottom-4 left-4 right-4 
-         bg-card p-4 rounded-lg shadow-lg
-         z-50 md:left-auto md:right-4 md:w-96
-         border border-border/10 backdrop-blur-sm;
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 48%;
 }
