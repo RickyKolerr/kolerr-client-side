@@ -1,21 +1,19 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Users, Calendar, Info, PieChart, Settings, TrendingUp, Star } from "lucide-react";
+import { BarChart3, Users, PieChart, Info } from "lucide-react";
 import { motion } from "framer-motion";
-import { MetricsOverview } from "@/components/brands/dashboard/MetricsOverview";
-import { CampaignsList } from "@/components/brands/dashboard/CampaignsList";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function BrandDashboard() {
-  const navigate = useNavigate();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
   const handleAIAssistant = () => {
     toast({
       title: "AI Assistant",
-      description: "How can I help you with your campaigns today?",
+      description: "How can I help you manage your campaigns today?",
       duration: 5000,
     });
   };
@@ -36,76 +34,58 @@ export function BrandDashboard() {
   };
 
   return (
-    <div className="container mx-auto p-6 space-y-8">
+    <div className="space-y-6 py-4 sm:py-6">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex justify-between items-center"
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
       >
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
             Brand Dashboard
           </h1>
-          <p className="text-muted-foreground mt-2">
-            Manage your campaigns and track performance
+          <p className="text-sm sm:text-base text-muted-foreground mt-2">
+            Manage client campaigns and KOL relationships
           </p>
         </div>
-        <div className="flex gap-4">
-          <Button 
-            onClick={handleAIAssistant}
-            variant="outline"
-            className="gap-2"
-          >
-            <Star className="h-4 w-4" />
-            AI Assistant
-          </Button>
-          <Button 
-            onClick={() => navigate("/brands/create")}
-            className="bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90"
-          >
-            Create Campaign
-          </Button>
-        </div>
+        <Button 
+          onClick={handleAIAssistant}
+          variant="outline"
+          className="w-full sm:w-auto gap-2"
+        >
+          AI Assistant
+        </Button>
       </motion.div>
 
-      <MetricsOverview />
-
       <Tabs defaultValue="campaigns" className="space-y-6">
-        <TabsList className="grid grid-cols-5 gap-4 bg-transparent h-auto p-0">
+        <TabsList className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'} bg-transparent h-auto p-0`}>
           <TabsTrigger
             value="campaigns"
             className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
           >
             <BarChart3 className="h-4 w-4 mr-2" />
-            Current Campaigns
+            <span className="hidden sm:inline">Client</span> Campaigns
           </TabsTrigger>
           <TabsTrigger
-            value="slots"
-            className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-          >
-            <Calendar className="h-4 w-4 mr-2" />
-            Slot Management
-          </TabsTrigger>
-          <TabsTrigger
-            value="kols"
+            value="matching"
             className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
           >
             <Users className="h-4 w-4 mr-2" />
-            KOL Selection
+            KOL Matching
           </TabsTrigger>
           <TabsTrigger
-            value="analytics"
+            value="reporting"
             className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
           >
             <PieChart className="h-4 w-4 mr-2" />
-            Analytics
+            Reporting
           </TabsTrigger>
           <TabsTrigger
             value="profile"
             className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
           >
             <Info className="h-4 w-4 mr-2" />
-            Brand Info
+            Info
           </TabsTrigger>
         </TabsList>
 
@@ -113,56 +93,51 @@ export function BrandDashboard() {
           variants={containerAnimation}
           initial="hidden"
           animate="show"
+          className="space-y-4"
         >
           <TabsContent value="campaigns">
             <motion.div variants={itemAnimation}>
-              <CampaignsList campaigns={[]} />
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="slots">
-            <motion.div variants={itemAnimation}>
               <Card className="bg-card/50 backdrop-blur-sm border-white/10">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calendar className="h-5 w-5" />
-                    Slot Management
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>Manage your campaign slots and KOL positions here.</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="kols">
-            <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Users className="h-5 w-5" />
-                    KOL Selection
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>Browse and select KOLs for your campaigns.</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="analytics">
-            <motion.div variants={itemAnimation}>
-              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
                     <BarChart3 className="h-5 w-5" />
-                    Campaign Analytics
+                    Campaign Management
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>View detailed analytics and performance metrics for your campaigns.</p>
+                  <p className="text-sm sm:text-base">Manage your campaigns and track their progress.</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="matching">
+            <motion.div variants={itemAnimation}>
+              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                    <Users className="h-5 w-5" />
+                    KOL Matching
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm sm:text-base">Match KOLs with client campaigns based on requirements.</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="reporting">
+            <motion.div variants={itemAnimation}>
+              <Card className="bg-card/50 backdrop-blur-sm border-white/10">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                    <PieChart className="h-5 w-5" />
+                    Campaign Reporting
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm sm:text-base">View comprehensive reports and insights for all campaigns.</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -172,13 +147,13 @@ export function BrandDashboard() {
             <motion.div variants={itemAnimation}>
               <Card className="bg-card/50 backdrop-blur-sm border-white/10">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
                     <Info className="h-5 w-5" />
-                    Brand Information
+                    Agency Information
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>Manage your brand profile, logo, and social media links.</p>
+                  <p className="text-sm sm:text-base">Manage your agency profile, logo, and contact information.</p>
                 </CardContent>
               </Card>
             </motion.div>
