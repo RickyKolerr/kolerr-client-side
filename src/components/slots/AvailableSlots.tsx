@@ -31,10 +31,9 @@ const AvailableSlots = () => {
   const mockSlots: Slot[] = [
     {
       id: 1,
-      brandId: 1,
       title: "Fashion Spring Collection",
       brand: "StyleHub",
-      status: "Open",
+      status: "Open" as const,
       deadline: "2024-04-01",
       requirements: "2 Instagram posts, 1 Story",
       budget: "$1,500",
@@ -45,16 +44,13 @@ const AvailableSlots = () => {
       maxCollaborators: 3,
       progress: 33,
       isRecommended: true,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
     },
     {
       id: 2,
-      brandId: 2,
       title: "Tech Review Series",
       brand: "TechGiant",
       deadline: "2024-04-15",
-      status: "Open",
+      status: "Open" as const,
       requirements: "Tech niche focus",
       budget: "$2,000",
       category: "Tech",
@@ -62,8 +58,6 @@ const AvailableSlots = () => {
       collaborators: 0,
       maxCollaborators: 2,
       progress: 0,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
     },
   ];
 

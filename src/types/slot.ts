@@ -1,37 +1,48 @@
-export type KOLCategory = 
-  | "Fashion"
-  | "Tech"
-  | "Beauty"
-  | "Lifestyle"
-  | "Food"
-  | "Travel"
-  | "Gaming"
-  | "Sports"
-  | "Entertainment";
+export type SlotStatus = "Open" | "Active" | "Completed";
+export type KOLCategory = "Fashion" | "Tech" | "Beauty" | "Lifestyle" | "Gaming";
+
+export interface KOLRating {
+  rating: number;
+  comment?: string;
+  date: string;
+}
+
+export interface Badge {
+  type: "topKol" | "highlyRatedBrand" | "trending" | "topInviter" | "fiveStarKol" | "proCollaborator";
+  name: string;
+  description: string;
+  progress: number;
+}
 
 export interface Slot {
   id: number;
-  brandId: number;
   title: string;
   brand: string;
-  status: "Open" | "Filled" | "Active" | "Completed";
+  status: SlotStatus;
   deadline: string;
   requirements: string;
   budget: string;
   category: KOLCategory;
-  platform?: string;
+  platform: string;
+  rating?: number;
   isFeatured?: boolean;
-  collaborators: number;
-  maxCollaborators: number;
+  collaborators?: number;
+  maxCollaborators?: number;
   progress: number;
   isRecommended?: boolean;
-  createdAt: string;
-  updatedAt: string;
+  matchScore?: number;
+  matchReasons?: string[];
 }
 
-export interface Badge {
-  type: string;
-  name: string;
-  description: string;
-  progress: number;
+export interface SlotCreationData {
+  title: string;
+  budget: string;
+  startDate: Date;
+  endDate: Date;
+  kolType: KOLCategory[];
+  targetAudience?: {
+    ageRange?: string;
+    gender?: string;
+    region?: string;
+  };
 }

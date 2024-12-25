@@ -4,43 +4,29 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Calendar, DollarSign, CheckCircle2, Clock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Slot } from "@/types/slot";
 
 const MySlots = () => {
   const { t } = useLanguage();
   
-  const mySlots: Slot[] = [
+  const mySlots = [
     {
       id: 1,
-      brandId: 101,
       title: "Fashion Spring Collection",
       brand: "StyleHub",
       status: "Active",
       progress: 50,
       deadline: "Mar 30, 2024",
       requirements: "2 Instagram posts, 1 Story",
-      budget: "$1,500",
-      category: "Fashion",
-      collaborators: 1,
-      maxCollaborators: 2,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      budget: "$1,500"
     },
     {
       id: 2,
-      brandId: 102,
       title: "Food Review Series",
       brand: "TasteVN",
-      status: "Filled",
+      status: "Pending",
       deadline: "Apr 5, 2024",
       requirements: "3 TikTok videos",
-      budget: "$2,000",
-      category: "Food",
-      collaborators: 0,
-      maxCollaborators: 3,
-      progress: 0,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      budget: "$2,000"
     }
   ];
 
