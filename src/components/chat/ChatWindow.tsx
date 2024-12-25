@@ -36,15 +36,15 @@ export const ChatWindow = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      sender: "John Doe",
-      content: "Hi, I'm interested in collaborating!",
+      sender: "Support Team",
+      content: "Hi! How can we help you today?",
       timestamp: new Date(),
       type: "text"
     },
     {
       id: "2",
-      sender: "Jane Smith",
-      content: "Great! Let's discuss the details.",
+      sender: "You",
+      content: "I need help with my campaign setup",
       timestamp: new Date(),
       type: "text"
     }
@@ -55,9 +55,9 @@ export const ChatWindow = () => {
   
   const labels: ChatLabel[] = [
     { id: "all", name: "All Messages", color: "bg-gray-500" },
-    { id: "campaign", name: "Campaign", color: "bg-blue-500" },
-    { id: "contract", name: "Contract", color: "bg-green-500" },
-    { id: "invitation", name: "Invitation", color: "bg-purple-500" }
+    { id: "campaign", name: "Campaign", color: "bg-kolerr-cyan" },
+    { id: "contract", name: "Contract", color: "bg-kolerr-purple" },
+    { id: "support", name: "Support", color: "bg-kolerr-orange" }
   ];
 
   const handleSendMessage = () => {
@@ -99,17 +99,19 @@ export const ChatWindow = () => {
 
   return (
     <Card className="w-full h-[600px] flex flex-col">
-      <CardHeader>
+      <CardHeader className="border-b">
         <CardTitle className="flex items-center gap-2">
           <MessageCircle className="h-5 w-5" />
-          Chat
+          Support Chat
         </CardTitle>
         <div className="flex gap-2 overflow-x-auto pb-2">
           {labels.map((label) => (
             <Badge
               key={label.id}
               variant={selectedLabel === label.id ? "default" : "outline"}
-              className="cursor-pointer"
+              className={`cursor-pointer ${
+                selectedLabel === label.id ? "bg-gradient-to-r from-kolerr-cyan to-kolerr-purple" : ""
+              }`}
               onClick={() => setSelectedLabel(label.id)}
             >
               {label.name}
@@ -117,23 +119,23 @@ export const ChatWindow = () => {
           ))}
         </div>
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col">
+      <CardContent className="flex-1 flex flex-col p-4">
         <ScrollArea className="flex-1 pr-4">
           <div className="space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex items-start gap-2 ${
+                className={`flex items-start gap-2 animate-fade-in ${
                   message.sender === "You" ? "flex-row-reverse" : ""
                 }`}
               >
-                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-                  <User className="h-4 w-4" />
+                <div className="h-8 w-8 rounded-full bg-gradient-to-r from-kolerr-cyan to-kolerr-purple flex items-center justify-center">
+                  <User className="h-4 w-4 text-white" />
                 </div>
                 <div
                   className={`max-w-[80%] rounded-lg p-3 ${
                     message.sender === "You"
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-gradient-to-r from-kolerr-cyan to-kolerr-purple text-white"
                       : "bg-muted"
                   }`}
                 >
@@ -161,18 +163,20 @@ export const ChatWindow = () => {
             ))}
           </div>
         </ScrollArea>
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2 mt-4 pt-4 border-t">
           <Input
             placeholder="Type your message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+            className="flex-1"
           />
           <div className="flex gap-2">
             <Button
               variant="outline"
               size="icon"
               onClick={() => document.getElementById("file-upload")?.click()}
+              className="hover:bg-kolerr-purple/10"
             >
               <Paperclip className="h-4 w-4" />
               <input
@@ -182,7 +186,10 @@ export const ChatWindow = () => {
                 onChange={handleFileUpload}
               />
             </Button>
-            <Button onClick={handleSendMessage}>
+            <Button 
+              onClick={handleSendMessage}
+              className="bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90"
+            >
               <Send className="h-4 w-4" />
             </Button>
           </div>
