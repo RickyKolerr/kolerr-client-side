@@ -15,6 +15,13 @@ import GetStarted from "@/pages/GetStarted";
 import LearnMore from "@/pages/LearnMore";
 import Checkout from "@/pages/Checkout";
 import Communication from "@/pages/Communication";
+import { KOLFilterProvider } from "@/contexts/KOLFilterContext";
+
+const KOLsWithProvider = () => (
+  <KOLFilterProvider>
+    <KOLs />
+  </KOLFilterProvider>
+);
 
 export const mainRoutes = [
   {
@@ -31,7 +38,7 @@ export const mainRoutes = [
   },
   {
     path: "/kols/*",
-    element: KOLs,
+    element: KOLsWithProvider,
   },
   {
     path: "/brands/*",
