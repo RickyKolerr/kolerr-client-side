@@ -44,12 +44,22 @@
     @apply bg-background text-foreground min-h-screen;
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior-y: none;
+    font-synthesis: none;
   }
   
   /* Improve text rendering */
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
+    @apply tracking-tight font-bold;
   }
+
+  h1 { @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight; }
+  h2 { @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight; }
+  h3 { @apply text-lg sm:text-xl md:text-2xl lg:text-3xl leading-snug; }
+  h4 { @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-snug; }
+  h5 { @apply text-sm sm:text-base md:text-lg lg:text-xl leading-normal; }
+  h6 { @apply text-xs sm:text-sm md:text-base lg:text-lg leading-normal; }
+
+  p { @apply text-sm sm:text-base leading-relaxed; }
 }
 
 @layer components {
@@ -79,29 +89,72 @@
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
   }
 
-  /* Mobile-first buttons */
+  /* Mobile-first buttons with better touch targets */
   .btn {
-    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200 touch-manipulation;
+    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200 
+           touch-manipulation select-none
+           active:scale-95 hover:scale-105
+           disabled:opacity-50 disabled:pointer-events-none;
   }
 
   /* Card styles with better mobile support */
   .card {
-    @apply rounded-lg p-4 sm:p-6 bg-card shadow-lg;
+    @apply rounded-lg p-4 sm:p-6 bg-card shadow-lg
+           hover:shadow-xl transition-shadow duration-200
+           border border-border/10 backdrop-blur-sm;
   }
 
   /* Navigation improvements */
   .nav-link {
-    @apply px-3 py-2 rounded-md transition-colors duration-200 hover:bg-accent/10;
+    @apply px-3 py-2 rounded-md transition-colors duration-200 
+           hover:bg-accent/10 active:bg-accent/20
+           text-sm sm:text-base font-medium;
   }
 
   /* Form elements with better touch targets */
   .form-input {
-    @apply min-h-[44px] w-full rounded-md px-4;
+    @apply min-h-[44px] w-full rounded-md px-4
+           bg-background border border-border
+           focus:outline-none focus:ring-2 focus:ring-kolerr-purple/50;
+  }
+
+  /* Mobile-optimized lists */
+  .list-mobile {
+    @apply space-y-2 sm:space-y-3;
+  }
+
+  .list-item-mobile {
+    @apply flex items-center min-h-[44px] px-4
+           hover:bg-accent/5 rounded-md transition-colors;
+  }
+
+  /* Mobile-friendly cards */
+  .card-mobile {
+    @apply p-4 sm:p-6 rounded-lg bg-card
+           border border-border/10 shadow-sm
+           hover:shadow-md transition-all duration-200;
+  }
+
+  /* Touch-friendly dropdown menus */
+  .dropdown-mobile {
+    @apply min-w-[200px] p-2 rounded-lg shadow-lg
+           bg-background border border-border/10
+           backdrop-blur-sm;
+  }
+
+  .dropdown-item-mobile {
+    @apply flex items-center min-h-[44px] px-4 rounded-md
+           hover:bg-accent/10 transition-colors
+           text-sm font-medium;
   }
 
   /* PWA specific styles */
   .app-shell {
-    @apply min-h-screen flex flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)];
+    @apply min-h-screen flex flex-col 
+           pt-[env(safe-area-inset-top)]
+           pb-[env(safe-area-inset-bottom)]
+           pl-[env(safe-area-inset-left)]
+           pr-[env(safe-area-inset-right)];
   }
 
   .app-content {
@@ -109,7 +162,11 @@
   }
 
   .bottom-nav {
-    @apply fixed bottom-0 left-0 right-0 bg-background border-t border-border md:hidden pb-[env(safe-area-inset-bottom)];
+    @apply fixed bottom-0 left-0 right-0 
+           bg-background/80 backdrop-blur-md
+           border-t border-border
+           pb-[env(safe-area-inset-bottom)]
+           md:hidden;
   }
 }
 
@@ -146,6 +203,12 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Improve tap target sizes */
+  .tap-target {
+    @apply min-h-[44px] min-w-[44px]
+           flex items-center justify-center;
+  }
 }
 
 /* Prevent zoom on input focus for iOS */
@@ -161,9 +224,9 @@
 
 /* PWA specific media queries */
 @media (display-mode: standalone) {
-  /* Adjust for PWA standalone mode */
   .app-shell {
-    @apply pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)];
+    @apply pt-[env(safe-area-inset-top)]
+           pb-[env(safe-area-inset-bottom)];
   }
 }
 
@@ -190,5 +253,8 @@
 
 /* PWA installation prompt */
 .pwa-install-prompt {
-  @apply fixed bottom-4 left-4 right-4 bg-card p-4 rounded-lg shadow-lg z-50 md:left-auto md:right-4 md:w-96;
+  @apply fixed bottom-4 left-4 right-4 
+         bg-card p-4 rounded-lg shadow-lg
+         z-50 md:left-auto md:right-4 md:w-96
+         border border-border/10 backdrop-blur-sm;
 }
