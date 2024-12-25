@@ -10,20 +10,34 @@ import CTASection from "@/components/home/CTASection";
 import KOLShowcase from "@/components/home/KOLShowcase";
 import SearchSection from "@/components/home/SearchSection";
 import Footer from "@/components/home/Footer";
+import { GuidedTour } from "@/components/home/GuidedTour";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen bg-background"
+      role="main"
+      aria-label="Home page"
+    >
       <Navbar />
-      <HeroSection />
-      <SearchSection />
+      <GuidedTour />
+      <div className="hero-section">
+        <HeroSection />
+      </div>
+      <div className="search-section">
+        <SearchSection />
+      </div>
       <TrustedBy />
-      <FeaturesSection />
+      <div className="features-section">
+        <FeaturesSection />
+      </div>
       <HowItWorksSection />
       <KOLShowcase />
       <TestimonialsSection />
       <BenefitsSection />
-      <CTASection />
+      <div className="cta-section">
+        <CTASection />
+      </div>
       <Footer />
     </div>
   );

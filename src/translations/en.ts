@@ -1,10 +1,12 @@
 import { navigationEn } from './modules/navigation.en';
 import { authEn } from './modules/auth.en';
+import { tourEn } from './modules/tour.en';
 
 export const en = {
   ...navigationEn,
   ...authEn,
-  
+  ...tourEn,
+
   // Hero Section
   "hero.title": "Unlock Your Brand's Potential with Kolerr",
   "hero.subtitle": "Effortlessly connect, collaborate, and scale your campaigns with Vietnam's leading AI-powered influencer marketing platform",
