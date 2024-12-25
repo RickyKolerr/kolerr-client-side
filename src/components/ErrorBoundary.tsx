@@ -55,16 +55,16 @@ class ErrorBoundary extends React.Component<Props, State> {
 export function ErrorBoundaryWrapper({ children }: { children: React.ReactNode }) {
   const { toast } = useToast();
 
+  const handleError = React.useCallback((error: Error) => {
+    toast({
+      title: "An error occurred",
+      description: error.message,
+      variant: "destructive",
+    });
+  }, [toast]);
+
   return (
-    <ErrorBoundary
-      onError={(error: Error) => {
-        toast({
-          title: "An error occurred",
-          description: error.message,
-          variant: "destructive",
-        });
-      }}
-    >
+    <ErrorBoundary onError={handleError}>
       {children}
     </ErrorBoundary>
   );
