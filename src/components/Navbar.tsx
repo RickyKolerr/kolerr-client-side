@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Languages, Menu } from "lucide-react";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
+import { Container } from "@/components/ui/container";
 import {
   Sheet,
   SheetContent,
@@ -37,7 +38,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container className="mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
@@ -50,7 +51,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -61,7 +62,7 @@ const Navbar = () => {
               </Link>
             ))}
             
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-4">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -113,7 +114,7 @@ const Navbar = () => {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[80%] sm:w-[385px] pt-12">
+              <SheetContent side="right" className="w-[80%] sm:w-[385px] pt-safe-top">
                 <SheetHeader>
                   <SheetTitle className="flex items-center justify-center">
                     <img 
@@ -168,7 +169,7 @@ const Navbar = () => {
             </Sheet>
           </div>
         </div>
-      </div>
+      </Container>
     </nav>
   );
 };
