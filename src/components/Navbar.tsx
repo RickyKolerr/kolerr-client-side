@@ -4,6 +4,7 @@ import { Languages, Menu } from "lucide-react";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import {
   Sheet,
   SheetContent,
@@ -20,16 +21,17 @@ import {
 
 const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
+  useKeyboardShortcuts(); // Initialize keyboard shortcuts
 
   const navItems = [
-    { label: t('nav.dashboard'), path: '/dashboard' },
-    { label: t('nav.campaigns'), path: '/campaigns' },
-    { label: t('nav.slots'), path: '/slots' },
-    { label: t('nav.kols'), path: '/kols' },
-    { label: t('nav.brands'), path: '/brands' },
-    { label: t('nav.pricing'), path: '/pricing' },
-    { label: t('nav.contact'), path: '/contact' },
-    { label: t('nav.communication'), path: '/communication' },
+    { label: t('nav.dashboard'), path: '/dashboard', shortcut: '' },
+    { label: t('nav.campaigns'), path: '/campaigns', shortcut: 'Ctrl+C' },
+    { label: t('nav.slots'), path: '/slots', shortcut: '' },
+    { label: t('nav.kols'), path: '/kols', shortcut: 'Ctrl+K' },
+    { label: t('nav.brands'), path: '/brands', shortcut: '' },
+    { label: t('nav.pricing'), path: '/pricing', shortcut: 'Ctrl+P' },
+    { label: t('nav.contact'), path: '/contact', shortcut: '' },
+    { label: t('nav.communication'), path: '/communication', shortcut: '' },
   ];
 
   const languages: { code: Language; label: string }[] = [
@@ -38,11 +40,20 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b transition-colors duration-300">
+    <nav 
+      className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b transition-colors duration-300"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <Container className="mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center group">
+            <Link 
+              to="/" 
+              className="flex items-center group"
+              aria-label="Home"
+              title="Shortcut: Ctrl+H"
+            >
               <img 
                 src="/lovable-uploads/bf109a68-3ded-4be7-bf03-b641d5c6441d.png" 
                 alt="Kolerr Logo" 
@@ -57,7 +68,8 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="nav-link text-foreground/80 hover:text-foreground transition-all text-sm"
+                className="nav-link text-foreground/80 hover:text-foreground transition-all text-sm focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2 rounded-md"
+                title={item.shortcut ? `Shortcut: ${item.shortcut}` : undefined}
               >
                 {item.label}
               </Link>
@@ -70,7 +82,8 @@ const Navbar = () => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="hover:scale-110 transition-transform"
+                    className="hover:scale-110 transition-transform focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
+                    aria-label="Change language"
                   >
                     <Languages className="h-5 w-5" />
                   </Button>
@@ -93,14 +106,14 @@ const Navbar = () => {
               <Link to="/auth/login">
                 <Button 
                   variant="ghost" 
-                  className="text-foreground hover:scale-105 transition-transform text-sm"
+                  className="text-foreground hover:scale-105 transition-transform text-sm focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
                 >
                   {t('auth.signin')}
                 </Button>
               </Link>
               <Link to="/auth/register">
                 <Button 
-                  className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:scale-105 transition-transform hover:opacity-90 text-sm"
+                  className="bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:scale-105 transition-transform hover:opacity-90 text-sm focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
                 >
                   {t('auth.signup')}
                 </Button>
@@ -112,7 +125,12 @@ const Navbar = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-10 w-10">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="h-10 w-10 focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
+                  aria-label="Open menu"
+                >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
@@ -131,7 +149,8 @@ const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="text-foreground/80 hover:text-foreground hover:translate-x-2 transition-all px-3 py-2 text-base"
+                      className="text-foreground/80 hover:text-foreground hover:translate-x-2 transition-all px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-kolerr-purple rounded-md"
+                      title={item.shortcut ? `Shortcut: ${item.shortcut}` : undefined}
                     >
                       {item.label}
                     </Link>
@@ -141,7 +160,11 @@ const Navbar = () => {
                     <ThemeToggle />
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
+                        <Button 
+                          variant="ghost" 
+                          size="icon"
+                          className="focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
+                        >
                           <Languages className="h-5 w-5" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -162,14 +185,14 @@ const Navbar = () => {
                     <Link to="/auth/login" className="w-full mt-2">
                       <Button 
                         variant="ghost" 
-                        className="w-full text-foreground hover:scale-105 transition-transform h-10"
+                        className="w-full text-foreground hover:scale-105 transition-transform h-10 focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
                       >
                         {t('auth.signin')}
                       </Button>
                     </Link>
                     <Link to="/auth/register" className="w-full">
                       <Button 
-                        className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:scale-105 transition-transform hover:opacity-90 h-10"
+                        className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange text-white hover:scale-105 transition-transform hover:opacity-90 h-10 focus:outline-none focus:ring-2 focus:ring-kolerr-purple focus:ring-offset-2"
                       >
                         {t('auth.signup')}
                       </Button>
