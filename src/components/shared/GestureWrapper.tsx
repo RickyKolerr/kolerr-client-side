@@ -17,25 +17,32 @@ export const GestureWrapper = ({
 }: GestureWrapperProps) => {
   const x = useMotionValue(0);
 
-  const bindGestures = useGesture({
-    onDrag: ({ movement: [mx], velocity: [vx], last }) => {
-      if (last) {
-        const swipeThreshold = 50;
-        const velocityThreshold = 0.5;
-        
-        if (Math.abs(mx) > swipeThreshold && Math.abs(vx) > velocityThreshold) {
-          if (mx > 0 && onSwipeRight) {
-            onSwipeRight();
-          } else if (mx < 0 && onSwipeLeft) {
-            onSwipeLeft();
+  const bindGestures = useGesture(
+    {
+      onDrag: ({ movement: [mx], velocity: [vx], last }) => {
+        if (last) {
+          const swipeThreshold = 50;
+          const velocityThreshold = 0.5;
+          
+          if (Math.abs(mx) > swipeThreshold && Math.abs(vx) > velocityThreshold) {
+            if (mx > 0 && onSwipeRight) {
+              onSwipeRight();
+            } else if (mx < 0 && onSwipeLeft) {
+              onSwipeLeft();
+            }
           }
+          x.set(0);
+        } else {
+          x.set(mx);
         }
-        x.set(0);
-      } else {
-        x.set(mx);
-      }
+      },
     },
-  });
+    {
+      drag: {
+        from: () => [x.get(), 0],
+      },
+    }
+  );
 
   return (
     <motion.div 
