@@ -7,5 +7,5 @@ export const navigationEn = {
   "nav.brands": "Brands",
   "nav.pricing": "Pricing",
   "nav.contact": "Contact",
-  "nav.communication": "Communication & Contracts"
+  "nav.communication": "Chat & Docs"
 } as const;
