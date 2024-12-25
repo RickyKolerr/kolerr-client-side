@@ -1,4 +1,5 @@
 import Index from "@/pages/Index";
+import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import Campaigns from "@/pages/Campaigns";
 import KOLs from "@/pages/KOLs";
 import Brands from "@/pages/Brands";
@@ -19,6 +20,10 @@ export const mainRoutes = [
   {
     path: "/",
     element: Index,
+  },
+  {
+    path: "/dashboard/*",
+    element: DashboardLayout,
   },
   {
     path: "/campaigns/*",
