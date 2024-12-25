@@ -17,23 +17,3 @@ export const canViewCampaignAnalytics = (userType: UserType): boolean => {
 export const canApplyToCampaign = (userType: UserType): boolean => {
   return userType === 'kol';
 };
-
-export const canManageKOLs = (userType: UserType): boolean => {
-  return userType === 'brand' || userType === 'agency';
-};
-
-export const canManageSlots = (userType: UserType): boolean => {
-  return userType === 'brand' || userType === 'agency';
-};
-
-export const isKOL = (userType: UserType): boolean => {
-  return userType === 'kol';
-};
-
-export const isBrand = (userType: UserType): boolean => {
-  return userType === 'brand';
-};
-
-export const isAgency = (userType: UserType): boolean => {
-  return userType === 'agency';
-};

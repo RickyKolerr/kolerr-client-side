@@ -14,4 +14,4 @@ export const authVi = {
   "auth.or": "hoặc tiếp tục với",
   "auth.social.title": "Đăng nhập qua mạng xã hội",
   "auth.social.subtitle": "Chọn phương thức đăng nhập ưa thích",
-} as const;
+};

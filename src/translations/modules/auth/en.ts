@@ -14,4 +14,4 @@ export const authEn = {
   "auth.or": "or continue with",
   "auth.social.title": "Social Login",
   "auth.social.subtitle": "Choose your preferred login method",
-} as const;
+};

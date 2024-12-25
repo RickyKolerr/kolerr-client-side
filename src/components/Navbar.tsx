@@ -20,14 +20,13 @@ const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
 
   const navItems = [
-    { label: t('nav.dashboard'), path: '/dashboard' },
     { label: t('nav.campaigns'), path: '/campaigns' },
     { label: t('nav.slots'), path: '/slots' },
     { label: t('nav.kols'), path: '/kols' },
     { label: t('nav.brands'), path: '/brands' },
     { label: t('nav.pricing'), path: '/pricing' },
     { label: t('nav.contact'), path: '/contact' },
-    { label: t('nav.communication'), path: '/communication' },
+    { label: t('translation.title'), path: '/translation' },
   ];
 
   const languages: { code: Language; label: string }[] = [
