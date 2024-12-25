@@ -1,33 +1,42 @@
-import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster } from "@/components/ui/toaster";
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { routes } from "./routes";
+import Navbar from "@/components/Navbar";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      retry: 1,
+    },
+  },
+});
 
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <TooltipProvider>
-          <BrowserRouter>
-            <main className="min-h-screen bg-background">
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <LanguageProvider>
+      <TooltipProvider>
+        <BrowserRouter>
+          <div className="min-h-screen">
+            <Navbar />
+            <main>
+              <Toaster />
+              <Sonner />
               <Routes>
                 {routes.map(({ path, element: Element }) => (
                   <Route key={path} path={path} element={<Element />} />
                 ))}
               </Routes>
             </main>
-            <Toaster />
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
-    </QueryClientProvider>
-  );
-}
+          </div>
+        </BrowserRouter>
+      </TooltipProvider>
+    </LanguageProvider>
+  </QueryClientProvider>
+);
 
 export default App;
