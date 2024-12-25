@@ -11,13 +11,18 @@ import {
   Paperclip,
   Image as ImageIcon,
   File,
-  X
+  Building2,
+  Star,
+  Users,
+  HeadphonesIcon
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getUserType } from "@/utils/userTypeUtils";
 
 interface Message {
   id: string;
   sender: string;
+  senderType: string;
   content: string;
   timestamp: Date;
   type: "text" | "file";
@@ -33,18 +38,13 @@ interface ChatLabel {
 
 export const ChatWindow = () => {
   const { toast } = useToast();
+  const userType = getUserType();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      sender: "Support Team",
-      content: "Hi! How can we help you today?",
-      timestamp: new Date(),
-      type: "text"
-    },
-    {
-      id: "2",
-      sender: "You",
-      content: "I need help with my campaign setup",
+      sender: "Kolerr Support",
+      senderType: "support",
+      content: "Welcome to Kolerr! How can we assist you today?",
       timestamp: new Date(),
       type: "text"
     }
@@ -60,12 +60,28 @@ export const ChatWindow = () => {
     { id: "support", name: "Support", color: "bg-kolerr-orange" }
   ];
 
+  const getSenderIcon = (senderType: string) => {
+    switch (senderType) {
+      case 'support':
+        return <HeadphonesIcon className="h-4 w-4 text-white" />;
+      case 'brand':
+        return <Building2 className="h-4 w-4 text-white" />;
+      case 'kol':
+        return <Star className="h-4 w-4 text-white" />;
+      case 'agency':
+        return <Users className="h-4 w-4 text-white" />;
+      default:
+        return <User className="h-4 w-4 text-white" />;
+    }
+  };
+
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
     
     const message: Message = {
       id: Date.now().toString(),
       sender: "You",
+      senderType: userType,
       content: newMessage,
       timestamp: new Date(),
       type: "text"
@@ -79,10 +95,10 @@ export const ChatWindow = () => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    // In a real app, you would upload the file to a server here
     const fileMessage: Message = {
       id: Date.now().toString(),
       sender: "You",
+      senderType: userType,
       content: "Sent a file",
       timestamp: new Date(),
       type: "file",
@@ -130,7 +146,7 @@ export const ChatWindow = () => {
                 }`}
               >
                 <div className="h-8 w-8 rounded-full bg-gradient-to-r from-kolerr-cyan to-kolerr-purple flex items-center justify-center">
-                  <User className="h-4 w-4 text-white" />
+                  {getSenderIcon(message.senderType)}
                 </div>
                 <div
                   className={`max-w-[80%] rounded-lg p-3 ${
