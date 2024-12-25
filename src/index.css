@@ -101,7 +101,7 @@
 
   /* PWA specific styles */
   .app-shell {
-    @apply min-h-screen flex flex-col;
+    @apply min-h-screen flex flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)];
   }
 
   .app-content {
@@ -109,7 +109,7 @@
   }
 
   .bottom-nav {
-    @apply fixed bottom-0 left-0 right-0 bg-background border-t border-border md:hidden;
+    @apply fixed bottom-0 left-0 right-0 bg-background border-t border-border md:hidden pb-[env(safe-area-inset-bottom)];
   }
 }
 
@@ -163,7 +163,7 @@
 @media (display-mode: standalone) {
   /* Adjust for PWA standalone mode */
   .app-shell {
-    @apply pt-safe pb-safe;
+    @apply pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)];
   }
 }
 
