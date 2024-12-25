@@ -6,5 +6,9 @@ export const translations = {
   vi,
 } as const;
 
-// Update the TranslationKey type to include all possible translation keys
 export type TranslationKey = keyof typeof en;
+
+// Type guard to check if a key exists in translations
+export const isValidTranslationKey = (key: string): key is TranslationKey => {
+  return key in en;
+};

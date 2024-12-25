@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter, Eye } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { getUserType } from "@/utils/userTypeUtils";
 
 interface SocialLink {
   platform: string;
@@ -9,15 +11,35 @@ interface SocialLink {
 }
 
 interface KOLCardProps {
+  id: string;
   name: string;
   image: string;
   followers: string;
   engagement: string;
   expertise?: string;
+  location?: string;
+  availability?: string;
+  rating?: number;
+  completedCampaigns?: number;
   socialLinks?: SocialLink[];
 }
 
-const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }: KOLCardProps) => {
+const KOLCard = ({ 
+  id,
+  name, 
+  image, 
+  followers, 
+  engagement, 
+  expertise,
+  location,
+  availability,
+  rating,
+  completedCampaigns,
+  socialLinks 
+}: KOLCardProps) => {
+  const navigate = useNavigate();
+  const userType = getUserType();
+  
   const platformIcons = {
     facebook: <Facebook className="h-5 w-5" />,
     instagram: <Instagram className="h-5 w-5" />,
@@ -27,6 +49,10 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
       </svg>
     ),
+  };
+
+  const handleViewProfile = () => {
+    navigate(`/kols/${id}`);
   };
 
   return (
@@ -52,6 +78,9 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
               {expertise && (
                 <p className="text-sm text-muted-foreground">{expertise}</p>
               )}
+              {location && (
+                <p className="text-sm text-muted-foreground mt-1">{location}</p>
+              )}
             </div>
           </div>
 
@@ -73,6 +102,22 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
               <p className="text-lg font-bold gradient-text">{engagement}</p>
             </motion.div>
           </div>
+
+          {completedCampaigns !== undefined && (
+            <div className="mb-4 text-center">
+              <p className="text-sm text-muted-foreground">
+                {completedCampaigns} Campaigns Completed
+              </p>
+            </div>
+          )}
+
+          {availability && (
+            <div className="mb-4 text-center">
+              <p className="text-sm text-muted-foreground">
+                Available: {availability}
+              </p>
+            </div>
+          )}
 
           {socialLinks && socialLinks.length > 0 && (
             <div className="mb-6">
@@ -98,11 +143,23 @@ const KOLCard = ({ name, image, followers, engagement, expertise, socialLinks }:
             </div>
           )}
 
-          <Button 
-            className="w-full gradient-bg text-white hover-scale"
-          >
-            View Profile
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              className="flex-1 gradient-bg text-white hover-scale"
+              onClick={handleViewProfile}
+            >
+              <Eye className="w-4 h-4 mr-2" />
+              View Profile
+            </Button>
+            {userType === 'brand' && (
+              <Button 
+                variant="outline"
+                className="flex-1 border-white/20 text-white hover:bg-white/10"
+              >
+                Invite to Slot
+              </Button>
+            )}
+          </div>
         </div>
       </Card>
     </motion.div>

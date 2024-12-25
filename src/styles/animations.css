@@ -1,0 +1,23 @@
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+[lang="vi"] {
+  @apply leading-relaxed;
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-normal;
+  }
+}
+
+.pwa-install-prompt {
+  @apply fixed bottom-4 left-4 right-4 
+         bg-card p-4 rounded-lg shadow-lg
+         z-50 md:left-auto md:right-4 md:w-96
+         border border-border/10 backdrop-blur-sm;
+}

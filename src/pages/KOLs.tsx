@@ -5,6 +5,7 @@ import KOLCard from "@/components/KOLCard";
 const KOLs = () => {
   const kols = [
     {
+      id: "kol-1",
       name: "Alex Johnson",
       image: "https://i.pravatar.cc/150?img=1",
       followers: "1.2M",
@@ -18,6 +19,7 @@ const KOLs = () => {
       ]
     },
     {
+      id: "kol-2",
       name: "Sarah Lee",
       image: "https://i.pravatar.cc/150?img=5",
       followers: "980K",
@@ -25,6 +27,7 @@ const KOLs = () => {
       expertise: "Lifestyle & Fashion",
     },
     {
+      id: "kol-3",
       name: "Michael Brown",
       image: "https://i.pravatar.cc/150?img=8",
       followers: "1.5M",
@@ -32,6 +35,7 @@ const KOLs = () => {
       expertise: "Food & Travel",
     },
     {
+      id: "kol-4",
       name: "Linh Nguyen",
       image: "https://i.pravatar.cc/150?img=10",
       followers: "2.1M",
@@ -39,6 +43,7 @@ const KOLs = () => {
       expertise: "Beauty & Lifestyle",
     },
     {
+      id: "kol-5",
       name: "Minh Tran",
       image: "https://i.pravatar.cc/150?img=12",
       followers: "850K",
@@ -46,6 +51,7 @@ const KOLs = () => {
       expertise: "Technology Reviews",
     },
     {
+      id: "kol-6",
       name: "Hoa Pham",
       image: "https://i.pravatar.cc/150?img=15",
       followers: "1.8M",
@@ -53,6 +59,7 @@ const KOLs = () => {
       expertise: "Fashion & Beauty",
     },
     {
+      id: "kol-7",
       name: "Duc Le",
       image: "https://i.pravatar.cc/150?img=20",
       followers: "750K",
@@ -60,6 +67,7 @@ const KOLs = () => {
       expertise: "Gaming & Esports",
     },
     {
+      id: "kol-8",
       name: "Mai Thi",
       image: "https://i.pravatar.cc/150?img=25",
       followers: "1.3M",
@@ -67,6 +75,7 @@ const KOLs = () => {
       expertise: "Cooking & Lifestyle",
     },
     {
+      id: "kol-9",
       name: "Thanh Dao",
       image: "https://i.pravatar.cc/150?img=30",
       followers: "920K",
@@ -74,6 +83,7 @@ const KOLs = () => {
       expertise: "Travel & Culture",
     },
     {
+      id: "kol-10",
       name: "Anh Nguyen",
       image: "https://i.pravatar.cc/150?img=35",
       followers: "1.6M",
@@ -81,6 +91,7 @@ const KOLs = () => {
       expertise: "Business & Finance",
     },
     {
+      id: "kol-11",
       name: "Trang Le",
       image: "https://i.pravatar.cc/150?img=40",
       followers: "680K",
@@ -88,6 +99,7 @@ const KOLs = () => {
       expertise: "Health & Fitness",
     },
     {
+      id: "kol-12",
       name: "Hung Vu",
       image: "https://i.pravatar.cc/150?img=45",
       followers: "1.1M",
@@ -113,7 +125,7 @@ const KOLs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {kols.map((kol) => (
               <KOLCard
-                key={kol.name}
+                key={kol.id}
                 {...kol}
               />
             ))}

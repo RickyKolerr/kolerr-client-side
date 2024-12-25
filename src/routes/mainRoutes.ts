@@ -1,4 +1,5 @@
 import Index from "@/pages/Index";
+import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import Campaigns from "@/pages/Campaigns";
 import KOLs from "@/pages/KOLs";
 import Brands from "@/pages/Brands";
@@ -14,12 +15,15 @@ import GetStarted from "@/pages/GetStarted";
 import LearnMore from "@/pages/LearnMore";
 import Checkout from "@/pages/Checkout";
 import Communication from "@/pages/Communication";
-import ContentTranslation from "@/pages/ContentTranslation";
 
 export const mainRoutes = [
   {
     path: "/",
     element: Index,
+  },
+  {
+    path: "/dashboard/*",
+    element: DashboardLayout,
   },
   {
     path: "/campaigns/*",
@@ -80,9 +84,5 @@ export const mainRoutes = [
   {
     path: "/communication",
     element: Communication,
-  },
-  {
-    path: "/translation",
-    element: ContentTranslation,
   },
 ];

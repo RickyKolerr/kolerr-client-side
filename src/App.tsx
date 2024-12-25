@@ -1,12 +1,14 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Toaster } from "@/components/ui/toaster";
+import { Routes, Route } from "react-router-dom";
 import { routes } from "./routes";
-import { StrictMode } from "react";
+import "./App.css";
 
+// Create a client
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -16,24 +18,40 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
+// Register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered:', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed:', registrationError);
+    });
+  });
+}
+
+function App() {
+  return (
+    <React.StrictMode>
       <BrowserRouter>
-        <LanguageProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <Routes>
-              {routes.map(({ path, element: Element }) => (
-                <Route key={path} path={path} element={<Element />} />
-              ))}
-            </Routes>
-          </TooltipProvider>
-        </LanguageProvider>
+        <QueryClientProvider client={queryClient}>
+          <LanguageProvider>
+            <TooltipProvider>
+              <div className="app-shell">
+                <main className="app-content bg-background">
+                  <Routes>
+                    {routes.map(({ path, element: Element }) => (
+                      <Route key={path} path={path} element={<Element />} />
+                    ))}
+                  </Routes>
+                </main>
+                <Toaster />
+              </div>
+            </TooltipProvider>
+          </LanguageProvider>
+        </QueryClientProvider>
       </BrowserRouter>
-    </QueryClientProvider>
-  </StrictMode>
-);
+    </React.StrictMode>
+  );
+}
 
 export default App;

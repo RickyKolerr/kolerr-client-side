@@ -1,0 +1,40 @@
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange;
+  }
+  
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:bg-gradient-to-r before:from-kolerr-cyan before:via-kolerr-purple before:to-kolerr-orange before:content-[''] before:-z-10;
+  }
+  
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-[100%] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px];
+  }
+
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  }
+
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+
+  .btn {
+    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200 
+           touch-manipulation select-none
+           active:scale-95 hover:scale-105
+           disabled:opacity-50 disabled:pointer-events-none
+           mb-2 sm:mb-0;
+  }
+
+  .card {
+    @apply rounded-lg p-4 sm:p-6 bg-card shadow-lg
+           hover:shadow-xl transition-shadow duration-200
+           border border-border/10 backdrop-blur-sm
+           mb-4 sm:mb-6;
+  }
+}
