@@ -21,14 +21,18 @@ const App = () => (
     <LanguageProvider>
       <TooltipProvider>
         <BrowserRouter>
-          <Navbar />
-          <Toaster />
-          <Sonner />
-          <Routes>
-            {routes.map(({ path, element: Element }) => (
-              <Route key={path} path={path} element={<Element />} />
-            ))}
-          </Routes>
+          <div className="min-h-screen">
+            <Navbar />
+            <main>
+              <Toaster />
+              <Sonner />
+              <Routes>
+                {routes.map(({ path, element: Element }) => (
+                  <Route key={path} path={path} element={<Element />} />
+                ))}
+              </Routes>
+            </main>
+          </div>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
