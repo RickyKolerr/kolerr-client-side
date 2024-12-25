@@ -7,6 +7,7 @@ import { CampaignsList } from "@/components/brands/dashboard/CampaignsList";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 export function BrandDashboard() {
   const navigate = useNavigate();
@@ -20,48 +21,33 @@ export function BrandDashboard() {
     });
   };
 
-  const containerAnimation = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemAnimation = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  };
-
   return (
-    <div className="container mx-auto p-6 space-y-8">
+    <div className="container mx-auto p-4 sm:p-6 space-y-6 sm:space-y-8">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex justify-between items-center"
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
       >
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange bg-clip-text text-transparent">
             Brand Dashboard
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-sm sm:text-base text-muted-foreground mt-2">
             Manage your campaigns and track performance
           </p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex w-full sm:w-auto gap-2">
           <Button 
             onClick={handleAIAssistant}
             variant="outline"
-            className="gap-2"
+            className="flex-1 sm:flex-none gap-2 h-10"
           >
             <Star className="h-4 w-4" />
-            AI Assistant
+            <span className="whitespace-nowrap">AI Assistant</span>
           </Button>
           <Button 
             onClick={() => navigate("/brands/create")}
-            className="bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90"
+            className="flex-1 sm:flex-none bg-gradient-to-r from-kolerr-cyan to-kolerr-purple hover:opacity-90 h-10"
           >
             Create Campaign
           </Button>
@@ -70,58 +56,39 @@ export function BrandDashboard() {
 
       <MetricsOverview />
 
-      <Tabs defaultValue="campaigns" className="space-y-6">
-        <TabsList className="grid grid-cols-5 gap-4 bg-transparent h-auto p-0">
-          <TabsTrigger
-            value="campaigns"
-            className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-          >
-            <BarChart3 className="h-4 w-4 mr-2" />
-            Current Campaigns
-          </TabsTrigger>
-          <TabsTrigger
-            value="slots"
-            className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-          >
-            <Calendar className="h-4 w-4 mr-2" />
-            Slot Management
-          </TabsTrigger>
-          <TabsTrigger
-            value="kols"
-            className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-          >
-            <Users className="h-4 w-4 mr-2" />
-            KOL Selection
-          </TabsTrigger>
-          <TabsTrigger
-            value="analytics"
-            className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-          >
-            <PieChart className="h-4 w-4 mr-2" />
-            Analytics
-          </TabsTrigger>
-          <TabsTrigger
-            value="profile"
-            className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-          >
-            <Info className="h-4 w-4 mr-2" />
-            Brand Info
-          </TabsTrigger>
-        </TabsList>
+      <div className="rounded-lg border border-white/10 bg-black/20 backdrop-blur-sm overflow-hidden">
+        <Tabs defaultValue="campaigns" className="w-full">
+          <div className="flex flex-col gap-4 p-4">
+            <TabsList className="h-auto grid grid-cols-2 sm:grid-cols-5 gap-2 bg-transparent">
+              {[
+                { value: "campaigns", icon: BarChart3, label: "Current Campaigns" },
+                { value: "slots", icon: Calendar, label: "Slot Management" },
+                { value: "kols", icon: Users, label: "KOL Selection" },
+                { value: "analytics", icon: PieChart, label: "Analytics" },
+                { value: "profile", icon: Info, label: "Brand Info" },
+              ].map(({ value, icon: Icon, label }) => (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-2 h-auto",
+                    "data-[state=active]:bg-primary/10 data-[state=active]:text-primary",
+                    "whitespace-nowrap text-sm"
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span className="hidden sm:inline">{label}</span>
+                  <span className="sm:hidden">{label.split(' ')[0]}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
-        <motion.div
-          variants={containerAnimation}
-          initial="hidden"
-          animate="show"
-        >
-          <TabsContent value="campaigns">
-            <motion.div variants={itemAnimation}>
+          <div className="p-4">
+            <TabsContent value="campaigns">
               <CampaignsList campaigns={[]} />
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="slots">
-            <motion.div variants={itemAnimation}>
+            </TabsContent>
+            <TabsContent value="slots">
               <Card className="bg-card/50 backdrop-blur-sm border-white/10">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -133,11 +100,8 @@ export function BrandDashboard() {
                   <p>Manage your campaign slots and KOL positions here.</p>
                 </CardContent>
               </Card>
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="kols">
-            <motion.div variants={itemAnimation}>
+            </TabsContent>
+            <TabsContent value="kols">
               <Card className="bg-card/50 backdrop-blur-sm border-white/10">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -149,11 +113,8 @@ export function BrandDashboard() {
                   <p>Browse and select KOLs for your campaigns.</p>
                 </CardContent>
               </Card>
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="analytics">
-            <motion.div variants={itemAnimation}>
+            </TabsContent>
+            <TabsContent value="analytics">
               <Card className="bg-card/50 backdrop-blur-sm border-white/10">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -165,11 +126,8 @@ export function BrandDashboard() {
                   <p>View detailed analytics and performance metrics for your campaigns.</p>
                 </CardContent>
               </Card>
-            </motion.div>
-          </TabsContent>
-
-          <TabsContent value="profile">
-            <motion.div variants={itemAnimation}>
+            </TabsContent>
+            <TabsContent value="profile">
               <Card className="bg-card/50 backdrop-blur-sm border-white/10">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -181,10 +139,10 @@ export function BrandDashboard() {
                   <p>Manage your brand profile, logo, and social media links.</p>
                 </CardContent>
               </Card>
-            </motion.div>
-          </TabsContent>
-        </motion.div>
-      </Tabs>
+            </TabsContent>
+          </div>
+        </Tabs>
+      </div>
     </div>
   );
 }
