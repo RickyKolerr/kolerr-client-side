@@ -1,3 +1,4 @@
+import { RouteObject } from "react-router-dom";
 import Index from "@/pages/Index";
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import Campaigns from "@/pages/Campaigns";
@@ -16,73 +17,73 @@ import LearnMore from "@/pages/LearnMore";
 import Checkout from "@/pages/Checkout";
 import Communication from "@/pages/Communication";
 
-export const mainRoutes = [
+export const mainRoutes: RouteObject[] = [
   {
     path: "/",
-    element: Index,
+    element: <Index />
   },
   {
     path: "/dashboard/*",
-    element: DashboardLayout,
+    element: <DashboardLayout />
   },
   {
     path: "/campaigns/*",
-    element: Campaigns,
+    element: <Campaigns />
   },
   {
     path: "/kols/*",
-    element: KOLs,
+    element: <KOLs />
   },
   {
     path: "/brands/*",
-    element: Brands,
+    element: <Brands />
   },
   {
     path: "/pricing",
-    element: Pricing,
+    element: <Pricing />
   },
   {
     path: "/contact",
-    element: Contact,
+    element: <Contact />
   },
   {
     path: "/slots/*",
-    element: Slots,
+    element: <Slots />
   },
   {
     path: "/auth/login",
-    element: Login,
+    element: <Login />
   },
   {
     path: "/auth/register",
-    element: Register,
+    element: <Register />
   },
   {
     path: "/auth/forgot-password",
-    element: ForgotPassword,
+    element: <ForgotPassword />
   },
   {
     path: "/privacy",
-    element: PrivacyPolicy,
+    element: <PrivacyPolicy />
   },
   {
     path: "/terms",
-    element: TermsOfService,
+    element: <TermsOfService />
   },
   {
     path: "/get-started",
-    element: GetStarted,
+    element: <GetStarted />
   },
   {
     path: "/learn-more",
-    element: LearnMore,
+    element: <LearnMore />
   },
   {
     path: "/checkout",
-    element: Checkout,
+    element: <Checkout />
   },
   {
     path: "/communication",
-    element: Communication,
-  },
+    element: <Communication />
+  }
 ];

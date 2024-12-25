@@ -1,29 +1,26 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { CreditCard, Globe2, Wallet } from "lucide-react";
 
 const PaymentMethods = () => {
-  const { t } = useLanguage();
-
   const paymentMethods = [
     {
       id: "stripe",
       name: "Stripe",
       icon: <CreditCard className="w-6 h-6" />,
-      description: t("payment.stripe.desc"),
+      description: "Secure payment processing with Stripe",
     },
     {
       id: "local",
-      name: t("payment.local.title"),
+      name: "Local Payment",
       icon: <Wallet className="w-6 h-6" />,
-      description: t("payment.local.desc"),
+      description: "Pay using local payment methods",
     },
     {
       id: "paypal",
       name: "PayPal",
       icon: <Globe2 className="w-6 h-6" />,
-      description: t("payment.paypal.desc"),
+      description: "Fast and secure payment with PayPal",
     },
   ];
 
@@ -43,7 +40,7 @@ const PaymentMethods = () => {
               className="w-full bg-gradient-to-r from-kolerr-cyan via-kolerr-purple to-kolerr-orange"
               onClick={() => console.log(`Selected payment method: ${method.id}`)}
             >
-              {t("payment.select")}
+              Select Payment Method
             </Button>
           </CardContent>
         </Card>

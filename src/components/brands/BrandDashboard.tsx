@@ -1,13 +1,11 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { CreateCampaignDialog } from "./CreateCampaignDialog";
 import { MetricsOverview } from "./dashboard/MetricsOverview";
 import { CampaignsList } from "./dashboard/CampaignsList";
 import { useState } from "react";
 
 export function BrandDashboard() {
-  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   
   const activeCampaigns = [
