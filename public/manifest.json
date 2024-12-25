@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
   "scope": "/",
   "prefer_related_applications": false,
   "icons": [
@@ -21,6 +21,18 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "url": "/dashboard",
+      "description": "View your dashboard"
+    },
+    {
+      "name": "Campaigns",
+      "url": "/campaigns",
+      "description": "Manage campaigns"
     }
   ]
 }

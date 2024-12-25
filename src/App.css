@@ -58,27 +58,18 @@
   margin-left: auto;
 }
 
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  body {
+    overscroll-behavior-y: none;
   }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
+  
+  .pwa-header {
+    padding-top: env(safe-area-inset-top);
   }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
+  
+  .pwa-footer {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 

@@ -36,11 +36,14 @@
     @apply antialiased;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    height: 100%;
+    overscroll-behavior-y: none;
   }
   
   body {
     @apply bg-background text-foreground min-h-screen;
     -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
   }
   
   /* Improve text rendering */
@@ -78,7 +81,7 @@
 
   /* Mobile-first buttons */
   .btn {
-    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200;
+    @apply min-h-[44px] min-w-[44px] px-4 py-2 rounded-md transition-all duration-200 touch-manipulation;
   }
 
   /* Card styles with better mobile support */
@@ -94,6 +97,19 @@
   /* Form elements with better touch targets */
   .form-input {
     @apply min-h-[44px] w-full rounded-md px-4;
+  }
+
+  /* PWA specific styles */
+  .app-shell {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .app-content {
+    @apply flex-1 overflow-auto;
+  }
+
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-background border-t border-border md:hidden;
   }
 }
 
@@ -143,6 +159,14 @@
   }
 }
 
+/* PWA specific media queries */
+@media (display-mode: standalone) {
+  /* Adjust for PWA standalone mode */
+  .app-shell {
+    @apply pt-safe pb-safe;
+  }
+}
+
 /* Animations */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(10px); }
@@ -162,4 +186,9 @@
   h1, h2, h3, h4, h5, h6 {
     @apply tracking-normal;
   }
+}
+
+/* PWA installation prompt */
+.pwa-install-prompt {
+  @apply fixed bottom-4 left-4 right-4 bg-card p-4 rounded-lg shadow-lg z-50 md:left-auto md:right-4 md:w-96;
 }

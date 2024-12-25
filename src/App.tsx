@@ -17,20 +17,33 @@ const queryClient = new QueryClient({
   },
 });
 
+// Register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered:', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed:', registrationError);
+    });
+  });
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <BrowserRouter>
           <TooltipProvider>
-            <main className="min-h-screen bg-background">
-              <Routes>
-                {routes.map(({ path, element: Element }) => (
-                  <Route key={path} path={path} element={<Element />} />
-                ))}
-              </Routes>
-            </main>
-            <Toaster />
+            <div className="app-shell">
+              <main className="app-content bg-background">
+                <Routes>
+                  {routes.map(({ path, element: Element }) => (
+                    <Route key={path} path={path} element={<Element />} />
+                  ))}
+                </Routes>
+              </main>
+              <Toaster />
+            </div>
           </TooltipProvider>
         </BrowserRouter>
       </LanguageProvider>
