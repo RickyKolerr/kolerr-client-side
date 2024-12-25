@@ -118,6 +118,25 @@ export function BrandDashboard() {
             </div>
           </div>
 
+          <div className="overflow-x-auto -mx-4 px-4">
+            <div className="inline-flex min-w-full sm:min-w-0">
+              <nav className="flex space-x-4 border-b border-gray-700 w-full overflow-x-auto pb-2 scrollbar-hide">
+                <button className="text-sm font-medium text-white px-3 py-2 rounded-md bg-primary/10 whitespace-nowrap">
+                  Current Campaigns
+                </button>
+                <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
+                  KOL Selection
+                </button>
+                <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
+                  Analytics
+                </button>
+                <button className="text-sm font-medium text-gray-400 hover:text-white px-3 py-2 rounded-md hover:bg-white/5 whitespace-nowrap">
+                  Brand Info
+                </button>
+              </nav>
+            </div>
+          </div>
+
           <MetricsOverview />
           <CampaignsList campaigns={activeCampaigns} />
         </div>
