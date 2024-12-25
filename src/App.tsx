@@ -11,10 +11,10 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <LanguageProvider>
-          <TooltipProvider>
+    <QueryClientProvider client={queryClient}>
+      <LanguageProvider>
+        <TooltipProvider>
+          <BrowserRouter>
             <main className="min-h-screen bg-background">
               <Routes>
                 {routes.map(({ path, element: Element }) => (
@@ -23,10 +23,10 @@ function App() {
               </Routes>
             </main>
             <Toaster />
-          </TooltipProvider>
-        </LanguageProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
+    </QueryClientProvider>
   );
 }
 

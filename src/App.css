@@ -5,6 +5,50 @@
   text-align: center;
 }
 
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 2em;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}
+
 /* Mobile-first responsive design */
 .container {
   width: 100%;
@@ -14,46 +58,6 @@
   margin-left: auto;
 }
 
-/* Better touch targets for mobile */
-button, 
-a {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Improved mobile tab navigation */
-.tabs-container {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.tabs-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Responsive text adjustments */
-@media (max-width: 640px) {
-  h1 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-  
-  p {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-}
-
-/* Tablet and desktop styles */
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
@@ -87,6 +91,18 @@ a {
   .hover\:opacity-90:hover {
     opacity: 1;
   }
+}
+
+/* Improved scrolling on mobile */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better tap targets for mobile */
+button, 
+a {
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* Prevent text size adjustment on orientation change */
