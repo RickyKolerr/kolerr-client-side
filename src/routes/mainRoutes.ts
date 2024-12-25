@@ -15,6 +15,7 @@ import GetStarted from "@/pages/GetStarted";
 import LearnMore from "@/pages/LearnMore";
 import Checkout from "@/pages/Checkout";
 import Communication from "@/pages/Communication";
+import Chat from "@/pages/Chat";
 
 export const mainRoutes = [
   {
@@ -48,6 +49,10 @@ export const mainRoutes = [
   {
     path: "/slots/*",
     element: Slots,
+  },
+  {
+    path: "/chat",
+    element: Chat,
   },
   {
     path: "/auth/login",
