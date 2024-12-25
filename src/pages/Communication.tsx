@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { ContractForm } from "@/components/contracts/ContractForm";
 import { ContractHandleBar } from "@/components/contracts/ContractHandleBar";
@@ -10,7 +11,7 @@ const Communication = () => {
   const { toast } = useToast();
 
   // Show a welcome toast when the component mounts
-  React.useEffect(() => {
+  useEffect(() => {
     toast({
       title: "Welcome to Chat & Docs",
       description: "Connect and manage your documents in one place.",
