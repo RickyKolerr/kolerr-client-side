@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { translations, TranslationKey } from "@/translations";
 
 export type Language = "en" | "vi";
